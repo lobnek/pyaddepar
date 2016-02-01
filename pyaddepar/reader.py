@@ -6,6 +6,7 @@ from csv import reader
 class Reader(object):
     def __init__(self, id, key, secret):
         self.__headers = {'Addepar-Firm': id, 'Addepar-Api-Key': key, 'Addepar-Api-Secret': secret}
+        self.__address = "https://api.addepar.com/partner/export/csv/"
 
     @staticmethod
     def __toFrame(r):
@@ -23,31 +24,29 @@ class Reader(object):
 
     @property
     def groups(self):
-        r = requests.get("https://api.addepar.com/partner/export/csv/groups", headers=self.__headers)
+        r = requests.get(self.__address + "groups", headers=self.__headers)
         return self.__toFrame(r)
 
     @property
     def contacts(self):
-        r = requests.get("https://api.addepar.com/partner/export/csv/contacts", headers=self.__headers)
+        r = requests.get(self.__address + "contacts", headers=self.__headers)
         return self.__toFrame(r)
 
     def entities(self, start=None, end=None):
         end = end or pd.Timestamp("today")
         start = start or pd.Timestamp("1900-01-01")
         params = {"start_date": self.__format(start), "end_date": self.__format(end)}
-        r = requests.get("https://api.addepar.com/partner/export/csv/entities", headers=self.__headers, params=params)
+        r = requests.get(self.__address + "entities", headers=self.__headers, params=params)
         return self.__toFrame(r)
 
     def positions(self, date=None):
         date = date or pd.Timestamp("today")
-        r = requests.get("https://api.addepar.com/partner/export/csv/positions", headers=self.__headers,
-                         params={"date": self.__format(date)})
-
+        params = {"date": self.__format(date)}
+        r = requests.get(self.__address + "positions", headers=self.__headers, params=params)
         return self.__toFrame(r)
 
     def transactions(self, start, end=None):
         end = end or pd.Timestamp("today")
         params = {"start_date": self.__format(start), "end_date": self.__format(end)}
-        r = requests.get("https://api.addepar.com/partner/export/csv/transactions", headers=self.__headers,
-                     params=params)
+        r = requests.get(self.__address + "transactions", headers=self.__headers, params=params)
         return self.__toFrame(r)
