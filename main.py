@@ -6,25 +6,29 @@ if __name__ == '__main__':
 
     from pyaddepar.reader import Reader
 
+    # instantiate reader (e.g. wrapper of the addepar REST api)
     reader = Reader(id=aFirm, key=aKey, secret=aSecret)
 
+    # all positions currently in the database
     print(reader.positions())
-    print(reader.positions().ix["804328"])
+
+    # cross section across rows with Owner ID == 804328
     print(reader.positions().xs("804328", level="Owner ID"))
+
+    # cross section across rows with Owned ID == 867344
     print(reader.positions().xs("867344", level="Owned ID"))
 
-    print(reader.owner)
-    print(reader.products)
-    print(reader.transactions())
-    assert False
+    # all current owners
+    print(reader.owner())
 
-    # print(reader.entities())
+    # all current products
+    print(reader.products())
 
+    # all contacts, note that this is a property rather than a method
+    print(reader.contacts)
 
-    # p = reader.positions()
-    # print(p.keys())
-    # print(p)
+    print(reader.groups)
 
-    # print(reader.entities())
+    #assert False
+    #print(reader.transactions())
 
-    print(reader.portfolio())

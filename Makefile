@@ -9,8 +9,7 @@ PROJECT       = pyaddepar
 
 .PHONY: all
 all:
-	@$(MAKE) test
-	@$(MAKE) publish
+	@$(MAKE) build
 
 
 .PHONY: clean
@@ -24,9 +23,8 @@ build:
 	conda create --yes -p ${ROOT_DIR}/env --file condalist.txt
 
 
-.PHONY: test
-test:
-	@$(MAKE) build
-	${NOSE}
-
+.PHONY: tag
+tag:
+	git tag -a $(VERSION) -m 'version $(VERSION)'
+	git push --tags
 
