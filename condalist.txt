@@ -1,3 +1,0 @@
-python=3.5.0
-requests=2.8.1
-pandas=0.17.1
