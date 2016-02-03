@@ -3,6 +3,10 @@
 Addepar has recently released a REST api. In this project we wrap this api for Python users.
 
 
+Installation
+------------
+    pip install git+http://github.com/lobnek/pyaddepar.git
+    
 Authentication
 --------------
 
