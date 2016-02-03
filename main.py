@@ -27,8 +27,6 @@ if __name__ == '__main__':
     # all contacts, note that this is a property rather than a method
     print(reader.contacts)
 
+    # all groups, their members (and their IDs)
     print(reader.groups)
-
-    #assert False
-    #print(reader.transactions())
 
