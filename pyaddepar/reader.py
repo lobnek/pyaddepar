@@ -10,6 +10,9 @@ class Reader(object):
         self.__address = "https://api.addepar.com/partner/export/csv/"
         self.__logger = logger or logging.getLogger(__name__)
 
+    def __repr__(self):
+        return "Addepar REST api running on {} with header {}".format(self.__address, self.__headers)
+
     @staticmethod
     def __toFrame(r):
         # construct the decoded rows

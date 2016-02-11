@@ -9,6 +9,9 @@ if __name__ == '__main__':
     # instantiate reader (e.g. wrapper of the addepar REST api)
     reader = Reader(id=aFirm, key=aKey, secret=aSecret)
 
+    # print the reader __repr__()
+    print(reader)
+
     # all positions currently in the database
     print(reader.positions())
 
@@ -29,4 +32,5 @@ if __name__ == '__main__':
 
     # all groups, their members (and their IDs)
     print(reader.groups)
+
 
