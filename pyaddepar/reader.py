@@ -2,7 +2,7 @@ import pandas as pd
 import requests
 import logging
 from csv import reader
-
+from dateutil import parser
 
 class AddeparError(Exception):
     """
@@ -50,6 +50,10 @@ class Reader(object):
     @staticmethod
     def __format(t):
         return t.strftime("%Y-%m-%d")
+
+    @staticmethod
+    def __parse_date(date):
+        return parser.parse(date, dayfirst=True)
 
     @property
     def groups(self):
@@ -103,8 +107,11 @@ class Reader(object):
         params = {"start_date": self.__format(start), "end_date": self.__format(end)}
         r = self.__request("transactions", params=params)
 
-        return self.__toFrame(r).set_index(
-            keys=["Transaction ID", "Type", "Posted Date", "Date", "Owner ID", "Owned ID"])
+        f = self.__toFrame(r)
+        f["Posted Date"] = f["Posted Date"].apply(self.__parse_date)
+        f["Date"] = f["Date"].apply(self.__parse_date)
+
+        return f.set_index(keys=["Transaction ID", "Type", "Posted Date", "Date", "Owner ID", "Owned ID"])
 
     def owner(self, date=None):
         """
