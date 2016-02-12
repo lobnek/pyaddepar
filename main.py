@@ -1,5 +1,13 @@
 from auth import aFirm, aKey, aSecret
 import pandas as pd
+import logging
+
+logging.basicConfig(level=logging.DEBUG)
+logger = logging.getLogger("pyaddepar")
+
+# the existing requests logger can be controlled here...
+logging.getLogger("requests").setLevel(level=logging.WARNING)
+
 
 if __name__ == '__main__':
     pd.set_option("display.width", 300)
@@ -7,7 +15,8 @@ if __name__ == '__main__':
     from pyaddepar.reader import Reader
 
     # instantiate reader (e.g. wrapper of the addepar REST api)
-    reader = Reader(id=aFirm, key=aKey, secret=aSecret)
+    reader = Reader(id=aFirm, key=aKey, secret=aSecret, logger=logger)
+
 
     # print the reader __repr__()
     print(reader)
