@@ -4,6 +4,7 @@ import logging
 from csv import reader
 from dateutil import parser
 
+
 class AddeparError(Exception):
     """
     Problem with the reader
@@ -33,7 +34,6 @@ class Reader(object):
         except Exception as e:
             raise AddeparError(e)
 
-
     @staticmethod
     def __toFrame(r):
         try:
@@ -43,7 +43,9 @@ class Reader(object):
             # compare with http://tinyurl.com/gn7kmvu
             lines = [line for line in reader(rows)]
             frame = pd.DataFrame(columns=lines[0], data=lines[1:])
-            frame.apply(pd.to_numeric, errors="ignore")
+            for key in frame.keys():
+                frame[key] = pd.to_numeric(frame[key], errors="ignore")
+
             return frame
         except Exception as e:
             raise AddeparError(e)
@@ -114,11 +116,10 @@ class Reader(object):
         f["Posted Date"] = f["Posted Date"].apply(self.__parse_date)
         f["Date"] = f["Date"].apply(self.__parse_date)
 
-        for key in f.keys():
-            f[key] = pd.to_numeric(f[key], errors="ignore")
-        print(f["Date"])
+        # for key in f.keys():
+        #    f[key] = pd.to_numeric(f[key], errors="ignore")
+        # print(f["Date"])
         return f.set_index(keys=["Transaction ID", "Type", "Posted Date", "Date", "Owner ID", "Owned ID"])
-
 
     def owner(self, date=None):
         """

@@ -17,12 +17,8 @@ if __name__ == '__main__':
     # instantiate reader (e.g. wrapper of the addepar REST api)
     reader = Reader(id=aFirm, key=aKey, secret=aSecret, logger=logger)
 
-
     # print the reader __repr__()
     print(reader)
-
-    t = reader.transactions()
-    print(t)
 
     # all positions currently in the database
     print(reader.positions())
