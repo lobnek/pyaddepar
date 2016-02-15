@@ -53,7 +53,7 @@ class Reader(object):
 
     @staticmethod
     def __parse_date(date):
-        return parser.parse(date, dayfirst=True)
+        return parser.parse(date, dayfirst=True).date()
 
     @property
     def groups(self):
@@ -99,7 +99,9 @@ class Reader(object):
         """
         date = date or pd.Timestamp("today")
         r = self.__request("positions", params={"date": self.__format(date)})
-        return self.__toFrame(r).set_index(keys=["Owner ID", "Owned ID"])
+        f = self.__toFrame(r).set_index(keys=["Owner ID", "Owned ID"])
+        f["Date"] = f["Date"].apply(self.__parse_date)
+        return f
 
     def transactions(self, start=None, end=None):
         end = end or pd.Timestamp("today")
