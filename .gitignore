@@ -1,7 +1,5 @@
 env
 auth.py
-condalist.txt
-Makefile
 pet.py
 
 

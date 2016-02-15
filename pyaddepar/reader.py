@@ -42,8 +42,9 @@ class Reader(object):
             # parse them into lists of strings, note that a comma between " " double-quotes is ignored
             # compare with http://tinyurl.com/gn7kmvu
             lines = [line for line in reader(rows)]
-            return pd.DataFrame(columns=lines[0], data=lines[1:])
-
+            frame = pd.DataFrame(columns=lines[0], data=lines[1:])
+            frame.apply(pd.to_numeric, errors="ignore")
+            return frame
         except Exception as e:
             raise AddeparError(e)
 
@@ -113,7 +114,11 @@ class Reader(object):
         f["Posted Date"] = f["Posted Date"].apply(self.__parse_date)
         f["Date"] = f["Date"].apply(self.__parse_date)
 
+        for key in f.keys():
+            f[key] = pd.to_numeric(f[key], errors="ignore")
+        print(f["Date"])
         return f.set_index(keys=["Transaction ID", "Type", "Posted Date", "Date", "Owner ID", "Owned ID"])
+
 
     def owner(self, date=None):
         """

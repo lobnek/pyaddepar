@@ -21,7 +21,9 @@ if __name__ == '__main__':
     # print the reader __repr__()
     print(reader)
 
-    print(reader.transactions())
+    t = reader.transactions()
+    print(t)
+
     # all positions currently in the database
     print(reader.positions())
 
