@@ -2,7 +2,6 @@ import pandas as pd
 import requests
 import logging
 from csv import reader
-from dateutil import parser
 
 
 class AddeparError(Exception):
@@ -35,28 +34,37 @@ class Reader(object):
             raise AddeparError(e)
 
     @staticmethod
-    def __toFrame(r):
+    def __parse(request):
         try:
-            # construct the decoded rows
-            rows = [a.decode() for a in r.iter_lines()]
+            rows = [a.decode() for a in request]
+            assert len(rows) >= 1
             # parse them into lists of strings, note that a comma between " " double-quotes is ignored
             # compare with http://tinyurl.com/gn7kmvu
             lines = [line for line in reader(rows)]
-            frame = pd.DataFrame(columns=lines[0], data=lines[1:])
-            for key in frame.keys():
-                frame[key] = pd.to_numeric(frame[key], errors="ignore")
-
-            return frame
+            return pd.DataFrame(columns=lines[0], data=lines[1:])
         except Exception as e:
             raise AddeparError(e)
 
     @staticmethod
-    def __format(t):
-        return t.strftime("%Y-%m-%d")
+    def __date_safe(x):
+        return pd.to_datetime(x, errors="coerce", exact=True, format="%m/%d/%Y").date()
 
     @staticmethod
-    def __parse_date(date):
-        return parser.parse(date, dayfirst=True).date()
+    def __apply(frame, dates, index=None):
+        for key in dates:
+            frame[key] = frame[key].apply(Reader.__date_safe)
+
+        not_dates = [k for k in frame.keys() if k not in dates]
+        frame[not_dates] = frame[not_dates].apply(pd.to_numeric, errors="ignore")
+
+        if index:
+            return frame.set_index(index)
+        else:
+            return frame
+
+    @staticmethod
+    def __format(t):
+        return t.strftime("%Y-%m-%d")
 
     @property
     def groups(self):
@@ -66,17 +74,18 @@ class Reader(object):
         # todo: group name, member name and ID of the member in the entities table
         b = self.entities()["Name"]
         b = pd.Series(index=b.values, data=b.index)
-        a = self.__toFrame(r)
+        a = self.__parse(r.iter_lines())
+
         a["ID"] = a["Member Name"].apply(lambda x: b[x])
-        return a.set_index(keys=["Group Name", "Member Name"])
+        return self.__apply(a, [], index=["Group Name", "Member Name"])
 
     @property
     def contacts(self):
         """
         A DataFrame of all contacts stored
         """
-        r = self.__request("contacts")
-        return self.__toFrame(r).set_index("ID")
+        f = self.__parse(self.__request("contacts").iter_lines())
+        return self.__apply(f, dates=["Birthday"], index="ID")
 
     def entities(self, start=None, end=None):
         """
@@ -89,9 +98,10 @@ class Reader(object):
         end = end or pd.Timestamp("today")
         start = start or pd.Timestamp("1900-01-01")
         params = {"start_date": self.__format(start), "end_date": self.__format(end)}
-        r = self.__request("entities", params=params)
+        frame = self.__parse(self.__request("entities", params=params).iter_lines())
 
-        return self.__toFrame(r).set_index("ID")
+        dates = [key for key in frame.keys() if key.endswith("Date")]
+        return self.__apply(frame, dates=dates, index="ID")
 
     def positions(self, date=None):
         """
@@ -101,25 +111,15 @@ class Reader(object):
         :return: DataFrame with MultiIndex ["Owner ID", "Owned ID"]
         """
         date = date or pd.Timestamp("today")
-        r = self.__request("positions", params={"date": self.__format(date)})
-        f = self.__toFrame(r).set_index(keys=["Owner ID", "Owned ID"])
-        f["Date"] = f["Date"].apply(self.__parse_date)
-        return f
+        frame = self.__parse(self.__request("positions", params={"date": self.__format(date)}).iter_lines())
+        return self.__apply(frame, dates=["Date"], index=["Owner ID", "Owned ID"])
 
     def transactions(self, start=None, end=None):
         end = end or pd.Timestamp("today")
         start = start or pd.Timestamp("1900-01-01")
         params = {"start_date": self.__format(start), "end_date": self.__format(end)}
-        r = self.__request("transactions", params=params)
-
-        f = self.__toFrame(r)
-        f["Posted Date"] = f["Posted Date"].apply(self.__parse_date)
-        f["Date"] = f["Date"].apply(self.__parse_date)
-
-        # for key in f.keys():
-        #    f[key] = pd.to_numeric(f[key], errors="ignore")
-        # print(f["Date"])
-        return f.set_index(keys=["Transaction ID", "Type", "Posted Date", "Date", "Owner ID", "Owned ID"])
+        frame = self.__parse(self.__request("transactions", params=params).iter_lines())
+        return self.__apply(frame, dates=["Posted Date", "Date"], index=["Transaction ID", "Type", "Posted Date", "Date", "Owner ID", "Owned ID"])
 
     def owner(self, date=None):
         """
