@@ -38,10 +38,10 @@ Here's a little fragment:
         print(reader.positions())
     
         # cross section across rows with Owner ID == 804328
-        print(reader.positions().xs("804328", level="Owner ID"))
+        print(reader.positions().xs(804328, level="Owner ID"))
     
         # cross section across rows with Owned ID == 867344
-        print(reader.positions().xs("867344", level="Owned ID"))
+        print(reader.positions().xs(867344, level="Owned ID"))
     
         # all current owners
         print(reader.owner())
