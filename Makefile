@@ -3,6 +3,7 @@
 
 ROOT_DIR      = $(shell dirname $(realpath $(lastword $(MAKEFILE_LIST))))
 PYTHON        = ${ROOT_DIR}/env/bin/python
+NOSE          = ${ROOT_DIR}/env/bin/nosetests
 
 PROJECT       = pyaddepar
 
@@ -27,3 +28,8 @@ tag:
 	git tag -a $(VERSION) -m 'version $(VERSION)'
 	git push --tags
 
+
+.PHONY: test
+test:
+	@$(MAKE) build
+	${NOSE}
