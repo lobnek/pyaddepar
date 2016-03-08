@@ -4,7 +4,7 @@ from setuptools import setup
 
 setup(
     name='pyaddepar',
-    version='v0.1.9',
+    version='v0.1.10',
     packages=["pyaddepar"],
     author='Lobnek Wealth Management',
     author_email='thomas.schmelzer@lobnek.com',

@@ -111,15 +111,16 @@ class Reader(object):
         :return: DataFrame with MultiIndex ["Owner ID", "Owned ID"]
         """
         date = date or pd.Timestamp("today")
-        frame = self.__parse(self.__request("positions", params={"date": self.__format(date)}).iter_lines())
-        return self.__apply(frame, dates=["Date"], index=["Owner ID", "Owned ID"])
+        frame = self.__parse(self.__request(name="positions", params={"date": self.__format(date)}).iter_lines())
+        return self.__apply(frame=frame, dates=["Date"], index=["Owner ID", "Owned ID"])
 
     def transactions(self, start=None, end=None):
         end = end or pd.Timestamp("today")
         start = start or pd.Timestamp("1900-01-01")
         params = {"start_date": self.__format(start), "end_date": self.__format(end)}
         frame = self.__parse(self.__request("transactions", params=params).iter_lines())
-        return self.__apply(frame, dates=["Posted Date", "Date"], index=["Transaction ID", "Type", "Posted Date", "Date", "Owner ID", "Owned ID"])
+        return self.__apply(frame, dates=["Posted Date", "Date"],
+                            index=["Transaction ID", "Type", "Posted Date", "Date", "Owner ID", "Owned ID"])
 
     def owner(self, date=None):
         """
@@ -130,7 +131,16 @@ class Reader(object):
         """
         date = date or pd.Timestamp("today")
         ids = self.positions(date).index.get_level_values(level="Owner ID").unique()
-        return self.entities().ix[ids]
+
+        owners = self.entities().ix[ids][
+            ["Name", "Type", "Ownership Type", "Top Level Owner ID", "Account Number", "Currency"]]
+
+        # create an additional field...
+        d = pd.Series({owner: list(owners[owners["Top Level Owner ID"] == str(owner)].index) for owner in owners.index})
+        owners["Owned Accounts"] = d
+
+        owners = owners.rename(columns={"Top Level Owner ID": "Owner"})
+        return owners.set_index(["Type"], append=True)
 
     def products(self, date=None):
         """
