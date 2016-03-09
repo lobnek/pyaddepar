@@ -144,7 +144,7 @@ class Reader(object):
 
     def products(self, date=None):
         """
-        Return all produts owned (e.g. a subset of entities) on a specific date
+        Return all products owned (e.g. a subset of entities) on a specific date
 
         :param date: The date for the underlying positions snapshot, use today if not specified
         :return: entities
