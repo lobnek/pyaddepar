@@ -1,5 +1,5 @@
 env
 auth.py
 pet.py
-
-
+.idea
+__pycache__
