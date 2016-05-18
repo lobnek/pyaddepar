@@ -1,8 +1,6 @@
 import pandas as pd
 from csv import reader
 
-from pyaddepar.error import AddeparError
-
 
 def parse(frame, dates=[], numbers=[], index=None):
     """
@@ -27,12 +25,9 @@ def parse(frame, dates=[], numbers=[], index=None):
 
 
 def request2frame(request):
-    try:
-        rows = [a.decode() for a in request]
-        assert len(rows) >= 1
-        # parse them into lists of strings, note that a comma between " " double-quotes is ignored
-        # compare with http://tinyurl.com/gn7kmvu
-        lines = [line for line in reader(rows)]
-        return pd.DataFrame(columns=lines[0], data=lines[1:])
-    except Exception as e:
-        raise AddeparError(e)
+    rows = [a.decode() for a in request]
+    assert len(rows) >= 1
+    # parse them into lists of strings, note that a comma between " " double-quotes is ignored
+    # compare with http://tinyurl.com/gn7kmvu
+    lines = [line for line in reader(rows)]
+    return pd.DataFrame(columns=lines[0], data=lines[1:])
