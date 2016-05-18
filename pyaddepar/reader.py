@@ -2,8 +2,13 @@ import pandas as pd
 import requests
 import logging
 
-from pyaddepar.error import AddeparError
 from pyaddepar.parser import request2frame, parse
+
+
+class AddeparError(Exception):
+    """
+    Problem with the reader
+    """
 
 
 class Reader(object):
@@ -26,7 +31,7 @@ class Reader(object):
             # only raises if there for status code 400 <= to < 600
             # todo: Are there any error codes with 300? Shall we raise if error code is not 200?
             r.raise_for_status()
-            return r
+            return request2frame(r.iter_lines())
 
         except Exception as e:
             raise AddeparError(e)
@@ -37,24 +42,14 @@ class Reader(object):
 
     @property
     def groups(self):
-        r = self.__request("groups")
-
-        # todo: this is an unfortunate construction. It would be nice if the requests for groups returns rows with
-        # todo: group name, member name and ID of the member in the entities table
-        b = self.entities()["Name"]
-        b = pd.Series(index=b.values, data=b.index)
-
-        a = request2frame(r.iter_lines())
-        a["ID"] = a["Member Name"].apply(lambda x: b[x])
-        return parse(a, index=["Group Name", "Member Name"])
+        return parse(self.__request("groups"), index=["Group Name", "Member Name"])
 
     @property
     def contacts(self):
         """
         A DataFrame of all contacts stored
         """
-        f = request2frame(self.__request("contacts").iter_lines())
-        return parse(f, dates=["Birthday"], index=["ID"])
+        return parse(self.__request("contacts"), dates=["Birthday"], index=["ID"])
 
     def entities(self, start=None, end=None):
         """
@@ -67,7 +62,7 @@ class Reader(object):
         end = end or pd.Timestamp("today")
         start = start or pd.Timestamp("1900-01-01")
         params = {"start_date": self.__format(start), "end_date": self.__format(end)}
-        frame = request2frame(self.__request("entities", params=params).iter_lines())
+        frame = self.__request("entities", params=params)
 
         dates = [key for key in frame.keys() if key.endswith("Date")]
         return parse(frame, dates=dates, index="ID")
@@ -80,7 +75,7 @@ class Reader(object):
         :return: DataFrame with MultiIndex ["Owner ID", "Owned ID"]
         """
         date = date or pd.Timestamp("today")
-        frame = request2frame(self.__request(name="positions", params={"date": self.__format(date)}).iter_lines())
+        frame = self.__request(name="positions", params={"date": self.__format(date)})
         return parse(frame=frame, dates=["Date"],
                      numbers=["Units", "Value", "Adjusted Value", "Original Cost Basis", "Adjusted Cost Basis",
                               "Calculated Accrued", "Accrued", "Principal Factor"], index=["Owner ID", "Owned ID"])
@@ -89,8 +84,7 @@ class Reader(object):
         end = end or pd.Timestamp("today")
         start = start or pd.Timestamp("1900-01-01")
         params = {"start_date": self.__format(start), "end_date": self.__format(end)}
-        frame = request2frame(self.__request("transactions", params=params).iter_lines())
-        return parse(frame, dates=["Posted Date", "Date"],
+        return parse(self.__request("transactions", params=params), dates=["Posted Date", "Date"],
                      index=["Transaction ID", "Type", "Posted Date", "Date", "Owner ID", "Owned ID"])
 
     def products(self, date=None):
