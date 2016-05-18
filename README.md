@@ -16,6 +16,7 @@ Create a file auth.py using the following template:
     aFirm = "123"
     aKey = "your key"
     aSecret = "your secret"
+    figiKey = "Go and get me free from https://www.openfigi.com/user/signup"
     
     
 Usage
