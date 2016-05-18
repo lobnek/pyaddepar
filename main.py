@@ -1,8 +1,9 @@
 from auth import aFirm, aKey, aSecret
 import pandas as pd
 import logging
+from pyaddepar.graph.groups import Groups
+from pyaddepar.graph.positions import Positions
 
-from pyaddepar.graph import PositionGraph
 from pyaddepar.reader import Reader
 
 logging.basicConfig(level=logging.DEBUG)
@@ -21,27 +22,33 @@ if __name__ == '__main__':
 
     print(reader.contacts)
     print(reader.groups)
+    g = Groups(reader.groups)
+    p = Positions(reader.positions())
 
-    graph = PositionGraph(reader.positions())
-    print(graph.owner_structure)
+    #graph = PositionGraph(reader.positions())
+    #print(graph.owner_structure)
 
-    e = reader.entities()
-    print(e)
-    print(e.keys())
+    #e = reader.entities()
+    #print(e)
+    #print(e.keys())
+    #assert False
 
-    p = reader.positions()
-    print(p)
-    print(p.dtypes)
 
-    p = reader.positions()
-    print(p)
-    print(p.loc(axis=0)["864551", :])
-    print(p.loc(axis=0)[:, "882501"])
-
-    e = reader.entities()
-    print(e)
-    print(e.dtypes)
-
-    t = reader.transactions()
-    print(t.dtypes)
-    print(t)
+    # p = reader.positions()
+    # print(p)
+    # print(p.dtypes)
+    # assert False
+    #
+    #
+    # p = reader.positions()
+    # print(p)
+    # #print(p.loc(axis=0)["864551", :])
+    # #print(p.loc(axis=0)[:, "882501"])
+    #
+    # e = reader.entities()
+    # print(e)
+    # print(e.dtypes)
+    #
+    # t = reader.transactions()
+    # print(t.dtypes)
+    # print(t)
