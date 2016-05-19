@@ -3,7 +3,6 @@ from unittest import TestCase
 import numpy as np
 import pandas as pd
 
-from pyaddepar.reader import AddeparError
 from pyaddepar.parser import parse, request2frame
 
 
@@ -15,7 +14,7 @@ class TestParser(TestCase):
         self.assertEqual(x["B"][0], "D")
 
     def test_empty(self):
-        self.assertRaises(AddeparError, request2frame, [])
+        self.assertRaises(AssertionError, request2frame, [])
 
     def test_apply(self):
         A = np.array([["02/20/2016", "Peter Maffay", ""], ["", "", "-2"]])
