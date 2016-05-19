@@ -16,6 +16,8 @@ class Groups(object):
             self.__dg.add_edge(ids[0], ids[1])
 
         self.__bottom_nodes, self.__top_nodes = nx.bipartite.sets(self.__dg)
+        self.__owns = {group: self.__dg.successors(group) for group in self.__bottom_nodes}
+        self.__owned = {group: self.__dg.predecessors(group) for group in self.__top_nodes}
 
     @property
     def ids(self):
@@ -30,11 +32,11 @@ class Groups(object):
 
     @property
     def owns(self):
-        return {group: self.__dg.successors(group) for group in self.__bottom_nodes}
+        return self.__owns
 
     @property
     def owned(self):
-        return {group: self.__dg.predecessors(group) for group in self.__top_nodes}
+        return self.__owned
 
     def __repr__(self):
         return self.__data.to_string()

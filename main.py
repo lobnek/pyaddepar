@@ -20,35 +20,16 @@ if __name__ == '__main__':
     # instantiate reader (e.g. wrapper of the addepar REST api)
     reader = Reader(id=aFirm, key=aKey, secret=aSecret, logger=logger)
 
-    print(reader.contacts)
     print(reader.groups)
+    assert False
+
     g = Groups(reader.groups)
     p = Positions(reader.positions())
 
-    #graph = PositionGraph(reader.positions())
-    #print(graph.owner_structure)
+    e = reader.entities()
+    print(e)
+    print(e.keys())
 
-    #e = reader.entities()
-    #print(e)
-    #print(e.keys())
-    #assert False
-
-
-    # p = reader.positions()
-    # print(p)
-    # print(p.dtypes)
-    # assert False
-    #
-    #
-    # p = reader.positions()
-    # print(p)
-    # #print(p.loc(axis=0)["864551", :])
-    # #print(p.loc(axis=0)[:, "882501"])
-    #
-    # e = reader.entities()
-    # print(e)
-    # print(e.dtypes)
-    #
-    # t = reader.transactions()
-    # print(t.dtypes)
-    # print(t)
+    t = reader.transactions()
+    print(t.dtypes)
+    print(t)
