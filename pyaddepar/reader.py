@@ -42,7 +42,7 @@ class Reader(object):
 
     @property
     def groups(self):
-        return parse(self.__request("groups"), index=["Group Name", "Member Name"])
+        return parse(self.__request("groups"), index=["Group ID", "Member ID"])
 
     @property
     def contacts(self):
@@ -78,14 +78,14 @@ class Reader(object):
         frame = self.__request(name="positions", params={"date": self.__format(date)})
         return parse(frame=frame, dates=["Date"],
                      numbers=["Units", "Value", "Adjusted Value", "Original Cost Basis", "Adjusted Cost Basis",
-                              "Calculated Accrued", "Accrued", "Principal Factor"], index=["Owner ID", "Owned ID"])
+                              "Calculated Accrued", "Accrued", "Principal Factor"], index=["Owner ID", "Owned ID"]).sortlevel(level=0)
 
     def transactions(self, start=None, end=None):
         end = end or pd.Timestamp("today")
         start = start or pd.Timestamp("1900-01-01")
         params = {"start_date": self.__format(start), "end_date": self.__format(end)}
         return parse(self.__request("transactions", params=params), dates=["Posted Date", "Date"],
-                     index=["Transaction ID", "Type", "Posted Date", "Date", "Owner ID", "Owned ID"])
+                     index=["Owner ID", "Owned ID"])
 
     def products(self, date=None):
         """
