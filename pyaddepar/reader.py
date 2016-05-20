@@ -97,7 +97,6 @@ class Reader(object):
         p = p.set_index(keys=["Owner ID", "Owned ID", "Date", "Transaction ID"])
         return p.drop(labels=columns, axis=1)
 
-
     def products(self, date=None):
         """
         Return all products owned (e.g. a subset of entities) on a specific date
