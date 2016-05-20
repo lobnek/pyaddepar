@@ -13,7 +13,6 @@ if __name__ == '__main__':
     x = Groups(data=reader.groups)
     print(x.ids)
     print(x.names)
-    print(x["5098"])
     print(x.owns["5098"])
-    print(x.owned["812750"])
+
 
