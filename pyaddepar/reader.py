@@ -78,14 +78,25 @@ class Reader(object):
         frame = self.__request(name="positions", params={"date": self.__format(date)})
         return parse(frame=frame, dates=["Date"],
                      numbers=["Units", "Value", "Adjusted Value", "Original Cost Basis", "Adjusted Cost Basis",
-                              "Calculated Accrued", "Accrued", "Principal Factor"], index=["Owner ID", "Owned ID"]).sortlevel(level=0)
+                              "Calculated Accrued", "Accrued", "Principal Factor"],
+                     index=["Owner ID", "Owned ID"]).sortlevel(level=0)
 
     def transactions(self, start=None, end=None):
         end = end or pd.Timestamp("today")
         start = start or pd.Timestamp("1900-01-01")
         params = {"start_date": self.__format(start), "end_date": self.__format(end)}
-        return parse(self.__request("transactions", params=params), dates=["Posted Date", "Date"],
-                     index=["Owner ID", "Owned ID"])
+        p = parse(self.__request("transactions", params=params), dates=["Posted Date", "Date"])
+        # index=["Owner ID", "Owned ID", "Date", "Transaction ID"])
+
+        # todo: THIS HAS TO GO!!!!!! The construction is weird
+        columns = [a for a in p.keys() if a.startswith("Tag")]
+        p["Tag"] = p[columns].sum(axis=1)
+
+        rows = p["Owner ID"] == ""
+        p["Owner ID"][rows] = p["Owned ID"][rows]
+        p = p.set_index(keys=["Owner ID", "Owned ID", "Date", "Transaction ID"])
+        return p.drop(labels=columns, axis=1)
+
 
     def products(self, date=None):
         """

@@ -20,7 +20,7 @@ class Positions(object):
         return self.__data
 
     def __edge(self, owner, owns):
-        return self.__data.ix[(owner, owns)]
+        return self.__data.ix[[(owner, owns)]]
 
     def __edges(self, id):
         """ List of all edges reachable from node id """
