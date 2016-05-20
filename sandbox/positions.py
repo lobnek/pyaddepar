@@ -13,19 +13,16 @@ if __name__ == '__main__':
     reader = Reader(id=aFirm, key=aKey, secret=aSecret)
 
     # note that the positions are not a property as one could specify dates...
-    position_graph = Positions(data=reader.positions())
+    positions = Positions(data=reader.positions())
     # the bipartite group graph
-    group_graph = Groups(data=reader.groups)
-
-    # {group1_id: [account1_id, ...], group2_id: ...}
-    accounts = group_graph.owns
-    print(accounts)
+    groups = Groups(data=reader.groups)
 
     # Loop over all groups
-    for group_id, acc in accounts.items():
-        print("*"*250)
-        print(group_graph.ids[group_id])
-        print(acc)
-        print(position_graph.owns(ids=acc))
+    for group_id in groups.groups:
+        print("*" * 250)
+        print(group_id)
+        print(groups.name[group_id])
+        accounts = groups.group_holdings[group_id]
+        print(positions.owns(ids=accounts))
 
 
