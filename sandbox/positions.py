@@ -24,7 +24,7 @@ if __name__ == '__main__':
     # Loop over all groups
     for group_id, acc in accounts.items():
         print("*"*250)
-        print(group_graph[group_id])
+        print(group_graph.ids[group_id])
         print(acc)
         print(position_graph.owns(ids=acc))
 
