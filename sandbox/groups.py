@@ -11,9 +11,10 @@ if __name__ == '__main__':
     reader = Reader(id=aFirm, key=aKey, secret=aSecret)
 
     x = Groups(data=reader.groups)
-    print(x.name)
-    print(x.group_id)
-    print(x.group_holdings)
-    print(x.group_holdings["5098"])
-    print(x.group_holdings[x.group_id[".LWM Group"]])
+
+    print(x.keys())
+    print(x.values())
+    print(x.items())
+    for g in x:
+        print(g)
 
