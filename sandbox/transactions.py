@@ -10,6 +10,12 @@ if __name__ == '__main__':
     # instantiate reader (e.g. wrapper of the addepar REST api)
     reader = PReader(id=aFirm, key=aKey, secret=aSecret)
 
-    # here we list transactions by 804361 and subsequent owners
-    print(reader.transactions.left(["804361"]))
+    # Loop over all groups
+    for group_id, group in reader.groups.items():
+        print("*" * 250)
+        print(group_id)
+        print(group)
+        print(reader.transactions.left(ids=group.owns))
+
+
 
