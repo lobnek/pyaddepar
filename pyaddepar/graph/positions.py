@@ -31,6 +31,12 @@ class Positions(object):
         # all edges reachable from a list of nodes
         return pd.concat([self.__edges(id) for id in ids], axis=0)
 
+    def left(self, ids):
+        """
+        The list of all bottom nodes reachable from a given list of nodes
+        """
+        return list(self.owns(ids).index.get_level_values(level="Owner ID").unique())
+
     def __repr__(self):
         return self.__data.to_string()
 

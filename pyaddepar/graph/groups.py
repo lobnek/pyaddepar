@@ -13,7 +13,7 @@ class Groups(dict):
     A member can not be a group and a group can not be member of a different group.
     """
     @staticmethod
-    def __verify_name(names):
+    def __verify(names):
         x = names[0]
         for name in names:
             assert name == x
@@ -22,7 +22,7 @@ class Groups(dict):
     def __init__(self, data, **kwargs):
         super().__init__(**kwargs)
         groups = [group_id for group_id in data.index.get_level_values(level="Group ID").unique()]
-        name = {group_id: Groups.__verify_name(data.xs(group_id, level="Group ID")["Group Name"]) for group_id in groups}
+        name = {group_id: Groups.__verify(data.xs(group_id, level="Group ID")["Group Name"]) for group_id in groups}
         owns = {group_id: list(data.xs(group_id, level="Group ID").index) for group_id in groups}
         self.__name = {group_id: Group(name=name[group_id], owns=owns[group_id]) for group_id in groups}
 
