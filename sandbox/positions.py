@@ -14,6 +14,6 @@ if __name__ == '__main__':
         print("*" * 250)
         print(group_id)
         print(group)
-        print(reader.positions(date=pd.Timestamp("today")).left(ids=group.owns))
+        print(reader.positions(date=pd.Timestamp("today")).edges(ids=group.owns))
 
 

@@ -15,7 +15,7 @@ if __name__ == '__main__':
         print("*" * 250)
         print(group_id)
         print(group)
-        print(reader.transactions.left(ids=group.owns))
+        print(reader.transactions.edges(ids=group.owns))
 
 
 
