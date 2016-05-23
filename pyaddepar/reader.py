@@ -97,13 +97,3 @@ class Reader(object):
         p = p.set_index(keys=["Owner ID", "Owned ID", "Date", "Transaction ID"])
         return p.drop(labels=columns, axis=1)
 
-    def products(self, date=None):
-        """
-        Return all products owned (e.g. a subset of entities) on a specific date
-
-        :param date: The date for the underlying positions snapshot, use today if not specified
-        :return: entities
-        """
-        date = date or pd.Timestamp("today")
-        ids = self.positions(date).index.get_level_values(level="Owned ID").unique()
-        return self.entities().ix[ids]
