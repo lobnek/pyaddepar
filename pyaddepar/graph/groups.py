@@ -9,7 +9,7 @@ class Group(object):
 
 class Groups(dict):
     """
-    Groups are described by a bipartite graph. With Group vs. Members. A member can be in multiple groups.
+    Group vs. Members. A member can be in multiple groups.
     A member can not be a group and a group can not be member of a different group.
     """
     @staticmethod
@@ -22,8 +22,9 @@ class Groups(dict):
     def __init__(self, data, **kwargs):
         super().__init__(**kwargs)
         groups = [group_id for group_id in data.index.get_level_values(level="Group ID").unique()]
+        members = data.reset_index(level="Group ID")["Member Name"].drop_duplicates()
         name = {group_id: Groups.__verify(data.xs(group_id, level="Group ID")["Group Name"]) for group_id in groups}
-        owns = {group_id: list(data.xs(group_id, level="Group ID").index) for group_id in groups}
+        owns = {group_id: members.ix[list(data.xs(group_id, level="Group ID").index)] for group_id in groups}
         self.__name = {group_id: Group(name=name[group_id], owns=owns[group_id]) for group_id in groups}
 
     def __getitem__(self, item):

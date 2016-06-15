@@ -4,6 +4,7 @@
 ROOT_DIR      = $(shell dirname $(realpath $(lastword $(MAKEFILE_LIST))))
 PYTHON        = ${ROOT_DIR}/env/bin/python
 NOSE          = ${ROOT_DIR}/env/bin/nosetests
+PIP           = ${ROOT_DIR}/env/bin/pip
 
 PROJECT       = pyaddepar
 

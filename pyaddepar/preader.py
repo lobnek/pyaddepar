@@ -19,3 +19,8 @@ class PReader(object):
 
     def positions(self, date=None):
         return PandasGraph(data=self.__reader.positions(date=date))
+
+    @property
+    def entities(self):
+        return self.__reader.entities()
+
