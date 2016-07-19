@@ -1,0 +1,4 @@
+pyaddepar:
+   build: .
+   volumes:
+      - /var/log/lobnek

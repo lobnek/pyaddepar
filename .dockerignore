@@ -3,6 +3,6 @@
 .teamcity
 .idea
 Makefile
-env
+auth.py
 __pycache__
 
