@@ -2,3 +2,6 @@ pyaddepar:
    build: .
    volumes:
       - /var/log/lobnek
+      - .:/pyaddepar
+   working_dir:
+      pyaddepar
