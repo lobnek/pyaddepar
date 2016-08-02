@@ -1,3 +1,0 @@
-networkx=1.11
-sqlalchemy
-psycopg2
