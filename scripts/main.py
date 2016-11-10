@@ -1,5 +1,4 @@
 #!/usr/bin/env python
-from auth import aFirm, aKey, aSecret
 import pandas as pd
 from pyaddepar.preader import PReader
 
@@ -11,7 +10,7 @@ if __name__ == '__main__':
     pd.set_option('display.max_columns', None)
 
     # # instantiate reader (e.g. wrapper of the addepar REST api)
-    reader = Reader(id=aFirm, key=aKey, secret=aSecret)
+    reader = Reader()
 
 
     #assert False

@@ -7,7 +7,7 @@ MAINTAINER Thomas Schmelzer "thomas.schmelzer@lobnek.com"
 # this is used to mock http for testing
 RUN pip install httpretty nose coverage
 
-RUN conda install -q -y pandas=0.19.1 requests=2.11.1 networkx=1.11 nose sqlalchemy psycopg2
+RUN conda install -q -y pandas=0.19.1 requests=2.11.1 networkx=1.11
 
 COPY ./pyaddepar /pyaddepar/pyaddepar
 COPY ./test   /pyaddepar/test

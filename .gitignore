@@ -6,3 +6,4 @@ __pycache__
 html-coverage
 aux.py
 alchemy
+docker-compose.yml
