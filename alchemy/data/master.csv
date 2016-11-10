@@ -1,0 +1,99 @@
+,Entity ID,Currency,ISIN,Ticker Symbol,Lobnek Sub Asset Class
+CAD Cash,840306,CAD,,,Cash accounts
+CHF Cash,856262,CHF,,,Cash accounts
+EUR Cash,827363,EUR,,,Cash accounts
+GBP Cash,856263,GBP,,,Cash accounts
+HKD Cash,827365,HKD,,,Cash accounts
+JPY Cash,827364,JPY,,,Cash accounts
+MXN Cash,840308,MXN,,,Cash accounts
+SGD Cash,867344,SGD,,,Cash accounts
+USD Cash,804348,USD,,,Cash accounts
+BNY Mellon Euroland -EUR- Acc,840884,EUR,IE0032722484,MELNERC ID,Diversified
+Carmignac Securite -EUR- Acc,840891,EUR,LU0992624949,CARPSFE LX,Short Duration
+Carmignac Securite -EUR- Acc (Retail),869610,EUR,FR0010149120,CARSECC FP,Short Duration
+Carmignac Securite -USD- Acc,856266,USD,LU0992625243,CARPSFU LX,Short Duration
+H2O Adagio -EUR- Acc,840875,EUR,FR0010929794,NH2ADIC FP,Diversified
+M&G Optimal C-H (Hedged) -EUR- Acc,840883,EUR,GB00B1VMD022,MGOICEA LN,Diversified
+M&G Optimal C-H (Hedged) -USD- Acc,856269,USD,GB00B50N1C28,MGOICHA LN,Diversified
+Offshore Drilling 8.625 20.09.2020,840894,USD,USL71626AA05,,Corporate Bonds
+Pimco Diversified Income -EUR- Acc,869609,EUR,IE00B1JC0H05,PIMINHC ID,Diversified
+Pimco Diversified Income -USD- Acc,856271,USD,IE00B0C18065,PGDIFIA ID,Diversified
+Pimco Diversified Income -USD- Dis,840877,USD,IE00B138GV00,PIMDIFI ID,Diversified
+TCW Total Return -USD- Acc,840879,USD,LU0947134044,TCWTRXU LX,Diversified
+Templeton Global Bond -USD- Acc,840899,USD,LU0181997262,TEMGBIA LX,Diversified
+Tikehau Taux Variable -EUR- Acc,840886,EUR,FR0010814806,TIKVARB FP,Short Duration
+Wellington Global Total Return -USD- Acc,840890,USD,LU0891779281,WELNUNH LX,Absolute Return
+Wellington Global Total Return Inst. -USD-Acc,866093,USD,LU0479928268,WELMGTR LX,Absolute Return
+Hang Seng Index ETF,840888,HKD,HK2833027330,2800 HK,Asia
+Invesco Pan European Structured -EUR- Acc,840900,EUR,LU0119753134,INVELNC LX,Europe
+Invesco Pan European Structured -USD- Acc,856268,USD,LU1075211356,INPEAUH LX,Europe
+iShares Euro Stoxx 50 ETF,840892,EUR,IE0008471009,EUEA NA,Europe
+iShares Russell 1000 Growth,840897,USD,US4642876142,IWF US,USA
+iShares Russell 1000 Value,840896,USD,US4642875987,IWD US,USA
+iShares Russell 2000 Index,840898,USD,US4642876555,IWM US,USA
+Ishares S&P 500,868740,USD,IE0031442068,IUSA SW,USA
+Nomura ETF Topix,840885,JPY,JP3027630007,1306 JP,Japan
+PowerShares QQQ,840887,USD,US73935A1043,QQQ US,USA
+Schroder ISF - Global Dividend Maximizer - SGD - Dist,868742,SGD,LU0321505868,SGENDIA LX,Global
+Skagen Kon-Tiki -A-,840895,EUR,NO0010140502,STKONTE NO,Emerging Markets
+Solarcity Corp,867345,USD,US83416T1007,SCTY US,USA
+SPDR S&P 500 ETF,840893,USD,US78462F1030,SPY US,USA
+Tesla Motors Inc,867343,USD,US88160R1014,TSLA US,USA
+UBS European Opportunity Unconstrained (hedged) -USD- Acc,856272,USD,LU0975313742,UBEOPAU LX,Europe
+UBS European Opportunity Unconstrained -EUR- Acc,840878,EUR,LU0723564463,UEOUEPA LX,Europe
+Wellington Glb Health Care -USD- Acc,840889,USD,IE00B84TGD38,WGHCNUN ID,Sector Equity
+AB2 Bio Preferred -B-,878101,CHF,,,Private Placement
+AC Immune Series B,878102,CHF,,,Private Placement
+AC Immune Series C,878107,CHF,,,Private Placement
+AC Immune Series D,878079,CHF,,,Private Placement
+Arthur Street Portfolio IV Lp Class A,869624,USD,,,Private Equity
+Autonomy Global Macro Fund - AB SPV Fidulex 1,878097,USD,,,Hedge Funds
+Autonomy Global Macro Fund - AB SPV Fidulex 3,878100,USD,,,Hedge Funds
+Blackstone Real Estate Partners II,878108,EUR,,,Private Equity
+Blackstone Real Estate Partners III,878089,EUR,,,Private Equity
+Carmignac Patrimoine -EUR- Acc,840881,EUR,LU0992627611,CARPFEA LX,Asset Allocation
+Carmignac Patrimoine -USD- Acc,856264,USD,LU0992628346,CARPFUH LX,Asset Allocation
+CB 6 Geneva,878085,CHF,,,Real Estate
+Ciernes d'Albeuve,878092,CHF,,,Real Estate
+D.E.Shaw Composite Intl Fund Coll NI,878080,USD,,,Hedge Funds
+Denens,878084,CHF,,,Real Estate
+ESL Limited Class D Series 14,878113,USD,,,Hedge Funds
+First State Bridge - SGD - Dist,868743,SGD,SG9999002067,FSIBRGE SP,Asset Allocation
+G-Therm Oil,881702,USD,,,Private Placement
+GLG Emerging Markets Growth Class A - USD,878094,USD,,,Hedge Funds
+"Hypothèque BCF, Fribourg, 1.35% 23.03.2012-23.03.2017",878104,CHF,,,Loans & Mortgages
+"Iguazu Investors (Cayman) (Class A, Series 1)",867342,USD,,,Hedge Funds
+Invesco Balanced Risk Allocation -EUR- Acc,840882,EUR,LU0432616810,INBLCAC LX,Asset Allocation
+Invesco Balanced Risk Allocation -USD- Acc,856265,USD,LU0482498846,INBLCUH LX,Asset Allocation
+Jana Offshore Partners Ltd Class -A-,878093,USD,,,Hedge Funds
+KKR European Fund II Offshore (USD) LP LBO 2005,878105,USD,,,Private Equity
+LGT Lobtek Equity Capital,878111,CHF,,,Private Equity
+LGT Lobtek Proprietary Capital,878082,USD,,,Private Equity
+LOAN 1.06% 30.01.2015-01.02.2016,882507,CHF,,,Loans & Mortgages
+LOAN 1.073% 30.07.2015-02.08.2016,882502,CHF,,,Loans & Mortgages
+LOAN 1.11% 30.01.2015-30.01.2017,882505,CHF,,,Loans & Mortgages
+LOAN 1.28% 30.01.2014-29.01.2016,882503,CHF,,,Loans & Mortgages
+"Loan from JV Energy, 5.50% 16.12.2015-16.12.2020",878115,SGD,,,Loans & Mortgages
+"Loan to Baron Vail, 6.00%, 01.07.2011-30.06.2016",878091,USD,,,Loans & Mortgages
+"Loan to Comtesse, 6.00%, 23.03.2010-30.06.2016",878095,USD,,,Loans & Mortgages
+"Loan to JMM, 5.50% 16.12.2015-16.12.2020",878083,SGD,,,Loans & Mortgages
+Loan to Maximilian,878098,USD,,,Loans & Mortgages
+Loan to MVC Teluride,878099,USD,,,Loans & Mortgages
+"Loan to Tochos, 3.00%, 23.12.2013-23.12.2016",878109,EUR,,,Loans & Mortgages
+M&G Dynamic Allocation -EUR- Acc,840876,EUR,GB00B56D9Q63,MGGDACA LN,Asset Allocation
+M&G Dynamic Allocation -USD- Acc,856267,USD,GB00BWD1K363,MGDUCHA LN,Asset Allocation
+Mercer Street 72,878112,USD,,,Real Estate
+MORTGAGE 1.28% 30.01.2012-30.01.2017,882501,CHF,,,Loans & Mortgages
+MORTGAGE 1.73% 30.01.2012-30.01.2020,882504,CHF,,,Loans & Mortgages
+MORTGAGE 1.92% 30.01.2012-28.01.2022,882506,CHF,,,Loans & Mortgages
+Osio Corp,878096,USD,,,Private Placement
+QCT Special Investment - QVT CSI Offshore A1016,878103,USD,,,Hedge Funds
+QCT Special Investment - QVT CSI Offshore A1021,878087,USD,,,Hedge Funds
+QVT SLV Offshore Ltd - Class B 1023,878088,USD,,,Hedge Funds
+QVT SLV Offshore Ltd - Class B 1024,878106,USD,,,Hedge Funds
+Schroder Asian Income - SGD - Dist,868741,SGD,SG9999007991,SCHASIN SP,Asset Allocation
+Strategic Value Fund - Restructuring Fund E2 (new issues),878110,USD,,,Hedge Funds
+Strategic Value Fund - Restructuring Fund E2-D1890 OCT 07,878081,USD,,,Hedge Funds
+Tao L Holdings LTD (ex-Tiger Asia Overseas),878086,USD,,,Hedge Funds
+Vanguard Index Fund Reits ETF,840880,USD,US9229085538,VNQ US,Real Estate
+Victory European Real Estate Fund I FCP-SIF (VEREF),878090,EUR,,,Private Equity

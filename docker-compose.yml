@@ -1,7 +1,10 @@
-pyaddepar:
-   build: .
-   volumes:
-      - /var/log/lobnek
-      - .:/pyaddepar
-   working_dir:
-      pyaddepar
+version: '2'
+services:
+  pyaddepar:
+     build:
+       context: .
+       dockerfile: Dockerfile
+     volumes:
+        # change the folder on the left to direct your logs to...
+        - /media/h/thomas/log:/log
+     command: /bin/bash

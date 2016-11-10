@@ -3,5 +3,6 @@ auth.py
 pet.py
 .idea
 __pycache__
-client.py
-
+html-coverage
+aux.py
+alchemy
