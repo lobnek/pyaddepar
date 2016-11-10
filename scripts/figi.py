@@ -1,3 +1,4 @@
+#!/usr/bin/env python
 from auth import figiKey
 from pyaddepar.figi import figi
 

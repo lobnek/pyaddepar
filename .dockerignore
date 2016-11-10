@@ -1,6 +1,5 @@
 .git
 .gitignore
-.teamcity
 .idea
 Makefile
 auth.py
