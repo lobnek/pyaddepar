@@ -8,9 +8,8 @@ services:
         # change the folder on the left to direct your logs to...
         - /media/h/thomas/log:/log
      command: /bin/bash
-
      environment:
-        - AFIRM=202
-        - AKEY=528f3db4-f1f9-4610-a0cf-58fb8bd73d3f
-        - ASECRET=DKDHDic6jsOjqz0skEhkcnSlYhE6yYCV8bEdc6pJ
-        - FIGIKEY=bd6447d2-5a55-4565-84db-805355453e27
+        - AFIRM=1
+        - AKEY=2
+        - ASECRET=3
+        - FIGIKEY=4

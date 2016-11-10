@@ -3,6 +3,7 @@ import requests
 import logging
 
 from pyaddepar.parser import request2frame, parse
+import os
 
 
 class AddeparError(Exception):
@@ -12,7 +13,10 @@ class AddeparError(Exception):
 
 
 class Reader(object):
-    def __init__(self, id, key, secret, logger=None):
+    def __init__(self, id=None, key=None, secret=None, logger=None):
+        id = id or os.environ["AFIRM"]
+        key = key or os.environ["AKEY"]
+        secret = secret or os.environ["ASECRET"]
         self.__headers = {'Addepar-Firm': id, 'Addepar-Api-Key': key, 'Addepar-Api-Secret': secret}
         self.__address = "https://api.addepar.com/partner/export/csv/"
         self.__logger = logger or logging.getLogger(__name__)
