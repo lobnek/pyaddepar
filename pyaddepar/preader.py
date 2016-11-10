@@ -4,8 +4,8 @@ from pyaddepar.reader import Reader
 
 
 class PReader(object):
-    def __init__(self, id, key, secret, logger=None):
-        self.__reader = Reader(id=id, key=key, secret=secret, logger=logger)
+    def __init__(self, logger=None):
+        self.__reader = Reader(logger=logger)
         self.__groups = Groups(data=self.__reader.groups)
         self.__transactions = PandasGraph(data=self.__reader.transactions())
 
