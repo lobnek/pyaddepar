@@ -1,5 +1,4 @@
 import pandas as pd
-from auth import aFirm, aKey, aSecret
 from pyaddepar.preader import PReader
 
 if __name__ == '__main__':
@@ -7,7 +6,7 @@ if __name__ == '__main__':
     pd.set_option("display.max_rows", 300)
 
     # instantiate reader (e.g. wrapper of the addepar REST api)
-    reader = PReader(id=aFirm, key=aKey, secret=aSecret)
+    reader = PReader()
 
     groups = reader.groups
 

@@ -36,7 +36,7 @@ if __name__ == '__main__':
     # print(e.ix["804359"])
 
 
-    r = PReader(id=aFirm, key=aKey, secret=aSecret)
+    r = PReader()
     print(r)
 
     for group in r.groups:
