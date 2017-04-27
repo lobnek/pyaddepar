@@ -4,9 +4,6 @@ services:
      build:
        context: .
        dockerfile: Dockerfile
-     volumes:
-        # change the folder on the left to direct your logs to...
-        - /media/h/thomas/log:/log
      command: /bin/bash
      environment:
         - AFIRM=1

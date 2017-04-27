@@ -4,7 +4,3 @@ services:
     build:
        context: .
        dockerfile: Dockerfile-Test
-    command: nosetests --with-coverage --cover-html --cover-erase --cover-package=pyaddepar --cover-html-dir=./html-coverage
-
-    volumes:
-      - ./html-coverage:/pyaddepar/html-coverage
