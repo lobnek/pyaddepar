@@ -4,10 +4,10 @@ FROM continuumio/miniconda3
 # File Author / Maintainer
 MAINTAINER Thomas Schmelzer "thomas.schmelzer@lobnek.com"
 
-RUN conda install -q -y pandas=0.19.1 requests=2.11.1 networkx=1.11 #sqlalchemy psycopg2
+RUN conda install -q -y pandas=0.19.1 requests networkx
 
 ADD ./pyaddepar /pyaddepar/pyaddepar
-ADD ./scripts   /pyaddepar
+ADD ./scripts   /pyaddepar/scripts
 
 WORKDIR /pyaddepar
 
