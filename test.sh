@@ -6,6 +6,9 @@ docker run --rm -v $(pwd)/html-coverage/:/html-coverage pyaddepar:test
 
 ret=$?
 
+
+docker run --rm -v $(pwd)/source:/pyaddepar/source:ro -v $(pwd)/build:/pyaddepar/build pyaddepar:test sphinx-build source build
+
 docker rmi pyaddepar:test
 
 exit $ret
