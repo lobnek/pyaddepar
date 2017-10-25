@@ -7,7 +7,6 @@ MAINTAINER Thomas Schmelzer "thomas.schmelzer@lobnek.com"
 RUN conda install -q -y pandas requests
 
 ADD ./pyaddepar /pyaddepar/pyaddepar
-ADD ./scripts   /pyaddepar/scripts
 
 WORKDIR /pyaddepar
 
