@@ -68,27 +68,14 @@ class Request(object):
 
         return self.get(request=request)
 
-
     def entity(self, id=None):
         if id:
             return self.get("entities/{id}".format(id=id))
         else:
             return self.get("entities")
 
-
     def group(self, id=None):
         if id:
             return self.get("groups/{id}/members".format(id=id))
         else:
             return self.get("groups")
-
-
-
-if __name__ == '__main__':
-    r = Request()
-
-    x = r.group()
-    print(x)
-
-    y = r.group(id=5479)
-    print(y)
