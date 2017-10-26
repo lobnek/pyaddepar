@@ -19,6 +19,13 @@ class PortfolioType(Enum):
     ENTITY = "entity"
 
 
+def addepar2frame(json, index="name", data="columns"):
+    x = json["data"]["attributes"]["total"]["children"]
+    frame = pd.DataFrame({a[index]: a[data] for a in x}).transpose()
+    names = {a["key"]: a["display_name"] for a in json["meta"]["columns"]}
+    return frame.rename(columns=lambda x: names[x])
+
+
 class Request(object):
     def __init__(self, key=None, secret=None, id=None, company=None, logger=None):
         self.logger = logger or logging.getLogger(__name__)
