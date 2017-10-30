@@ -1,11 +1,10 @@
 from unittest import TestCase
 
-import os
 import pandas as pd
 import pandas.util.testing as pdt
-import requests_mock
 
 from pyaddepar.request import addepar2frame
+
 
 class TestAddepar2frame(TestCase):
     def test_addepar2frame(self):
