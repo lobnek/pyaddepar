@@ -1,11 +1,8 @@
 from unittest import TestCase
 
-import os
-import pandas as pd
-import pandas.util.testing as pdt
 import requests_mock
 
-from pyaddepar.request import addepar2frame, Request
+from pyaddepar.request import Request
 
 
 class TestRequest(TestCase):
