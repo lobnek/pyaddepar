@@ -5,7 +5,7 @@ FROM continuumio/miniconda3
 MAINTAINER Thomas Schmelzer "thomas.schmelzer@lobnek.com"
 
 # this is used to mock http for testing
-RUN pip install httpretty nose coverage nose-timer sphinx
+RUN pip install httpretty nose coverage nose-timer sphinx requests-mock
 
 RUN conda install -q -y pandas requests
 
@@ -14,3 +14,4 @@ COPY ./test   /pyaddepar/test
 
 WORKDIR /pyaddepar
 
+CMD nosetests -w /pyaddepar/test --with-coverage --cover-html --cover-erase --cover-package=pyaddepar --cover-html-dir=/html-coverage --with-timer

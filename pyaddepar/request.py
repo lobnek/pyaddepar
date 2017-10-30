@@ -19,11 +19,11 @@ class PortfolioType(Enum):
     ENTITY = "entity"
 
 
-def addepar2frame(json, index="name", data="columns"):
+def addepar2frame(json, index="name"):
     x = json["data"]["attributes"]["total"]["children"]
-    frame = pd.DataFrame({a[index]: a[data] for a in x}).transpose()
+    frame = pd.DataFrame({i:  {**{index: a[index]}, **a["columns"]} for i,a in enumerate(x)}).transpose()
     names = {a["key"]: a["display_name"] for a in json["meta"]["columns"]}
-    return frame.rename(columns=lambda x: names[x])
+    return frame.rename(columns=lambda x: names[x] if  x in names.keys() else x)
 
 
 class Request(object):

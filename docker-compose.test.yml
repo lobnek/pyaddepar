@@ -4,3 +4,6 @@ services:
     build:
        context: .
        dockerfile: Dockerfile-Test
+    volumes:
+        # change the folder on the left to direct your logs to...
+        - ./test:/pyaddepar/test
