@@ -7,7 +7,7 @@ import requests_mock
 
 from pyaddepar.request import addepar2frame
 
-class TestMock(TestCase):
+class TestAddepar2frame(TestCase):
     def test_addepar2frame(self):
         r = {'meta': {'columns': [{'key': 'node_id', 'display_name': 'Entity ID', 'output_type': 'Word'},
                                   {'key': '_custom_13_custodian_name_166730', 'display_name': '15. Custodian Name', 'output_type': 'Word'},
@@ -25,3 +25,4 @@ class TestMock(TestCase):
                                         ]}}, 'links': {'self': '/v1/portfolio_views/null'}}}
 
         pdt.assert_frame_equal(addepar2frame(r), pd.read_csv("/pyaddepar/test/resources/frame.csv", parse_dates=True), check_dtype=False)
+
