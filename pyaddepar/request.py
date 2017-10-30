@@ -56,7 +56,7 @@ class Request(object):
 
     @property
     def version(self):
-        return self.get("api_version").json()
+        return self.get("api_version")
 
     def view(self, view_id, portfolio_id, portfolio_type, start_date=(pd.Timestamp("today")),
                      end_date=pd.Timestamp("today")):
