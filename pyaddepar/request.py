@@ -86,3 +86,6 @@ class Request(object):
             return self.get("groups/{id}/members".format(id=id))
         else:
             return self.get("groups")
+
+    def group_member(self, id):
+        return self.get("groups/{id}/members".format(id=id))
