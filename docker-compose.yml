@@ -1,0 +1,17 @@
+version: '2'
+services:
+  pyaddepar:
+     build:
+       context: .
+       dockerfile: Dockerfile
+     volumes:
+        # change the folder on the left to direct your logs to...
+        - ./scripts:/pyaddepar/scripts
+        - ./pyaddepar:/pyaddepar/pyaddepar
+
+     command: /bin/bash
+
+     working_dir: /pyaddepar
+
+     env_file:
+      - .env
