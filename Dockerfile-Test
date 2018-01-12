@@ -14,4 +14,4 @@ COPY ./test   /pyaddepar/test
 
 WORKDIR /pyaddepar
 
-CMD py.test --cov=pyaddepar  --cov-report html:/html-coverage --cov-report term --html=/html-report/report_localhost.html test
+CMD py.test --cov=pyaddepar  --cov-report html:/html-coverage --cov-report term --html=/html-report/report.html test
