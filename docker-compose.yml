@@ -6,7 +6,6 @@ services:
        dockerfile: Dockerfile
      volumes:
         # change the folder on the left to direct your logs to...
-        - ./scripts:/pyaddepar/scripts
         - ./pyaddepar:/pyaddepar/pyaddepar
 
      command: /bin/bash
