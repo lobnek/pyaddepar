@@ -1,6 +1,9 @@
 #!/usr/bin/env bash
 docker build --file Dockerfile-Test --tag pyaddepar:test .
 
+# delete all files in html-coverage
+rm -rf $(pwd)/html-coverage/*
+
 # run all tests, seems to be slow on teamcity
 docker run --rm -v $(pwd)/html-coverage/:/html-coverage -v $(pwd)/html-report:/html-report pyaddepar:test
 
