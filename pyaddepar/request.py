@@ -29,30 +29,32 @@ def addepar2frame(json, index="name"):
 class Request(object):
     def __init__(self, key=None, secret=None, id=None, company=None, logger=None):
         self.logger = logger or logging.getLogger(__name__)
-        self.key = key or os.environ["AKEY"]
-        self.secret = secret or os.environ["ASECRET"]
-        self.id = id or os.environ["AFIRM"]
-        self.company = company or os.environ["COMPANY"]
+        self.__key = key or os.environ["AKEY"]
+        self.__secret = secret or os.environ["ASECRET"]
+        self.__id = id or os.environ["AFIRM"]
+        self.__company = company or os.environ["COMPANY"]
 
     @property
     def auth(self):
-        return (self.key, self.secret)
+        return self.__key, self.__secret
 
     @property
     def headers(self):
-        return {"content-type": "application/vnd.api+json", "Addepar-Firm": self.id}
+        return {"content-type": "application/vnd.api+json", "Addepar-Firm": self.__id}
 
+    # why is there the option to extend the headers?
     def get(self, request, headers=None):
         if headers:
             h = {**self.headers, **headers}
         else:
             h = self.headers
 
-        r = "https://{company}.addepar.com/api/v1/{request}".format(request=request, company=self.company)
+        r = "https://{company}.addepar.com/api/v1/{request}".format(request=request, company=self.__company)
         self.logger.debug("Request: {request}, Headers: {headers}".format(request=r, headers=h))
-        r = requests.get(r, auth=(self.key, self.secret), headers=h)
+        r = requests.get(r, auth=self.auth, headers=h)
         assert r.ok, "Invalid response. Statuscode {}".format(r.status_code)
-        return r.json()
+        # it's more standard to return r rather than r.json(), hence client can check return code...
+        return r
 
     @property
     def version(self):
@@ -87,5 +89,5 @@ class Request(object):
         else:
             return self.get("groups")
 
-    def group_member(self, id):
-        return self.get("groups/{id}/members".format(id=id))
+    #def group_member(self, id):
+    #    return self.get("groups/{id}/members".format(id=id))
