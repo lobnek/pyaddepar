@@ -5,3 +5,18 @@ Makefile
 auth.py
 __pycache__
 
+build
+data
+html-coverage
+html-report
+license
+sandbox
+
+.env
+build.sh
+LICENSE
+README.md
+setup.py
+
+tag.sh
+test.sh
