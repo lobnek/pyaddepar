@@ -7,7 +7,7 @@ MAINTAINER Thomas Schmelzer "thomas.schmelzer@lobnek.com"
 # this is used to mock http for testing
 RUN pip install httpretty pytest pytest-cov pytest-html sphinx requests-mock
 
-RUN conda install -q -y pandas=0.21 requests && conda clean -y -all
+RUN conda install -q -y nomkl pandas=0.21 requests && conda clean -y -all
 
 COPY ./pyaddepar /pyaddepar/pyaddepar
 COPY ./test   /pyaddepar/test
