@@ -4,8 +4,8 @@ FROM continuumio/miniconda3 as builder
 # File Author / Maintainer
 MAINTAINER Thomas Schmelzer "thomas.schmelzer@lobnek.com"
 
-RUN conda install -q -y nomkl pandas=0.21 requests && conda clean -y -all
-
+RUN conda install -q -y nomkl pandas=0.21 requests && conda clean -y -all && \
+    pip install --no-cache-dir requests-mock
 COPY ./pyaddepar /pyaddepar/pyaddepar
 
 WORKDIR /pyaddepar
