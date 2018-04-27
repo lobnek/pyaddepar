@@ -1,5 +1,5 @@
 #!/usr/bin/env bash
-docker build --file Dockerfile-Test --tag pyaddepar:test .
+docker build --file Dockerfile --target test --tag pyaddepar:test .
 
 # delete all files in html-coverage
 rm -rf $(pwd)/html-coverage/*
