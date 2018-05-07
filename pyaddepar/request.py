@@ -25,6 +25,7 @@ def addepar2frame(json, index="name"):
     names = {a["key"]: a["display_name"] for a in json["meta"]["columns"]}
     return frame.rename(columns=lambda x: names[x] if  x in names.keys() else x)
 
+list
 
 class Request(object):
     def __init__(self, key=None, secret=None, id=None, company=None, logger=None):
