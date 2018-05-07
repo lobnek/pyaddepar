@@ -1,9 +1,10 @@
-version: '2'
+version: '3.4'
 services:
   pyaddepar:
      build:
        context: .
        dockerfile: Dockerfile
+       target: builder
      volumes:
         # change the folder on the left to direct your logs to...
         - ./pyaddepar:/pyaddepar/pyaddepar
