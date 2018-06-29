@@ -4,7 +4,7 @@ services:
      build:
        context: .
        dockerfile: Dockerfile
-       target: builder
+       target: test
      volumes:
         # change the folder on the left to direct your logs to...
         - ./pyaddepar:/pyaddepar/pyaddepar
