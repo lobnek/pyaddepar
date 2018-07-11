@@ -16,3 +16,14 @@ services:
 
      env_file:
       - .env
+     links:
+       - test-postgresql
+       - test-influxdb
+
+  test-postgresql:
+     image: postgres:9.6
+     environment:
+        POSTGRES_PASSWORD: "test"
+
+  test-influxdb:
+     image: influxdb:1.5.4
