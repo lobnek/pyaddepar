@@ -12,5 +12,7 @@ services:
         - ./test:/pyaddepar/test
         - ./source:/pyaddepar/source:ro
         - ./build:/pyaddepar/build
+        - ./html-coverage:/html-coverage
+        - ./html-report:/html-report
 
      working_dir: /pyaddepar
