@@ -1,18 +1,16 @@
 version: '3.4'
 services:
-  pyaddepar:
+  test-pyaddepar:
      build:
        context: .
        dockerfile: Dockerfile
-       target: builder
+       target: test
      volumes:
         # change the folder on the left to direct your logs to...
         - ./pyaddepar:/pyaddepar/pyaddepar
         - ./data:/data
-
-     command: /bin/bash
+        - ./test:/pyaddepar/test
+        - ./source:/pyaddepar/source:ro
+        - ./build:/pyaddepar/build
 
      working_dir: /pyaddepar
-
-     env_file:
-      - .env
