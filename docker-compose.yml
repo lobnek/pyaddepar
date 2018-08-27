@@ -7,7 +7,7 @@ services:
        target: builder
      volumes:
         # change the folder on the left to direct your logs to...
-        - ./pyaddepar:/pyaddepar/pyaddepar
+        - ./pyaddepar:/pyaddepar/pyaddepar:ro
         - ./data:/data
 
      command: /bin/bash
