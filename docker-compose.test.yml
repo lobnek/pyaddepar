@@ -7,11 +7,11 @@ services:
        target: test
      volumes:
         # change the folder on the left to direct your logs to...
-        - ./pyaddepar:/pyaddepar/pyaddepar
-        - ./data:/data
-        - ./test:/pyaddepar/test
-        - ./source:/pyaddepar/source:ro
-        - ./build:/pyaddepar/build
+        - ./pyaddepar:/pyaddepar/pyaddepar:ro
+        #- ./data:/data
+        - ./test:/pyaddepar/test:ro
+        - ./source:/source:ro
+        - ./build:/build
         - ./html-coverage:/html-coverage
         - ./html-report:/html-report
 

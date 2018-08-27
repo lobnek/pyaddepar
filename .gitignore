@@ -11,3 +11,6 @@ aux.py
 alchemy
 .env
 build
+
+*.dot
+*.svg
