@@ -1,12 +1,13 @@
 #!/usr/bin/env bash
-docker-compose -f docker-compose.test.yml build --no-cache
+docker-compose -f docker-compose.test.yml build
 ./graph.sh
+
 docker-compose -f docker-compose.test.yml run test-pyaddepar
-docker-compose -f docker-compose.test.yml run test-pyaddepar sphinx-build /source /build
+ret=$?
 
-# remove all containers that are exited...
-docker rm $(docker ps -q -f status=exited)
+docker-compose -f docker-compose.test.yml run test-pyaddepar sphinx-build /source artifacts/build
 
-# remove the volumes hanging around...
-docker volume prune -f
+# removes also all the containers linked to this particular service "test" defined in "docker-compose.test.yml"
+docker-compose -f docker-compose.test.yml rm -v -f test
 
+exit $ret
