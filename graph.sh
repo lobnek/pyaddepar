@@ -2,6 +2,8 @@
 
 package='pyaddepar'
 
+mkdir -p artifacts/graph
+
 docker run --rm \
        --mount type=bind,source=$(pwd)/${package},target=/pyan/${package},readonly \
        tschm/pyan:latest \
