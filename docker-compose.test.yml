@@ -8,11 +8,8 @@ services:
      volumes:
         # change the folder on the left to direct your logs to...
         - ./pyaddepar:/pyaddepar/pyaddepar:ro
-        #- ./data:/data
         - ./test:/pyaddepar/test:ro
         - ./source:/source:ro
-        - ./build:/build
-        - ./html-coverage:/html-coverage
-        - ./html-report:/html-report
+        - ./artifacts:/pyaddepar/artifacts
 
      working_dir: /pyaddepar

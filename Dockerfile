@@ -15,4 +15,4 @@ FROM builder as test
 # this is used to mock http for testing
 RUN pip install httpretty pytest pytest-cov pytest-html sphinx requests-mock
 COPY ./test   /pyaddepar/test
-CMD py.test --cov=pyaddepar  --cov-report html:/html-coverage --cov-report term --html=/html-report/report.html test
+CMD py.test --cov=pyaddepar  --cov-report html:artifacts/html-coverage --cov-report term --html=artifacts/html-report/report.html test
