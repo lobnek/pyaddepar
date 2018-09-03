@@ -10,9 +10,13 @@ docker run --rm \
        python pyan.py ${package}/*.py -V --uses --defines --colored --dot --nested-groups \
        > graph.dot   # this is the output of the docker run command. It's writtern directly to the host
 
-docker run --rm \
-       -v $(pwd)/graph.dot:/pyan/graph.dot:ro \
-       tschm/pyan:latest \
-       dot -Tsvg /pyan/graph.dot > artifacts/graph/graph.svg
+# remove all the private nodes...
+grep -vE "____" graph.dot > graph2.dot
 
-rm graph.dot
+docker run --rm \
+       -v $(pwd)/graph2.dot:/pyan/graph.dot:ro \
+       tschm/pyan:latest \
+       dot -Tsvg /pyan/graph.dot \
+       > artifacts/graph/graph.svg
+
+rm graph.dot graph2.dot
