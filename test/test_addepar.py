@@ -25,5 +25,8 @@ class TestAddepar2frame(TestCase):
                                          {'entity_id': 1511499, 'name': 'C', 'grouping': 'top_level_owner', 'columns': {'_custom_15_reference_currency_165485': 'CHF', 'inception_event_date': '2017-03-31', '_custom_23_lwm_aum_type_293536': 'LWM Consolidation Only', '_custom_16_lwm_risk_profile_114480': 'Conservative', '_custom_13_custodian_name_166730': 'Z', 'node_id': 1511499}, 'children': []},
                                         ]}}, 'links': {'self': '/v1/portfolio_views/null'}}}
 
+        #frame = pd.DataFrame(list(addepar2frame(r)))
+        #print(frame)
+
         pdt.assert_frame_equal(addepar2frame(r), pd.read_csv(os.path.join(base_dir, "resources", "frame.csv"), parse_dates=True), check_dtype=False)
 

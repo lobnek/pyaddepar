@@ -11,4 +11,4 @@ class TestRequest(TestCase):
             r = Request(key=1, secret=1, id="maffay", company="maffay")
             m.get("https://maffay.addepar.com/api/v1/api_version", json={'a':'b'})
             y = r.version
-            self.assertEquals(y.json(), {'a':'b'})
+            self.assertEqual(y.json(), {'a':'b'})
