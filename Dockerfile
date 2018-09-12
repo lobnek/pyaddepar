@@ -4,7 +4,7 @@ FROM continuumio/miniconda3 as builder
 # File Author / Maintainer
 MAINTAINER Thomas Schmelzer "thomas.schmelzer@lobnek.com"
 
-RUN conda install -q -y nomkl pandas=0.23.1 requests && conda clean -y -all
+RUN conda install -q -y nomkl pandas=0.23.4 requests=2.19.1 && conda clean -y -all
 
 COPY ./pyaddepar /pyaddepar/pyaddepar
 

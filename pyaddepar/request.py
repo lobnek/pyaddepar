@@ -25,6 +25,7 @@ def addepar2frame(json, index="name"):
     names = {a["key"]: a["display_name"] for a in json["meta"]["columns"]}
     return frame.rename(columns=lambda x: names[x] if  x in names.keys() else x)
 
+
 class Request(object):
     def __init__(self, key=None, secret=None, id=None, company=None, logger=None):
         self.logger = logger or logging.getLogger(__name__)
@@ -35,17 +36,13 @@ class Request(object):
 
     @property
     def auth(self):
-        return (self.key, self.secret)
+        return self.key, self.secret
 
     @property
     def headers(self):
         return {"content-type": "application/vnd.api+json", "Addepar-Firm": self.id}
 
     def get(self, request):
-        #, headers=None):
-        #if headers:
-        #    h = {**self.headers, **headers}
-        #else:
         h = self.headers
 
         r = "https://{company}.addepar.com/api/v1/{request}".format(request=request, company=self.company)
@@ -88,10 +85,6 @@ class Request(object):
         else:
             return self.get("groups")
 
-    #def group_member(self, id):
-    #    return self.get("groups/{id}/members".format(id=id))
-
-
     def post_file(self, new_name, name):
         #h = {"Addepar-Firm": self.id}
         r = "https://{company}.addepar.com/api/v1/{request}".format(request="files", company=self.company)
@@ -102,14 +95,12 @@ class Request(object):
         assert r.ok, "Invalid response. Statuscode {}".format(r.status_code)
         return r.json()["data"]
 
-
     def files(self, id=None):
         if id:
             return self.get("files/{id}".format(id=id)).json()
         else:
             x = self.get("files").json()
             return {a["id"] : a for a in x["data"]}
-
 
     def file_download(self, id, file=None):
         r =  self.get("files/{id}/download".format(id=id))
