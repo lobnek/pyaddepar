@@ -21,9 +21,9 @@ class PortfolioType(Enum):
 
 def addepar2frame(json, index="name"):
     x = json["data"]["attributes"]["total"]["children"]
-    frame = pd.DataFrame({i:  {**{index: a[index]}, **a["columns"]} for i,a in enumerate(x)}).transpose()
+    frame = pd.DataFrame({i: {**{index: a[index]}, **a["columns"]} for i, a in enumerate(x)}).transpose()
     names = {a["key"]: a["display_name"] for a in json["meta"]["columns"]}
-    return frame.rename(columns=lambda x: names[x] if  x in names.keys() else x)
+    return frame.rename(columns=lambda x: names[x] if x in names.keys() else x)
 
 
 class Request(object):
@@ -56,7 +56,7 @@ class Request(object):
         return self.get("api_version")
 
     def view(self, view_id, portfolio_id, portfolio_type, start_date=(pd.Timestamp("today")),
-                     end_date=pd.Timestamp("today")):
+             end_date=pd.Timestamp("today")):
 
         def __dict(d):
             return '&'.join(["{key}={value}".format(key=key, value=value) for key, value in d.items()])
@@ -86,7 +86,7 @@ class Request(object):
             return self.get("groups")
 
     def post_file(self, new_name, name):
-        #h = {"Addepar-Firm": self.id}
+        # h = {"Addepar-Firm": self.id}
         r = "https://{company}.addepar.com/api/v1/{request}".format(request="files", company=self.company)
 
         files = {'file': (new_name, open(name, "rb"))}
@@ -100,10 +100,10 @@ class Request(object):
             return self.get("files/{id}".format(id=id)).json()
         else:
             x = self.get("files").json()
-            return {a["id"] : a for a in x["data"]}
+            return {a["id"]: a for a in x["data"]}
 
     def file_download(self, id, file=None):
-        r =  self.get("files/{id}/download".format(id=id))
+        r = self.get("files/{id}/download".format(id=id))
         if file:
             with open(file, "wb") as f:
                 f.write(r.content)
@@ -113,19 +113,39 @@ class Request(object):
 
     def file_entities(self, id):
         return self.get("files/{id}/associated_entities".format(id=id)).json()
-    #GET / v1 / files /: file - id / associated_groups
+
+    # GET / v1 / files /: file - id / associated_groups
 
     def file_delete(self, id):
-        #r = "https://{company}.addepar.com/api/v1/{request}".format(request=request, company=self.company)
-        #self.logger.debug("Request: {request}, Headers: {headers}".format(request=r, headers=h))
-        #DELETE / v1 / files /: file - id
-        r = requests.delete("https://{company}.addepar.com/api/v1/files/{id}".format(id=id, company=self.company),  auth=self.auth, header=self.headers)
+        # r = "https://{company}.addepar.com/api/v1/{request}".format(request=request, company=self.company)
+        # self.logger.debug("Request: {request}, Headers: {headers}".format(request=r, headers=h))
+        # DELETE / v1 / files /: file - id
+        r = requests.delete("https://{company}.addepar.com/api/v1/files/{id}".format(id=id, company=self.company),
+                            auth=self.auth, header=self.headers)
         assert r.ok, "Invalid response. Statuscode {}".format(r.status_code)
-        #r = requests.get(r, auth=(self.key, self.secret), headers=h)
+        # r = requests.get(r, auth=(self.key, self.secret), headers=h)
+
+    def users(self, id=None):
+        if id:
+            return self.get("users/{id}".format(id=id)).json()["data"]
+        else:
+            return {a["id"]: a for a in self.get("users").json()["data"]}
 
 
 if __name__ == '__main__':
-    y = Request().post_file(new_name="test10.csv", name="/data/report.csv")
-    Request().file_delete(id=y["id"])
-    Request().file_download(id=y["id"], file="/data/graph8.csv")
+    # y = Request().post_file(new_name="test10.csv", name="/data/report.csv")
+    # Request().file_delete(id=y["id"])
+    # Request().file_download(id=y["id"], file="/data/graph8.csv")
 
+    for key, user in Request().users().items():
+        #print(key)
+        print(user)
+
+    #print(Request().users(id=343171))
+
+    # for x in a:
+    #    print(x)
+
+    # print(a)
+
+    # print(x)
