@@ -25,6 +25,10 @@ def addepar2frame(json, index="name"):
     names = {a["key"]: a["display_name"] for a in json["meta"]["columns"]}
     return frame.rename(columns=lambda x: names[x] if x in names.keys() else x)
 
+def view2frame(r):
+    import io
+    x = io.BytesIO(r.content)
+    return pd.read_csv(x)
 
 class Request(object):
     def __init__(self, key=None, secret=None, id=None, company=None, logger=None):
@@ -44,15 +48,6 @@ class Request(object):
 
     def get(self, request):
         h = self.headers
-
-        r = "https://{company}.addepar.com/api/v1/{request}".format(request=request, company=self.company)
-        self.logger.debug("Request: {request}, Headers: {headers}".format(request=r, headers=h))
-        r = requests.get(r, auth=(self.key, self.secret), headers=h)
-        assert r.ok, "Invalid response. Statuscode {}".format(r.status_code)
-        return r
-
-    def get_csv(self, request):
-        h = {"content-type": "text/csv", "Addepar-Firm": self.id}
 
         r = "https://{company}.addepar.com/api/v1/{request}".format(request=request, company=self.company)
         self.logger.debug("Request: {request}, Headers: {headers}".format(request=r, headers=h))
@@ -98,8 +93,7 @@ class Request(object):
                           "end_date": end_date.strftime("%Y-%m-%d")})
 
         self.logger.debug("Request: {request}".format(request=request))
-        print(self.get_csv(request=request))
-        return self.get_csv(request=request).json()
+        return self.get(request=request)
 
     def entity(self, id=None):
         if id:
@@ -161,19 +155,23 @@ class Request(object):
 
 
 if __name__ == '__main__':
-    # y = Request().post_file(new_name="test10.csv", name="/data/report.csv")
-    # Request().file_delete(id=y["id"])
-    # Request().file_download(id=y["id"], file="/data/graph8.csv")
+    r = Request().view_csv(view_id=53676, portfolio_id=6076, portfolio_type=PortfolioType.GROUP)
+    import io
+    x = io.BytesIO(r.content)
+    print(x)
+    f = pd.read_csv(x, index_col=["Top Level Owner [Entity ID]", "Top Level Owner"])
+    # do the renaming
 
-    for key, user in Request().users().items():
-        #print(key)
-        print(user)
+    f = f.reset_index()
+    print(f)
 
-    #print(Request().users(id=343171))
+    offset=300
+    date = pd.Timestamp("today")
+    f = view2frame(Request().view_csv(view_id=49702, portfolio_id=1, portfolio_type=PortfolioType.FIRM, start_date=date - pd.offsets.Day(n=offset), end_date=date))
 
-    # for x in a:
-    #    print(x)
+    #x = io.BytesIO(r.content)
+    #print(x)
+    #f = pd.read_csv(x)
 
-    # print(a)
-
-    # print(x)
+    print(f)
+    print(f.keys())
