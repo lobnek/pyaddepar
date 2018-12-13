@@ -51,6 +51,15 @@ class Request(object):
         assert r.ok, "Invalid response. Statuscode {}".format(r.status_code)
         return r
 
+    def get_csv(self, request):
+        h = {"content-type": "text/csv", "Addepar-Firm": self.id}
+
+        r = "https://{company}.addepar.com/api/v1/{request}".format(request=request, company=self.company)
+        self.logger.debug("Request: {request}, Headers: {headers}".format(request=r, headers=h))
+        r = requests.get(r, auth=(self.key, self.secret), headers=h)
+        assert r.ok, "Invalid response. Statuscode {}".format(r.status_code)
+        return r
+
     @property
     def version(self):
         return self.get("api_version")
@@ -89,8 +98,8 @@ class Request(object):
                           "end_date": end_date.strftime("%Y-%m-%d")})
 
         self.logger.debug("Request: {request}".format(request=request))
-        print(self.get(request=request))
-        return self.get(request=request).json()
+        print(self.get_csv(request=request))
+        return self.get_csv(request=request).json()
 
     def entity(self, id=None):
         if id:
