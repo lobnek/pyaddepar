@@ -73,6 +73,25 @@ class Request(object):
         self.logger.debug("Request: {request}".format(request=request))
         return self.get(request=request).json()
 
+    def view_csv(self, view_id, portfolio_id, portfolio_type, start_date=(pd.Timestamp("today")),
+             end_date=pd.Timestamp("today")):
+
+        def __dict(d):
+            return '&'.join(["{key}={value}".format(key=key, value=value) for key, value in d.items()])
+
+        assert isinstance(portfolio_type, PortfolioType)
+
+        request = "portfolio/views/{view}/results?".format(view=view_id) + \
+                  __dict({"portfolio_id": portfolio_id,
+                          "portfolio_type": portfolio_type.value,
+                          "output_type": OutputType.CSV.value,
+                          "start_date": start_date.strftime("%Y-%m-%d"),
+                          "end_date": end_date.strftime("%Y-%m-%d")})
+
+        self.logger.debug("Request: {request}".format(request=request))
+        print(self.get(request=request))
+        return self.get(request=request).json()
+
     def entity(self, id=None):
         if id:
             return self.get("entities/{id}".format(id=id)).json()
