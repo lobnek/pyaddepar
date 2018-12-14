@@ -13,3 +13,6 @@ services:
         - ./artifacts:/pyaddepar/artifacts
 
      working_dir: /pyaddepar
+
+     env_file:
+       - ./test/.env
