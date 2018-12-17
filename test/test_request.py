@@ -41,26 +41,26 @@ class TestRequest(TestCase):
 
     def test_users(self):
         with requests_mock.mock() as m:
-            m.get("https://petermaffay.addepar.com/api/v1/users", json={"data": [{"id": "1", "attributes": {"a": 2.0, "b": 3.0}}]})
-            x = Request().users()
+            m.get("https://petermaffay.addepar.com/api/v1/users", json={"data": [{"id": "1", "attributes": {"a": 2.0, "b": 3.0}}], "links": {"next": None}})
+            x = {key: attr for key, attr in Request().users}
             self.assertDictEqual(x, {"1": {"a": 2.0, "b": 3.0}})
 
     def test_user_id(self):
         with requests_mock.mock() as m:
             m.get("https://petermaffay.addepar.com/api/v1/users/1",
                   json={"data": {"id": "1", "attributes": {"a": 2.0, "b": 3.0}}})
-            x = Request().users(id=1)
+            x = Request().user(id=1)
             self.assertDictEqual(x, {"a": 2.0, "b": 3.0})
 
-    def test_entity(self):
+    def test_entities(self):
         with requests_mock.mock() as m:
-            m.get("https://petermaffay.addepar.com/api/v1/entities", json={"data": [{"id": "1", "attributes": {"a": 2.0, "b": 3.0}}]})
-            x = Request().entity()
+            m.get("https://petermaffay.addepar.com/api/v1/entities", json={"data": [{"id": "1", "attributes": {"a": 2.0, "b": 3.0}}], "links": {"next": None}})
+            x = {key: attr for key, attr in Request().entities}
             self.assertDictEqual(x, {"1": {"a": 2.0, "b": 3.0}})
 
     def test_entity_id(self):
         with requests_mock.mock() as m:
             m.get("https://petermaffay.addepar.com/api/v1/entities/1", json={"data": {"id": "1", "attributes": {"a": 2.0, "b": 3.0}}})
-            x = Request().entity(id=1)
+            x = Request().entity(entity=1)
             self.assertDictEqual(x, {"a": 2.0, "b": 3.0})
 
