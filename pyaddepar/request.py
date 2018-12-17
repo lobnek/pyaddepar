@@ -47,7 +47,7 @@ class Request(object):
         return '&'.join(["{key}={value}".format(key=key, value=value) for key, value in d.items()])
 
     def get(self, request):
-        r = "https://{company}.addepar.com/api/v1/{request}".format(request=request, company=self.company)
+        r = "https://{company}.addepar.com/api{request}".format(request=request, company=self.company)
         self.logger.debug("Request: {request}, Headers: {headers}".format(request=r, headers=self.headers))
         r = requests.get(r, auth=(self.key, self.secret), headers=self.headers)
         assert r.ok, "Invalid response. Statuscode {}".format(r.status_code)
@@ -55,7 +55,7 @@ class Request(object):
 
     @property
     def version(self):
-        return self.get("api_version").json()
+        return self.get("/v1/api_version").json()
 
     # def view(self, view_id, portfolio_id, portfolio_type, start_date=pd.Timestamp("today"),
     #          end_date=pd.Timestamp("today")):
@@ -80,16 +80,41 @@ class Request(object):
                                  "output_type": OutputType.CSV.value, "start_date": start_date.strftime("%Y-%m-%d"),
                                  "end_date": end_date.strftime("%Y-%m-%d")})
 
-        request = "portfolio/views/{view}/results?{param}".format(view=view_id, param=param)
+        request = "/v1/portfolio/views/{view}/results?{param}".format(view=view_id, param=param)
 
         self.logger.debug("Request: {request}".format(request=request))
         return pd.read_csv(io.BytesIO(self.get(request=request).content))
 
-    def entity(self, id=None):
-        if id:
-            return AttrDict(self.get("entities/{id}".format(id=id)).json()["data"]["attributes"])
-        else:
-            return {a["id"]: AttrDict(a["attributes"]) for a in self.get("entities").json()["data"]}
+    def entity(self, entity):
+        #print(self.get("/v1/entities/{id}".format(id=entity)).json())
+        return AttrDict(self.get("/v1/entities/{id}".format(id=entity)).json()["data"]["attributes"])
+
+    @property
+    def entities(self):
+        link = "/v1/entities"
+        while link:
+            a = self.get(link).json()
+            for x in a["data"]:
+                yield x["id"], AttrDict(x["attributes"])
+            link = a["links"]["next"]
+
+    @property
+    def users(self):
+        link = "/v1/users"
+        while link:
+            a = self.get(link).json()
+            for x in a["data"]:
+                yield x["id"], AttrDict(x["attributes"])
+            link = a["links"]["next"]
+
+    @property
+    def groups(self):
+        link = "/v1/groups"
+        while link:
+            a = self.get(link).json()
+            for x in a["data"]:
+                yield x["id"], AttrDict(x["attributes"])
+            link = a["links"]["next"]
 
     #def group(self, id=None):
     #    if id:
@@ -97,12 +122,16 @@ class Request(object):
     #    else:
     #        return {a["id"]: AttrDict(a["attributes"]) for a in self.get("groups").json()["data"]}
 
-    def users(self, id=None):
-        if id:
-            return AttrDict(self.get("users/{id}".format(id=id)).json()["data"]["attributes"])
-        else:
-            return {a["id"]: AttrDict(a["attributes"]) for a in self.get("users").json()["data"]}
-
+    def user(self, id):
+        #if id:
+        return AttrDict(self.get("/v1/users/{id}".format(id=id)).json()["data"]["attributes"])
+        #else:
+        #    link = "/v1/users"
+        #    #while link:
+        #        a = self.get(link).json()
+        #        for x in a["data"]:
+        #            yield x["id"], AttrDict(x["attributes"])
+        #        link = a["links"]["next"]
 
     # def post_file(self, new_name, name):
     #     # h = {"Addepar-Firm": self.id}
