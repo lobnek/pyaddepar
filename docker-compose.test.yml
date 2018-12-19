@@ -15,4 +15,4 @@ services:
      working_dir: /pyaddepar
 
      env_file:
-       - ./test/.env
+       - test/.env-test
