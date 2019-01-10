@@ -20,6 +20,25 @@ class PortfolioType(Enum):
     ENTITY = "entity"
 
 
+class EntityType(Enum):
+    FINANCIAL_ACCOUNT = "FINANCIAL_ACCOUNT"
+    PERSON = "PERSON_NODE"
+    BOND = "BOND"
+    CASH = "CASH"
+    CMO = "CMO"
+    CONVERTIBLE_NOTE = "CONVERTIBLE_NOTE"
+    ETF = "ETF"
+    ETN = "ETN"
+    FORWARD = "FORWARD_CONTRACT"
+    MUTUAL_FUND = "MUTUAL_FUND"
+    OPTION = "OPTION"
+    REIT = "REIT"
+    STOCK = "STOCK"
+    TRUST = "TRUST"
+    UIT = "UIT"
+    UNKNOWN = "UNKNOWN_SECURITY"
+    WARRANT = "WARRANT"
+
 class AttrDict(dict):
     def __init__(self, *args, **kwargs):
         super(AttrDict, self).__init__(*args, **kwargs)
@@ -86,7 +105,6 @@ class Request(object):
         return pd.read_csv(io.BytesIO(self.get(request=request).content))
 
     def entity(self, entity):
-        #print(self.get("/v1/entities/{id}".format(id=entity)).json())
         return AttrDict(self.get("/v1/entities/{id}".format(id=entity)).json()["data"]["attributes"])
 
     @property
@@ -123,15 +141,7 @@ class Request(object):
     #        return {a["id"]: AttrDict(a["attributes"]) for a in self.get("groups").json()["data"]}
 
     def user(self, id):
-        #if id:
         return AttrDict(self.get("/v1/users/{id}".format(id=id)).json()["data"]["attributes"])
-        #else:
-        #    link = "/v1/users"
-        #    #while link:
-        #        a = self.get(link).json()
-        #        for x in a["data"]:
-        #            yield x["id"], AttrDict(x["attributes"])
-        #        link = a["links"]["next"]
 
     # def post_file(self, new_name, name):
     #     # h = {"Addepar-Firm": self.id}

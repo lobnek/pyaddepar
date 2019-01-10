@@ -23,12 +23,6 @@ class TestRequest(TestCase):
         x = Request().dicturl({"a":200,"b":"cc"})
         self.assertEqual(x, "a=200&b=cc")
 
-    # def test_view(self):
-    #     with requests_mock.mock() as m:
-    #         m.get("https://petermaffay.addepar.com/api/v1/portfolio/views/10/results?portfolio_id=20&portfolio_type=entity&output_type=json&start_date=1978-11-12&end_date=1978-11-12", json={'a':'b'})
-    #         x = Request().view(view_id=10, portfolio_id=20, portfolio_type=PortfolioType.ENTITY, start_date=pd.Timestamp("12-Nov-1978"), end_date=pd.Timestamp("12-Nov-1978"))
-    #         self.assertEqual(x, {'a': 'b'})
-
     def test_view_csv(self):
         with requests_mock.mock() as m:
             xxx = pd.DataFrame(index=["x","y"], columns=["a"], data=[[4], [5]])
@@ -63,4 +57,3 @@ class TestRequest(TestCase):
             m.get("https://petermaffay.addepar.com/api/v1/entities/1", json={"data": {"id": "1", "attributes": {"a": 2.0, "b": 3.0}}})
             x = Request().entity(entity=1)
             self.assertDictEqual(x, {"a": 2.0, "b": 3.0})
-
