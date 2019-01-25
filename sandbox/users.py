@@ -14,7 +14,7 @@ if __name__ == '__main__':
     #for key, entity in Request().entity().items():
     #    print(key)
         #pprint.pprint(entity)
-    print(pd.DataFrame({key: attr for key,attr in Request().entity()}).transpose())
+    print(pd.DataFrame({key: attr for key,attr in Request().entities()}).transpose())
 
 
 

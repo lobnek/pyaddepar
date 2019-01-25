@@ -1,3 +1,5 @@
+import base64
+import json
 import logging
 import os
 from enum import Enum
@@ -59,6 +61,9 @@ class Request(object):
 
     @property
     def headers(self):
+        #base = "{key}:{secret}".format(key=self.key, secret=self.secret)
+        #base = base64.b64encode(bytes(base, "utf-8")) #b'{xxx}'.format(xxx=base))
+        #print(base)
         return {"content-type": "application/vnd.api+json", "Addepar-Firm": self.id}
 
     @staticmethod
@@ -68,8 +73,28 @@ class Request(object):
     def get(self, request):
         r = "https://{company}.addepar.com/api{request}".format(request=request, company=self.company)
         self.logger.debug("Request: {request}, Headers: {headers}".format(request=r, headers=self.headers))
+
         r = requests.get(r, auth=(self.key, self.secret), headers=self.headers)
+        #r = requests.get(r, headers=self.headers)
         assert r.ok, "Invalid response. Statuscode {}".format(r.status_code)
+        return r
+
+    def post(self, data, request="entities"):
+        r = "https://{company}.addepar.com/api/v1/{request}".format(request=request, company=self.company)
+        print(r)
+        self.logger.debug("Request: {request}, Headers: {headers}".format(request=r, headers=self.headers))
+        r = requests.post(r, auth=(self.key, self.secret), headers=self.headers, data=json.dumps(data))
+        assert r.ok, "Invalid response. Statuscode {}".format(r.status_code)
+        return r
+
+
+    def delete(self, entity):
+        assert entity
+        r = "https://{company}.addepar.com/api/v1/entities/{entity}".format(company=self.company, entity=entity)
+        print(r)
+        r = requests.delete(r, auth=(self.key, self.secret), headers=self.headers)
+        print(type(r))
+        print(dir(r))
         return r
 
     @property
