@@ -8,5 +8,5 @@ setup(
     packages=find_packages(include=["pyaddepar*"]),
     author='Lobnek Wealth Management',
     author_email='thomas.schmelzer@lobnek.com',
-    description='', install_requires=['requests>=2.12.0', 'pandas>=0.20.0']
+    description='', install_requires=['requests>=2.21.0', 'pandas>=0.24.0']
 )
