@@ -8,4 +8,4 @@ RUN conda install -y -c conda-forge pandas=0.24.1 requests=2.21.0 ipywidgets=7.4
 COPY jupyter_notebook_config.py /etc/jupyter/jupyter_notebook_config.py
 
 # copy the actual package
-COPY ./pybloomberg /home/jovyan/work/pybloomberg
+COPY ./pyaddepar /home/jovyan/work/pyaddepar
