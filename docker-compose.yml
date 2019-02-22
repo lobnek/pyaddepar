@@ -16,18 +16,17 @@ services:
 
      env_file:
       - .env
-  web:
+  jupyter:
     build:
       context: .
       dockerfile: Dockerfile-Jupyter
 
-    extra_hosts:
-      - "bloomberg:192.168.100.125"
+    #extra_hosts:
+    #  - "bloomberg:192.168.100.125"
 
     volumes:
       - ./pyaddepar:/home/jovyan/work/pyaddepar:ro
-      - ./data:/home/jovyan/work/data:ro
-
+      - ./work:/home/jovyan/work
     working_dir: /home/jovyan/work
 
     env_file:

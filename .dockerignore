@@ -20,3 +20,13 @@ setup.py
 
 tag.sh
 test.sh
+
+work/data
+
+Dockerfile
+Dockerfile-Jupyter
+
+docker-compose.test.yml
+docker-compose.yml
+
+jupyter.sh
