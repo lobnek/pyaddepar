@@ -14,3 +14,4 @@ build
 
 *.dot
 *.svg
+.ipynb_checkpoints
