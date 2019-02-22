@@ -1,3 +1,3 @@
 #!/usr/bin/env bash
-docker-compose build --no-cache pyaddepar
-
+docker-compose build pyaddepar
+docker-compose build jupyter
