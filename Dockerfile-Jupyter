@@ -1,11 +1,5 @@
 # Set the base image to beakerx
-FROM jupyter/minimal-notebook:45b8529a6bfc
-
-RUN conda config --env --add pinned_packages 'openjdk>8.0.121'
-RUN conda install -y -c conda-forge pandas=0.24.1 requests=2.21.0 ipywidgets=7.4.2 && conda clean -y --all
-
-# copy over the config file
-COPY jupyter_notebook_config.py /etc/jupyter/jupyter_notebook_config.py
+FROM lobnek/jupyter:v1.0
 
 # copy the actual package
 COPY ./work /home/jovyan/work
