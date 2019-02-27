@@ -1,32 +1,15 @@
-.git
-.gitignore
-.idea
-Makefile
-auth.py
-__pycache__
+#https://stackoverflow.com/questions/28097064/dockerignore-ignore-everything-except-a-file-and-the-dockerfile
 
-build
-data
-html-coverage
-html-report
-license
-sandbox
+# Ignore Everything
+**
 
-.env
-build.sh
-LICENSE
-README.md
-setup.py
+!sphinx.sh
 
-tag.sh
-test.sh
+!work
+!test
+!pyaddepar
 
-work/data
 
-Dockerfile
-Dockerfile-Jupyter
-
-docker-compose.test.yml
-docker-compose.yml
-
-jupyter.sh
+**/__pycache__
+**/*.pyc
+.ipynb_checkpoints
