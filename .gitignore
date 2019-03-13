@@ -9,9 +9,9 @@ html-report
 
 aux.py
 alchemy
-.env
 build
 
 *.dot
 *.svg
 .ipynb_checkpoints
+.config
