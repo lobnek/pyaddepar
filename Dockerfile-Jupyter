@@ -1,5 +1,5 @@
 # Set the base image to beakerx
-FROM lobnek/jupyter:v1.0
+FROM lobnek/jupyter:v2.3
 
 # File Author / Maintainer
 MAINTAINER Thomas Schmelzer "thomas.schmelzer@lobnek.com"
