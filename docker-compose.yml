@@ -15,7 +15,8 @@ services:
      working_dir: /pyaddepar
 
      env_file:
-      - .env
+      - .config
+
   jupyter:
     build:
       context: .
@@ -25,9 +26,11 @@ services:
     #  - "bloomberg:192.168.100.125"
 
     volumes:
-      - ./pyaddepar:/home/jovyan/work/pyaddepar:ro
-      - ./work:/home/jovyan/work
-    working_dir: /home/jovyan/work
+      - ./pyaddepar:/home/${NB_USER}/work/pyaddepar:ro
+      - ./work:/home/${NB_USER}/work
+    #working_dir: /home/${NB_USER}/work
 
     env_file:
-      - .env
+      - .config
+    ports:
+      - ${PORT}:8888

@@ -1,7 +1,10 @@
 # Set the base image to beakerx
 FROM lobnek/jupyter:v1.0
 
+# File Author / Maintainer
+MAINTAINER Thomas Schmelzer "thomas.schmelzer@lobnek.com"
+
 # copy the actual package
-COPY ./work /home/jovyan/work
-COPY ./pyaddepar /home/jovyan/work/pyaddepar
+COPY ./work /home/$NB_USER/work
+COPY ./pyaddepar /home/$NB_USER/work/pyaddepar
 
