@@ -8,6 +8,7 @@
 !work
 !test
 !pyaddepar
+!setup.py
 
 
 **/__pycache__
