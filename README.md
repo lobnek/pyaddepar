@@ -9,7 +9,7 @@ Installation
 Authentication
 --------------
 
-Create a file .env using the following template:
+Create a file .config using the following template:
 
     # Addepar auth details
     AFIRM=123
