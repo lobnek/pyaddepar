@@ -16,3 +16,4 @@ build
 .ipynb_checkpoints
 .config
 *.ipynb
+sandbox
