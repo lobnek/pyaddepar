@@ -7,13 +7,13 @@ if __name__ == '__main__':
         "data": {
         "type": "entities",
         "attributes": {
-            "original_name": "Hans Dampf",
+            "original_name": "Thomas Schmelzer",
             "currency_factor": "CHF",
             "model_type": "PERSON_NODE"
         }
     }
     }
 
-    #r.post(x)
+    r.post(x)
     #for x in [5504500, 5504501, 5504502]:
     #    r.delete(x)
