@@ -60,9 +60,6 @@ class Request(object):
 
     @property
     def headers(self):
-        #base = "{key}:{secret}".format(key=self.key, secret=self.secret)
-        #base = base64.b64encode(bytes(base, "utf-8")) #b'{xxx}'.format(xxx=base))
-        #print(base)
         return {"content-type": "application/vnd.api+json", "Addepar-Firm": self.id}
 
     @staticmethod
@@ -74,13 +71,11 @@ class Request(object):
         self.logger.debug("Request: {request}, Headers: {headers}".format(request=r, headers=self.headers))
 
         r = requests.get(r, auth=(self.key, self.secret), headers=self.headers)
-        #r = requests.get(r, headers=self.headers)
-        assert r.ok, "Invalid response. Statuscode {}".format(r.status_code)
+        assert r.ok, "Invalid response. Statuscode {code}. Query: {x}".format(code=r.status_code, x=r)
         return r
 
     def post(self, data, request="entities"):
         r = "https://{company}.addepar.com/api/v1/{request}".format(request=request, company=self.company)
-        print(r)
         self.logger.debug("Request: {request}, Headers: {headers}".format(request=r, headers=self.headers))
         r = requests.post(r, auth=(self.key, self.secret), headers=self.headers, data=json.dumps(data))
         assert r.ok, "Invalid response. Statuscode {}".format(r.status_code)
@@ -90,11 +85,7 @@ class Request(object):
     def delete(self, entity):
         assert entity
         r = "https://{company}.addepar.com/api/v1/entities/{entity}".format(company=self.company, entity=entity)
-        print(r)
-        r = requests.delete(r, auth=(self.key, self.secret), headers=self.headers)
-        print(type(r))
-        print(dir(r))
-        return r
+        return requests.delete(r, auth=(self.key, self.secret), headers=self.headers)
 
     @property
     def version(self):
@@ -128,44 +119,64 @@ class Request(object):
         self.logger.debug("Request: {request}".format(request=request))
         return pd.read_csv(io.BytesIO(self.get(request=request).content))
 
-    def entity(self, entity):
-        return AttrDict(self.get("/v1/entities/{id}".format(id=entity)).json()["data"]["attributes"])
+    def transaction_csv(self, view_id, portfolio_id, portfolio_type, start_date=pd.Timestamp("today"),
+                 end_date=pd.Timestamp("today")):
+
+        assert isinstance(portfolio_type, PortfolioType)
+
+        param = Request.dicturl({"portfolio_id": portfolio_id, "portfolio_type": portfolio_type.value,
+                                 "output_type": OutputType.CSV.value, "start_date": start_date.strftime("%Y-%m-%d"),
+                                 "end_date": end_date.strftime("%Y-%m-%d")})
+
+        request = "/v1/transactions/views/{view}/results?{param}".format(view=view_id, param=param)
+
+        self.logger.debug("Request: {request}".format(request=request))
+        return pd.read_csv(io.BytesIO(self.get(request=request).content))
+
+    #def entity(self, entity):
+    #    return AttrDict(self.get("/v1/entities/{id}".format(id=entity)).json()["data"]["attributes"])
+    #    #return AttrDict({key: x for key, x in d.items() if not x})
+
+    def __entities(self, link, filter=None):
+        while link:
+            filter = filter or (lambda x: True)
+            a = self.get(link).json()
+            for x in a["data"]:
+                #if filter:
+                if filter(x["attributes"]):
+                    yield x["id"], AttrDict(x["attributes"])
+                #else:
+                #    yield x["id"], AttrDict(x["attributes"])
+            link = a["links"]["next"]
 
     @property
     def entities(self):
-        link = "/v1/entities"
-        while link:
-            a = self.get(link).json()
-            for x in a["data"]:
-                yield x["id"], AttrDict(x["attributes"])
-            link = a["links"]["next"]
+        return self.__entities(link="/v1/entities")
 
     @property
     def users(self):
-        link = "/v1/users"
-        while link:
-            a = self.get(link).json()
-            for x in a["data"]:
-                yield x["id"], AttrDict(x["attributes"])
-            link = a["links"]["next"]
+        return self.__entities(link="/v1/users")
 
     @property
     def groups(self):
-        link = "/v1/groups"
-        while link:
-            a = self.get(link).json()
-            for x in a["data"]:
-                yield x["id"], AttrDict(x["attributes"])
-            link = a["links"]["next"]
+        return self.__entities(link="/v1/groups")
 
-    #def group(self, id=None):
-    #    if id:
-    #        return self.get("groups/{id}/members".format(id=id)).json()["data"]
-    #    else:
-    #        return {a["id"]: AttrDict(a["attributes"]) for a in self.get("groups").json()["data"]}
+    def group(self, id):
+        return AttrDict(self.get("/v1/groups/{id}".format(id=id)).json()["data"]["attributes"])
 
     def user(self, id):
         return AttrDict(self.get("/v1/users/{id}".format(id=id)).json()["data"]["attributes"])
+
+    def entity(self, id):
+        return AttrDict(self.get("/v1/entities/{id}".format(id=id)).json()["data"]["attributes"])
+
+    def members(self, id):
+        for row in self.get("/v1/groups/{id}/relationships/members".format(id=id)).json()["data"]:
+            yield row["id"]
+
+    @property
+    def persons(self):
+        return self.__entities(link="/v1/entities", filter=lambda x: x["model_type"]=="PERSON_NODE")
 
     # def post_file(self, new_name, name):
     #     # h = {"Addepar-Firm": self.id}

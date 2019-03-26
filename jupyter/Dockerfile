@@ -7,6 +7,7 @@ MAINTAINER Thomas Schmelzer "thomas.schmelzer@lobnek.com"
 # copy the notebooks into the image
 COPY ./work $WORK
 
+# needs to be root as we delete the /tmp/pyaddepar folder
 USER root
 
 COPY . /tmp/pyaddepar
