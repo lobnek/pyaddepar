@@ -46,5 +46,5 @@ class TestRequest(object):
 
     def test_entity_id(self, requests_mock):
         requests_mock.get("https://petermaffay.addepar.com/api/v1/entities/1", json={"data": {"id": "1", "attributes": {"a": 2.0, "b": 3.0}}})
-        x = Request().entity(entity=1)
+        x = Request().entity(id=1)
         assert x == {"a": 2.0, "b": 3.0}
