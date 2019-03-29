@@ -1,0 +1,15 @@
+version: '3.4'
+services:
+  test:
+    build:
+      context: .
+      dockerfile: Dockerfile
+      target: test
+    volumes:
+      # change the folder on the left to direct your logs to...
+      - ./pyaddepar:/home/${NB_USER}/work/pyaddepar:ro
+      - ./test:/home/${NB_USER}/work/test:ro
+      - ./source:/source:ro
+      - ./artifacts:/pyaddepar/artifacts
+    env_file:
+      - test/.env-test
