@@ -1,21 +1,25 @@
-# Set the base image to Ubuntu
-FROM continuumio/miniconda3 as builder
+# Set the base image to beakerx
+FROM lobnek/jupyter:v2.8 as builder
 
 # File Author / Maintainer
 MAINTAINER Thomas Schmelzer "thomas.schmelzer@lobnek.com"
 
-RUN conda install -q -y nomkl pandas=0.24.1 requests=2.21.0 && \
-    conda clean -y -all
+# install the pyaddepar package
+COPY --chown=beakerx:beakerx . /home/beakerx/tmp
 
+# install the package
+RUN pip install --no-cache-dir /home/beakerx/tmp && \
+    rm -r /home/beakerx/tmp
+
+COPY --chown=beakerx:beakerx ./work $WORK
 
 ########################################################################################################################
 FROM builder as test
 
-COPY ./pyaddepar /pyaddepar/pyaddepar
-COPY ./test   /pyaddepar/test
+#COPY ./pyaddepar /pyaddepar/pyaddepar
 
-WORKDIR /pyaddepar
+COPY --chown=beakerx:beakerx test ${WORK}/test
 
 # this is used to mock http for testing
-RUN pip install httpretty pytest pytest-cov pytest-html sphinx requests-mock
-CMD py.test --cov=pyaddepar  --cov-report html:artifacts/html-coverage --cov-report term --html=artifacts/html-report/report.html test
+RUN pip install httpretty pytest==4.3.1 pytest-cov pytest-html sphinx requests-mock
+CMD py.test --cov=pyaddepar  --cov-report html:artifacts/html-coverage --cov-report term --html=artifacts/html-report/report.html ${WORK}/test
