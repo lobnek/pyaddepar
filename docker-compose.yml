@@ -5,10 +5,12 @@ services:
       context: .
       dockerfile: Dockerfile
       target: builder
+
     volumes:
       - ./work:/home/${NB_USER}/work
 
     env_file:
       - .config
+
     ports:
       - ${PORT}:8888
