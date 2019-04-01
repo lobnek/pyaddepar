@@ -11,8 +11,6 @@ COPY --chown=beakerx:beakerx . /home/beakerx/tmp
 RUN pip install --no-cache-dir /home/beakerx/tmp && \
     rm -r /home/beakerx/tmp
 
-#COPY --chown=beakerx:beakerx ./work $WORK
-
 ########################################################################################################################
 FROM builder as test
 

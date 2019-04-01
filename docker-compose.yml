@@ -6,9 +6,15 @@ services:
       dockerfile: Dockerfile
       target: builder
 
+    # point to your notebooks
     volumes:
-      - ./work:/home/${NB_USER}/work
+      - /media/j/notebooks:/home/${NB_USER}/work
 
+    # create the .config file with
+    #AFIRM=...
+    #AKEY=2c...
+    #ASECRET=hh...
+    #COMPANY=xyz
     env_file:
       - .config
 
