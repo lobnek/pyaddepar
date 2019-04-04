@@ -61,7 +61,7 @@ graph: test
 	rm graph.dot graph2.dot
 
 doc: test
-	docker-compose -f docker-compose-test.yml run sut sphinx-build /source artifacts/build
+	docker-compose -f docker-compose.test.yml run sut sphinx-build /source artifacts/build
 
 tag: test
 	git tag -a ${PROJECT_VERSION} -m "new tag"
