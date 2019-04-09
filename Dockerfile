@@ -11,10 +11,14 @@ COPY --chown=beakerx:beakerx . /home/beakerx/tmp
 RUN pip install --no-cache-dir /home/beakerx/tmp && \
     rm -r /home/beakerx/tmp
 
+WORKDIR ${WORK}
+
 ########################################################################################################################
 FROM builder as test
 
-COPY --chown=beakerx:beakerx test ${WORK}/test
+WORKDIR ${WORK}
+
+#COPY --chown=beakerx:beakerx test ${WORK}/test
 
 # this is used to mock http for testing
 RUN pip install httpretty pytest==4.3.1 pytest-cov pytest-html sphinx requests-mock

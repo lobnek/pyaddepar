@@ -6,10 +6,9 @@ services:
       dockerfile: Dockerfile
       target: test
     volumes:
-      # change the folder on the left to direct your logs to...
-      - ./pyaddepar:${WORK}/pyaddepar:ro
       - ./test:${WORK}/test:ro
       - ./source:/source:ro
-      - ./artifacts:/pyaddepar/artifacts
+      - ./artifacts:${WORK}/artifacts
     env_file:
       - test/.env-test
+    user: root

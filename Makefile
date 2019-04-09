@@ -47,7 +47,7 @@ jupyter: build
 	docker-compose up jupyter
 
 graph: test
-	mkdir -p ${PWD}/artifacts/graph
+	mkdir -p artifacts/graph
 
 	docker run --rm --mount type=bind,source=${PWD}/${PACKAGE},target=/pyan/${PACKAGE},readonly \
 		   tschm/pyan:latest python pyan.py ${PACKAGE}/**/*.py -V --uses --defines --colored --dot --nested-groups > graph.dot
