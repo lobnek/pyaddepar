@@ -9,7 +9,7 @@ include .env
 export
 
 
-.PHONY: help build test teamcity jupyter graph doc tag
+.PHONY: help build test teamcity jupyter graph doc tag clean
 
 
 .DEFAULT: help
@@ -66,3 +66,7 @@ doc: test
 tag: test
 	git tag -a ${PROJECT_VERSION} -m "new tag"
 	git push --tags
+
+clean:
+	docker-compose -f docker-compose.yml down -v --rmi all --remove-orphans
+	docker-compose -f docker-compose.test.yml down -v --rmi all --remove-orphans
