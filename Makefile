@@ -4,12 +4,7 @@ PROJECT_VERSION := $(shell python setup.py --version)
 SHELL := /bin/bash
 PACKAGE := pyaddepar
 
-# needed to get the ${PORT} environment variable
-include .env
-export
-
-
-.PHONY: help build test teamcity jupyter graph doc tag clean
+.PHONY: help build test teamcity graph doc tag clean
 
 
 .DEFAULT: help
@@ -21,8 +16,6 @@ help:
 	@echo "       Build the docker image for testing and run them."
 	@echo "make teamcity"
 	@echo "       Run tests, build a dependency graph and construct the documentation."
-	@echo "make jupyter"
-	@echo "       Start the Jupyter server."
 	@echo "make graph"
 	@echo "       Build a dependency graph."
 	@echo "make doc"
@@ -42,9 +35,6 @@ test:
 
 teamcity: test graph doc
 
-jupyter: build
-	echo "http://localhost:${PORT}"
-	docker-compose up jupyter
 
 graph: test
 	mkdir -p artifacts/graph
