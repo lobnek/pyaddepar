@@ -1,10 +1,11 @@
 #!/usr/bin/env python
 
 from setuptools import setup, find_packages
+from pyaddepar.__init__ import __version__ as version
 
 setup(
     name='pyaddepar',
-    version='0.5.8',
+    version=version,
     packages=find_packages(include=["pyaddepar*"]),
     author='Lobnek Wealth Management',
     author_email='thomas.schmelzer@lobnek.com',
