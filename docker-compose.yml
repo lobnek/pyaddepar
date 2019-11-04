@@ -1,16 +1,16 @@
 version: '3.4'
 services:
-  jupyter:
+  addepar:
     build:
       context: .
       dockerfile: Dockerfile
       target: builder
 
     # point to your notebooks
-    volumes:
-      - /media/j/notebooks:${WORK}
+    #volumes:
+    #  - /media/j/notebooks:${WORK}
 
-    # create the .config file with
+    # create the .config.ini file with
     #AFIRM=...
     #AKEY=2c...
     #ASECRET=hh...
@@ -18,5 +18,16 @@ services:
     env_file:
       - .config
 
+
+  jupyter:
+    build:
+      context: .
+      dockerfile: binder/Dockerfile
+      target: jupyter
+
+    volumes:
+      - ./binder/example.ipynb:/home/jovyan/work/example.ipynb
+
     ports:
-      - ${PORT}:8888
+      - "4444:8888"
+
