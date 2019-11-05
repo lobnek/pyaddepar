@@ -10,8 +10,8 @@
 !pyaddepar
 !setup.py
 !binder/jupyter_notebook_config.py
-!binder/config.ini
-!binder/example.ipynb
+!binder/files/*
+
 
 **/__pycache__
 **/*.pyc
