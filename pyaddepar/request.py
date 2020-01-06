@@ -40,6 +40,7 @@ class EntityType(Enum):
     UNKNOWN = "UNKNOWN_SECURITY"
     WARRANT = "WARRANT"
 
+
 class AttrDict(dict):
     def __init__(self, *args, **kwargs):
         super(AttrDict, self).__init__(*args, **kwargs)
@@ -81,7 +82,6 @@ class Request(object):
         assert r.ok, "Invalid response. Statuscode {}".format(r.status_code)
         return r
 
-
     def delete(self, entity):
         assert entity
         r = "https://{company}.addepar.com/api/v1/entities/{entity}".format(company=self.company, entity=entity)
@@ -120,7 +120,7 @@ class Request(object):
         return pd.read_csv(io.BytesIO(self.get(request=request).content))
 
     def transaction_csv(self, view_id, portfolio_id, portfolio_type, start_date=pd.Timestamp("today"),
-                 end_date=pd.Timestamp("today")):
+                        end_date=pd.Timestamp("today")):
 
         assert isinstance(portfolio_type, PortfolioType)
 
@@ -133,7 +133,7 @@ class Request(object):
         self.logger.debug("Request: {request}".format(request=request))
         return pd.read_csv(io.BytesIO(self.get(request=request).content))
 
-    #def entity(self, entity):
+    # def entity(self, entity):
     #    return AttrDict(self.get("/v1/entities/{id}".format(id=entity)).json()["data"]["attributes"])
     #    #return AttrDict({key: x for key, x in d.items() if not x})
 
@@ -142,10 +142,10 @@ class Request(object):
             filter = filter or (lambda x: True)
             a = self.get(link).json()
             for x in a["data"]:
-                #if filter:
+                # if filter:
                 if filter(x["attributes"]):
                     yield x["id"], AttrDict(x["attributes"])
-                #else:
+                # else:
                 #    yield x["id"], AttrDict(x["attributes"])
             link = a["links"]["next"]
 
@@ -176,7 +176,11 @@ class Request(object):
 
     @property
     def persons(self):
-        return self.__entities(link="/v1/entities", filter=lambda x: x["model_type"]=="PERSON_NODE")
+        return self.__entities(link="/v1/entities", filter=lambda x: x["model_type"] == "PERSON_NODE")
+
+    @property
+    def options(self):
+        return self.__entities(link="/v1/entities", filter=lambda x: x["model_type"] == "OPTION")
 
     # def post_file(self, new_name, name):
     #     # h = {"Addepar-Firm": self.id}
@@ -217,5 +221,3 @@ class Request(object):
     #                         auth=self.auth, header=self.headers)
     #     assert r.ok, "Invalid response. Statuscode {}".format(r.status_code)
     #     # r = requests.get(r, auth=(self.key, self.secret), headers=h)
-
-
