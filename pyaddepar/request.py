@@ -137,29 +137,28 @@ class Request(object):
     #    return AttrDict(self.get("/v1/entities/{id}".format(id=entity)).json()["data"]["attributes"])
     #    #return AttrDict({key: x for key, x in d.items() if not x})
 
-    def __entities(self, link, filter=None):
+    def entities(self, link="/v1/entities", modeltype=None):
         while link:
-            filter = filter or (lambda x: True)
             a = self.get(link).json()
             for x in a["data"]:
-                # if filter:
-                if filter(x["attributes"]):
+                if modeltype:
+                    if x["model_type"] == modeltype:
+                        yield x["id"], AttrDict(x["attributes"])
+                else:
                     yield x["id"], AttrDict(x["attributes"])
-                # else:
-                #    yield x["id"], AttrDict(x["attributes"])
             link = a["links"]["next"]
 
-    @property
-    def entities(self):
-        return self.__entities(link="/v1/entities")
+    #@property
+    #def entities(self):
+    #    return self.__entities(link="/v1/entities")
 
     @property
     def users(self):
-        return self.__entities(link="/v1/users")
+        return self.entities(link="/v1/users")
 
     @property
     def groups(self):
-        return self.__entities(link="/v1/groups")
+        return self.entities(link="/v1/groups")
 
     def group(self, id):
         return AttrDict(self.get("/v1/groups/{id}".format(id=id)).json()["data"]["attributes"])
@@ -176,11 +175,11 @@ class Request(object):
 
     @property
     def persons(self):
-        return self.__entities(link="/v1/entities", filter=lambda x: x["model_type"] == "PERSON_NODE")
+        return self.entities(link="/v1/entities", modeltype="PERSON_NODE")
 
     @property
     def options(self):
-        return self.__entities(link="/v1/entities", filter=lambda x: x["model_type"] == "OPTION")
+        return self.entities(link="/v1/entities", modeltype="OPTION")
 
     # def post_file(self, new_name, name):
     #     # h = {"Addepar-Firm": self.id}

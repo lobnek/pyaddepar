@@ -6,9 +6,9 @@ services:
       dockerfile: Dockerfile
       target: test
     volumes:
-      - ./test:${WORK}/test:ro
+      - ./test:/addepar/test:ro
       - ./source:/source:ro
-      - ./artifacts:${WORK}/artifacts
+      - ./artifacts:/artifacts
     env_file:
       - test/.env-test
     user: root
