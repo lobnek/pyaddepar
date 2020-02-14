@@ -6,10 +6,9 @@ MAINTAINER Thomas Schmelzer "thomas.schmelzer@lobnek.com"
 
 # install the pyaddepar package
 COPY . /tmp/addepar
-# COPY --chown=beakerx:beakerx . /home/beakerx/tmp
 
 # install the package
-RUN conda install -y -c conda-forge pandas=0.24.2 && \
+RUN conda install -y -c conda-forge pandas=0.25.3 flask=1.1.1 && \
     conda clean -y --all && \
     pip install --no-cache-dir /tmp/addepar && \
     rm -r /tmp/addepar
