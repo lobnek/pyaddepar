@@ -8,7 +8,7 @@ MAINTAINER Thomas Schmelzer "thomas.schmelzer@lobnek.com"
 COPY . /tmp/addepar
 
 # install the package
-RUN conda install -y -c conda-forge pandas=0.25.3 flask=1.1.1 && \
+RUN conda install -y -c conda-forge pandas=1.0.1 flask=1.1.1 && \
     conda clean -y --all && \
     pip install --no-cache-dir /tmp/addepar && \
     rm -r /tmp/addepar
