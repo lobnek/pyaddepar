@@ -23,5 +23,5 @@ FROM builder as test
 #COPY --chown=beakerx:beakerx test ${WORK}/test
 COPY ./test  /addepar/test
 # this is used to mock http for testing
-RUN pip install httpretty pytest==4.3.1 pytest-cov pytest-html sphinx requests-mock
+RUN pip install httpretty pytest pytest-cov pytest-html sphinx requests-mock
 CMD py.test --cov=pyaddepar  --cov-report html:artifacts/html-coverage --cov-report term --html=artifacts/html-report/report.html /addepar/test

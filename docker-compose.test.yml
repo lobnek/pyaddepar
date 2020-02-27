@@ -9,6 +9,3 @@ services:
       - ./test:/addepar/test:ro
       - ./source:/source:ro
       - ./artifacts:/artifacts
-    env_file:
-      - test/.env-test
-    user: root
