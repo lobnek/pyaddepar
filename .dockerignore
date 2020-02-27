@@ -9,10 +9,8 @@
 !test
 !pyaddepar
 !setup.py
-!binder/jupyter_notebook_config.py
-!binder/files/*
+!README.md
 
 
 **/__pycache__
 **/*.pyc
-.ipynb_checkpoints

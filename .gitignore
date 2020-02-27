@@ -13,7 +13,6 @@ build
 
 *.dot
 *.svg
-.ipynb_checkpoints
 .config
 sandbox
 
