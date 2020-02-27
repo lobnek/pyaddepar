@@ -61,7 +61,10 @@ def create_requests(config):
         raise InvalidSettingsError('Invalid application configuration')
 
     # Get sanitized connection settings based on the config
-    conn_settings = config["ADDEPAR_SETTINGS"]
+    conn_settings = config["ADDEPAR"]
 
     # Otherwise, return a single connection
-    return Request(key=conn_settings["AKEY"], secret=conn_settings["ASECRET"], id=conn_settings["AFIRM"], company=conn_settings["COMPANY"])
+    return Request(key=conn_settings["KEY"], secret=conn_settings["SECRET"], id=conn_settings["ID"], company=conn_settings["COMPANY"])
+
+
+addepar = Addepar()
