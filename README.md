@@ -1,10 +1,9 @@
 # pyaddepar
 Addepar has recently released a REST api. In this project we wrap this api for Python users.
-[![Binder](https://mybinder.org/badge_logo.svg)](https://mybinder.org/v2/gh/lobnek/pyaddepar/master)
 
 Installation
 ------------
-    pip install git+http://github.com/lobnek/pyaddepar.git
+    pip install pyaddepar
     
 Authentication
 --------------

@@ -61,8 +61,8 @@ clean:
 	docker-compose -f docker-compose.yml down -v --rmi all --remove-orphans
 	docker-compose -f docker-compose.test.yml down -v --rmi all --remove-orphans
 
-jupyter: clean
-	docker-compose build jupyter
-	@echo "Run on 'http://localhost:4444'"
-	docker-compose run -p 4444:8888 jupyter
+pypi: tag
+	python setup.py sdist
+	twine check dist/*
+	twine upload dist/*
 

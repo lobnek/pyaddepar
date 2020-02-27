@@ -16,3 +16,6 @@ build
 .ipynb_checkpoints
 .config
 sandbox
+
+dist
+*.egg-info
