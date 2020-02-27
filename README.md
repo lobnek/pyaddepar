@@ -1,44 +1,67 @@
 # pyaddepar
-Addepar has recently released a REST api. In this project we wrap this api for Python users.
+[![Build Status](https://travis-ci.org/lobnek/pyaddepar.svg?branch=master)](https://travis-ci.org/lobnek/pyaddepar)
 
-Installation
-------------
-    pip install pyaddepar
-    
-Authentication
---------------
+Some utility code for interacting with addepar. For more information on addepar please check out
+https://www.amberdata.com/.
 
-Create a file .config using the following template:
-
-    # Addepar auth details
-    AFIRM=123
-    AKEY=123
-    ASECRET=123
-    COMPANY=AAA
+## Installing pyaddepar
+Install with pip
+```
+pip install pyaddepar
+```
 
     
-Usage
------
+## AddeparRequest
+AddeparRequest is a class hiding the management of your key(s), the pagination of requests and conversion of your results to standard pandas containers.
 
-Here's a little fragment:
+```
+import pandas as pd
+from pyaddepar.addeparrequest import AddeparRequest
 
+if __name__ == '__main__':
+    r = AddeparRequest(key=..., secret=..., id=..., company=...)
+    today = pd.Timestamp("today")
 
-    from pyaddepar.request import Request
-    print(Request().version)
+    for key, entity in r.options:
+        expiry = pd.Timestamp(entity["expiration_date"])
+        if expiry >= today:
+            print(expiry)
+            print(entity)
+            print(entity["option_type"])
+            print(entity["node_strike_price"])
 
-    print(Request().entity())
+            print((expiry-today).days/365.0)
 
-    print(Request().group())
+```
+    
+## Settings.cfg
+We recommend to define a configuration file `(*.cfg)` containing
 
-    print(Request().entity(id=123))
+ADDEPAR = {"KEY":"A",
+           "SECRET":"B",
+           "ID":"maffay",
+           "COMPANY":"maffay"
+          }
 
-    print(Request().group(id=123))
+## Flask-Addepar
+A Flask extension that provides integration with Addepar. In particular this flask extension provides
+management of the your AddeparRequests. You can use configuration files such as settings.cfg to follow standard flask practices.
+The configuration is easy, just fetch the extension:
 
-All this simple requests rely on the
+```
+from flask import Flask
 
-    def get(self, request):
-        r = "https://{company}.addepar.com/api/v1/{request}".format(request=request, company=self.__company)
-        r = requests.get(r, auth=self.auth, headers=self.headers)
-        assert r.ok, "Invalid response. Statuscode {}".format(r.status_code)
-        # it's more standard to return r rather than r.json(), hence client can check return code...
-        return r
+from pyaddepar.flask_addepar import addepar
+
+if __name__ == '__main__':
+    app = Flask(__name__)
+    app.config.from_pyfile('config/settings.cfg')
+    addepar.init_app(app)
+    
+    with app.app_context():
+        for key, entity in addepar.request.entities():
+            print(key)
+            print(entity)
+
+```
+

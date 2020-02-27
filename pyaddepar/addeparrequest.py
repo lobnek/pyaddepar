@@ -47,7 +47,7 @@ class AttrDict(dict):
         self.__dict__ = self
 
 
-class Request(object):
+class AddeparRequest(object):
     def __init__(self, key=None, secret=None, id=None, company=None, logger=None):
         self.logger = logger or logging.getLogger(__name__)
         self.key = key or os.environ["AKEY"]
@@ -110,7 +110,7 @@ class Request(object):
 
         assert isinstance(portfolio_type, PortfolioType)
 
-        param = Request.dicturl({"portfolio_id": portfolio_id, "portfolio_type": portfolio_type.value,
+        param = AddeparRequest.dicturl({"portfolio_id": portfolio_id, "portfolio_type": portfolio_type.value,
                                  "output_type": OutputType.CSV.value, "start_date": start_date.strftime("%Y-%m-%d"),
                                  "end_date": end_date.strftime("%Y-%m-%d")})
 
@@ -124,7 +124,7 @@ class Request(object):
 
         assert isinstance(portfolio_type, PortfolioType)
 
-        param = Request.dicturl({"portfolio_id": portfolio_id, "portfolio_type": portfolio_type.value,
+        param = AddeparRequest.dicturl({"portfolio_id": portfolio_id, "portfolio_type": portfolio_type.value,
                                  "output_type": OutputType.CSV.value, "start_date": start_date.strftime("%Y-%m-%d"),
                                  "end_date": end_date.strftime("%Y-%m-%d")})
 

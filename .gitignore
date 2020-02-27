@@ -13,7 +13,6 @@ build
 
 *.dot
 *.svg
-.config
 sandbox
 
 dist

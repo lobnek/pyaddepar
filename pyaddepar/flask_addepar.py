@@ -1,5 +1,5 @@
 from flask import Flask, current_app
-from pyaddepar.request import Request
+from pyaddepar.addeparrequest import AddeparRequest
 
 
 class InvalidSettingsError(Exception):
@@ -64,7 +64,7 @@ def create_requests(config):
     conn_settings = config["ADDEPAR"]
 
     # Otherwise, return a single connection
-    return Request(key=conn_settings["KEY"], secret=conn_settings["SECRET"], id=conn_settings["ID"], company=conn_settings["COMPANY"])
+    return AddeparRequest(key=conn_settings["KEY"], secret=conn_settings["SECRET"], id=conn_settings["ID"], company=conn_settings["COMPANY"])
 
 
 addepar = Addepar()

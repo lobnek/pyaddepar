@@ -6,7 +6,7 @@ import pandas.util.testing as pdt
 from flask import Flask
 
 from pyaddepar.flask_addepar import addepar
-from pyaddepar.request import Request, PortfolioType, AttrDict
+from pyaddepar.addeparrequest import AddeparRequest, PortfolioType, AttrDict
 
 
 @pytest.fixture
@@ -86,25 +86,25 @@ def test_group_id(addepar_request,requests_mock):
 
 
 def test_options(addepar_request):
-    with patch.object(Request, "entities") as mock:
+    with patch.object(AddeparRequest, "entities") as mock:
         addepar_request.options
         mock.assert_called_once_with(link="/v1/entities", modeltype="OPTION")
 
 
 def test_persons(addepar_request):
-    with patch.object(Request, "entities") as mock:
+    with patch.object(AddeparRequest, "entities") as mock:
         addepar_request.persons
         mock.assert_called_once_with(link="/v1/entities", modeltype="PERSON_NODE")
 
 
 def test_groups(addepar_request):
-    with patch.object(Request, "entities") as mock:
+    with patch.object(AddeparRequest, "entities") as mock:
         addepar_request.groups
         mock.assert_called_once_with(link="/v1/groups")
 
 
 def test_users(addepar_request):
-    with patch.object(Request, "entities") as mock:
+    with patch.object(AddeparRequest, "entities") as mock:
         addepar_request.users
         mock.assert_called_once_with(link="/v1/users")
 
