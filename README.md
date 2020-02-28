@@ -37,10 +37,10 @@ if __name__ == '__main__':
 ## Settings.cfg
 We recommend to define a configuration file `(*.cfg)` containing
 
-ADDEPAR = {"KEY":"A",
-           "SECRET":"B",
-           "ID":"maffay",
-           "COMPANY":"maffay"
+ADDEPAR = {"key":"A",
+           "secret":"B",
+           "id":"maffay",
+           "company":"maffay"
           }
 
 ## Flask-Addepar
