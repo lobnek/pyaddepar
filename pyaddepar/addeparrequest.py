@@ -61,7 +61,7 @@ class AddeparRequest(object):
 
     @property
     def headers(self):
-        return {"accept": "*/*"}
+        return {"Accept": "*/*"}
         #return {"content-type": "application/vnd.api+json"} , "Addepar-Firm": self.id}
 
     @staticmethod
