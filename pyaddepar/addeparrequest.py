@@ -68,11 +68,11 @@ class AddeparRequest(object):
         return '&'.join(["{key}={value}".format(key=key, value=value) for key, value in d.items()])
 
     def get(self, request):
-        r = "https://{company}.addepar.com/api{request}".format(request=request, company=self.company)
-        self.logger.debug("Request: {request}, Headers: {headers}".format(request=r, headers=self.headers))
+        request = "https://{company}.addepar.com/api{request}".format(request=request, company=self.company)
+        self.logger.debug("Request: {request}, Headers: {headers}".format(request=request, headers=self.headers))
 
-        r = requests.get(r, auth=(self.key, self.secret), headers=self.headers)
-        assert r.ok, "Invalid response. Statuscode {code}. Query: {x}".format(code=r.status_code, x=r)
+        r = requests.get(request, auth=(self.key, self.secret), headers=self.headers)
+        assert r.ok, "Invalid response. Statuscode {code}. Query: {x}".format(code=r.status_code, x=request)
         return r
 
     def post(self, data, request="entities"):
