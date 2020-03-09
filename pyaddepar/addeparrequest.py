@@ -126,7 +126,7 @@ class AddeparRequest(object):
 
         param = AddeparRequest.dicturl({"portfolio_id": portfolio_id, "portfolio_type": portfolio_type.value,
                                  "output_type": OutputType.CSV.value, "start_date": start_date.strftime("%Y-%m-%d"),
-                                 "end_date": end_date.strftime("%Y-%m-%d")})
+                                 "end_date": end_date.strftime("%Y-%m-%d"), "addepar-firm": self.id})
 
         request = "/v1/transactions/views/{view}/results?{param}".format(view=view_id, param=param)
 
