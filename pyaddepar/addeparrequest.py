@@ -61,8 +61,7 @@ class AddeparRequest(object):
 
     @property
     def headers(self):
-        return {"Accept": "*/*"}
-        #return {"content-type": "application/vnd.api+json"} , "Addepar-Firm": self.id}
+        return {"Accept": "*/*", "Addepar-Firm": self.id, "content-type": "application/vnd.api+json"}
 
     @staticmethod
     def dicturl(d):
@@ -129,9 +128,7 @@ class AddeparRequest(object):
                                  "output_type": OutputType.CSV.value, "start_date": start_date.strftime("%Y-%m-%d"),
                                  "end_date": end_date.strftime("%Y-%m-%d"), "addepar_firm": self.id})
 
-        print(param)
         request = "/v1/transactions/views/{view}/results?{param}".format(view=view_id, param=param)
-        print(request)
 
         self.logger.debug("Request: {request}".format(request=request))
         return pd.read_csv(io.BytesIO(self.get(request=request).content))
