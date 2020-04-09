@@ -1,5 +1,5 @@
 # Set the base image to beakerx
-FROM continuumio/miniconda3 as builder
+FROM continuumio/miniconda3:4.8.2 as builder
 
 # File Author / Maintainer
 MAINTAINER Thomas Schmelzer "thomas.schmelzer@lobnek.com"
