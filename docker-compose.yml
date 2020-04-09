@@ -11,5 +11,5 @@ services:
     #AKEY=2c...
     #ASECRET=hh...
     #COMPANY=xyz
-    env_file:
-      - .config
+    #env_file:
+    #  - .config

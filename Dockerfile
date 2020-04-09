@@ -8,20 +8,17 @@ MAINTAINER Thomas Schmelzer "thomas.schmelzer@lobnek.com"
 COPY . /tmp/addepar
 
 # install the package
-RUN conda install -y -c conda-forge pandas=1.0.1 flask=1.1.1 && \
+RUN conda install -y -c conda-forge pandas=0.25.3 flask=1.1.1 && \
     conda clean -y --all && \
     pip install --no-cache-dir /tmp/addepar && \
     rm -r /tmp/addepar
 
 
-
 ########################################################################################################################
 FROM builder as test
 
-#WORKDIR ${WORK}
-
-#COPY --chown=beakerx:beakerx test ${WORK}/test
 COPY ./test  /addepar/test
+
 # this is used to mock http for testing
 RUN pip install httpretty pytest pytest-cov pytest-html sphinx requests-mock
 CMD py.test --cov=pyaddepar  --cov-report html:artifacts/html-coverage --cov-report term --html=artifacts/html-report/report.html /addepar/test

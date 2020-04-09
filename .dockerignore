@@ -2,15 +2,10 @@
 
 # Ignore Everything
 **
-
-!sphinx.sh
-
-!work
 !test
 !pyaddepar
 !setup.py
 !README.md
-
 
 **/__pycache__
 **/*.pyc
