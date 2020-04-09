@@ -2,7 +2,7 @@
 [![Build Status](https://travis-ci.org/lobnek/pyaddepar.svg?branch=master)](https://travis-ci.org/lobnek/pyaddepar)
 
 Some utility code for interacting with addepar. For more information on addepar please check out
-https://www.amberdata.com/.
+https://addepar.com/.
 
 ## Installing pyaddepar
 Install with pip
