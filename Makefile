@@ -4,7 +4,7 @@ PROJECT_VERSION := $(shell python setup.py --version)
 SHELL := /bin/bash
 PACKAGE := pyaddepar
 
-.PHONY: help test teamcity doc tag clean pypi
+.PHONY: help test doc tag clean
 
 .DEFAULT: help
 
@@ -26,8 +26,6 @@ test:
 	docker-compose -f docker-compose.test.yml build sut
 	docker-compose -f docker-compose.test.yml run sut
 
-teamcity: test doc
-
 doc: test
 	docker-compose -f docker-compose.test.yml run sut sphinx-build /source artifacts/build
 
@@ -38,9 +36,3 @@ tag: test
 clean:
 	docker-compose -f docker-compose.yml down -v --rmi all --remove-orphans
 	docker-compose -f docker-compose.test.yml down -v --rmi all --remove-orphans
-
-pypi: tag
-	python setup.py sdist
-	twine check dist/*
-	twine upload dist/*
-
