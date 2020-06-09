@@ -8,6 +8,7 @@ build
 
 *.dot
 *.svg
+*.pyc
 sandbox
 
 dist
