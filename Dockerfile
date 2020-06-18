@@ -1,5 +1,4 @@
-# Set the base image to beakerx
-FROM continuumio/miniconda3 as builder
+FROM python:3.7.7-slim-stretch as builder
 
 # File Author / Maintainer
 MAINTAINER Thomas Schmelzer "thomas.schmelzer@lobnek.com"
@@ -8,20 +7,19 @@ MAINTAINER Thomas Schmelzer "thomas.schmelzer@lobnek.com"
 COPY . /tmp/addepar
 
 # install the package
-RUN conda install -y -c conda-forge pandas=1.0.1 flask=1.1.1 && \
-    conda clean -y --all && \
+RUN buildDeps='gcc g++' && \
+    apt-get update && apt-get install -y $buildDeps --no-install-recommends && \
+    pip install --no-cache-dir flask==1.1.1 && \
     pip install --no-cache-dir /tmp/addepar && \
-    rm -r /tmp/addepar
-
+    rm -r /tmp/addepar && \
+    apt-get purge -y --auto-remove $buildDeps
 
 
 ########################################################################################################################
 FROM builder as test
 
-#WORKDIR ${WORK}
-
-#COPY --chown=beakerx:beakerx test ${WORK}/test
 COPY ./test  /addepar/test
+
 # this is used to mock http for testing
 RUN pip install httpretty pytest pytest-cov pytest-html sphinx requests-mock
 CMD py.test --cov=pyaddepar  --cov-report html:artifacts/html-coverage --cov-report term --html=artifacts/html-report/report.html /addepar/test

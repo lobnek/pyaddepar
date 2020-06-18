@@ -1,18 +1,14 @@
-env
-auth.py
-pet.py
 .idea
 __pycache__
 
 html-coverage
 html-report
 
-aux.py
-alchemy
 build
 
 *.dot
 *.svg
+*.pyc
 sandbox
 
 dist
