@@ -21,5 +21,5 @@ FROM builder as test
 COPY ./test  /addepar/test
 
 # this is used to mock http for testing
-RUN pip install httpretty pytest pytest-cov pytest-html sphinx requests-mock
+RUN pip install httpretty pytest pytest-cov pytest-html sphinx
 CMD py.test --cov=pyaddepar  --cov-report html:artifacts/html-coverage --cov-report term --html=artifacts/html-report/report.html /addepar/test

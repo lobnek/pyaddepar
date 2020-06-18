@@ -2,7 +2,7 @@ import pytest
 from unittest.mock import patch
 
 import pandas as pd
-import pandas.util.testing as pdt
+import pandas.testing as pt
 from flask import Flask
 
 from pyaddepar.flask_addepar import addepar
@@ -47,7 +47,7 @@ def test_view_csv(addepar_request, requests_mock):
     x = addepar_request.view_csv(view_id=10, portfolio_id=20, portfolio_type=PortfolioType.ENTITY,
                            start_date=pd.Timestamp("12-Nov-1978"), end_date=pd.Timestamp("12-Nov-1978"))
 
-    pdt.assert_frame_equal(x, xxx.reset_index())
+    pt.assert_frame_equal(x, xxx.reset_index())
 
 
 def test_users(addepar_request,requests_mock):
