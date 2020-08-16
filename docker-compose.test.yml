@@ -9,3 +9,4 @@ services:
       - ./test:/addepar/test:ro
       - ./source:/source:ro
       - ./artifacts:/artifacts
+      -  /etc/localtime:/etc/localtime:ro

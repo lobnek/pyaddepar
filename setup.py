@@ -16,5 +16,5 @@ setup(
     author='Lobnek Wealth Management',
     url='https://github.com/lobnek/pyaddepar',
     author_email='thomas.schmelzer@lobnek.com',
-    description='Utility code for working with Addepar', install_requires=['requests>=2.22.0', 'pandas>=0.25.3']
+    description='Utility code for working with Addepar', install_requires=['requests>=2.22.0', 'pandas>=1.0.5', 'flask>=1.1.2']
 )
