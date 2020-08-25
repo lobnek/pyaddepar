@@ -13,4 +13,4 @@ jobs:
         uses: brpaz/hadolint-action@master
         with:
           dockerfile: "Dockerfile"
-          args: ["--ignore DL3013"]
+          args: "--ignore DL3013"
