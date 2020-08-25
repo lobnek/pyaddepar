@@ -19,7 +19,7 @@ help:
 	@echo "       Make a tag on Github."
 
 build:
-	docker-compose build addepar
+	docker-compose build --no-cache addepar
 
 test:
 	mkdir -p artifacts
