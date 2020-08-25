@@ -11,4 +11,4 @@ FROM builder as test
 
 COPY ./test  /addepar/test
 # this is used to mock http for testing
-RUN pip install --no-cache-dir -r /addepar/test/requriements.txt
+RUN pip install --no-cache-dir -r /addepar/test/requirements.txt
