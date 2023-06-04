@@ -1,61 +1,52 @@
-#!/usr/bin/env python3
 # -*- coding: utf-8 -*-
 from __future__ import annotations
 
-import os
-import sys
-
-# If extensions (or modules to document with autodoc) are in another directory,
-# add these directories to sys.path here. If the directory is relative to the
-# documentation root, use os.path.abspath to make it absolute, like shown here.
-
-
-# sys.path.insert(0, os.path.dirname(os.path.dirname(__file__)))
-
-# sys.path.insert(0, "/pylobnek/pylobnek")
-sys.path.insert(0, "/pyaddepar/")
-
-# -- General configuration ------------------------------------------------
-
-# Add any Sphinx extension module names here, as strings. They can be
-# extensions coming with Sphinx (named 'sphinx.ext.*') or your custom
-# ones.
-extensions = ["sphinx.ext.autodoc", "sphinx.ext.viewcode"]
-
-
-# The suffix(es) of source filenames.
-# You can specify multiple suffix as a list of string:
-# source_suffix = ['.rst', '.md']
-source_suffix = ".rst"
-
-# The master toctree document.
 master_doc = "index"
-
-# General information about the project.
 project = "pyaddepar"
-copyright = "2017, Lobnek Wealth Management"
-author = "Lobnek Wealth Management"
 
-# The version info for the project you're documenting, acts as replacement for
-# |version| and |release|, also used in various other places throughout the
-# built documents.
-#
-# The short X.Y version.
-version = "3.2"
-# The full version, including alpha/beta/rc tags.
-release = "3.2.0"
+source_suffix = {
+    ".rst": "restructuredtext",
+    ".md": "markdown",
+}
 
-
-# The name of the Pygments (syntax highlighting) style to use.
-pygments_style = "sphinx"
+extensions = [
+    "sphinx.ext.viewcode",
+    "sphinx.ext.mathjax",
+    "autoapi.extension",
+    "sphinx.ext.napoleon",
+    "recommonmark",
+]
 
 
-# -- Options for HTML output ----------------------------------------------
+source_dirs = "pyaddepar"
+autoapi_type = "python"
+autoapi_dirs = ["../../%s" % d for d in source_dirs.split()]
+autoapi_options = [
+    "members",
+    "undoc-members",
+    "show-inheritance",
+    "show-module-summary",
+    "special-members",
+    "imported-members",
+]
 
+napoleon_google_docstring = True
+napoleon_numpy_docstring = True
+
+# HTML -----------------------------------------------------------------
+html_favicon = "_static/logo.jpeg"
+html_logo = "_static/logo.jpeg"
+html_title = "pyaddepar Documentation"
+html_show_sourcelink = True
+html_css_files = [
+    "custom.css",
+]
 # The theme to use for HTML and HTML Help pages.  See the documentation for
 # a list of builtin themes.
-html_theme = "alabaster"
-
-
-# Output file base name for HTML help builder.
-htmlhelp_basename = "pyaddepar"
+#
+# html_theme = 'alabaster'
+html_theme = "sphinx_rtd_theme"
+# Add any paths that contain custom static files (such as style sheets) here,
+# relative to this directory. They are copied after the builtin static files,
+# so a file named "default.css" will overwrite the builtin "default.css".
+html_static_path = ["_static"]
