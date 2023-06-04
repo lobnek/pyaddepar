@@ -34,8 +34,8 @@ napoleon_google_docstring = True
 napoleon_numpy_docstring = True
 
 # HTML -----------------------------------------------------------------
-html_favicon = "_static/logo.jpeg"
-html_logo = "_static/logo.jpeg"
+html_favicon = "_static/logo.png"
+html_logo = "_static/logo.png"
 html_title = "pyaddepar Documentation"
 html_show_sourcelink = True
 html_css_files = [
