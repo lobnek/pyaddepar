@@ -1,0 +1,223 @@
+:py:mod:`pyaddepar.addeparrequest`
+==================================
+
+.. py:module:: pyaddepar.addeparrequest
+
+
+Module Contents
+---------------
+
+Classes
+~~~~~~~
+
+.. autoapisummary::
+
+   pyaddepar.addeparrequest.OutputType
+   pyaddepar.addeparrequest.PortfolioType
+   pyaddepar.addeparrequest.AttrDict
+   pyaddepar.addeparrequest.AddeparRequest
+
+
+
+
+.. py:class:: OutputType(*args, **kwds)
+
+   Bases: :py:obj:`enum.Enum`
+
+   Create a collection of name/value pairs.
+
+   Example enumeration:
+
+   >>> class Color(Enum):
+   ...     RED = 1
+   ...     BLUE = 2
+   ...     GREEN = 3
+
+   Access them by:
+
+   - attribute access::
+
+   >>> Color.RED
+   <Color.RED: 1>
+
+   - value lookup:
+
+   >>> Color(1)
+   <Color.RED: 1>
+
+   - name lookup:
+
+   >>> Color['RED']
+   <Color.RED: 1>
+
+   Enumerations can be iterated over, and know how many members they have:
+
+   >>> len(Color)
+   3
+
+   >>> list(Color)
+   [<Color.RED: 1>, <Color.BLUE: 2>, <Color.GREEN: 3>]
+
+   Methods can be added to enumerations, and members can have their own
+   attributes -- see the documentation for details.
+
+   .. py:attribute:: CSV
+      :annotation: = csv
+
+      
+
+   .. py:attribute:: JSON
+      :annotation: = json
+
+      
+
+   .. py:attribute:: TSV
+      :annotation: = tsv
+
+      
+
+   .. py:attribute:: XLSX
+      :annotation: = xlsx
+
+      
+
+
+.. py:class:: PortfolioType(*args, **kwds)
+
+   Bases: :py:obj:`enum.Enum`
+
+   Create a collection of name/value pairs.
+
+   Example enumeration:
+
+   >>> class Color(Enum):
+   ...     RED = 1
+   ...     BLUE = 2
+   ...     GREEN = 3
+
+   Access them by:
+
+   - attribute access::
+
+   >>> Color.RED
+   <Color.RED: 1>
+
+   - value lookup:
+
+   >>> Color(1)
+   <Color.RED: 1>
+
+   - name lookup:
+
+   >>> Color['RED']
+   <Color.RED: 1>
+
+   Enumerations can be iterated over, and know how many members they have:
+
+   >>> len(Color)
+   3
+
+   >>> list(Color)
+   [<Color.RED: 1>, <Color.BLUE: 2>, <Color.GREEN: 3>]
+
+   Methods can be added to enumerations, and members can have their own
+   attributes -- see the documentation for details.
+
+   .. py:attribute:: GROUP
+      :annotation: = group
+
+      
+
+   .. py:attribute:: FIRM
+      :annotation: = firm
+
+      
+
+   .. py:attribute:: ENTITY
+      :annotation: = entity
+
+      
+
+
+.. py:class:: AttrDict(*args, **kwargs)
+
+   Bases: :py:obj:`dict`
+
+   dict() -> new empty dictionary
+   dict(mapping) -> new dictionary initialized from a mapping object's
+       (key, value) pairs
+   dict(iterable) -> new dictionary initialized as if via:
+       d = {}
+       for k, v in iterable:
+           d[k] = v
+   dict(**kwargs) -> new dictionary initialized with the name=value pairs
+       in the keyword argument list.  For example:  dict(one=1, two=2)
+
+
+.. py:class:: AddeparRequest(key=None, secret=None, id=None, company=None, logger=None)
+
+   Bases: :py:obj:`object`
+
+   .. py:method:: auth(self)
+      :property:
+
+
+   .. py:method:: headers(self)
+      :property:
+
+
+   .. py:method:: dicturl(d)
+      :staticmethod:
+
+
+   .. py:method:: get(self, request)
+
+
+   .. py:method:: post(self, data, request='entities')
+
+
+   .. py:method:: delete(self, entity)
+
+
+   .. py:method:: version(self)
+      :property:
+
+
+   .. py:method:: view_csv(self, view_id, portfolio_id, portfolio_type, start_date=pd.Timestamp('today'), end_date=pd.Timestamp('today'))
+
+
+   .. py:method:: transaction_csv(self, view_id, portfolio_id, portfolio_type, start_date=pd.Timestamp('today'), end_date=pd.Timestamp('today'))
+
+
+   .. py:method:: entities(self, link='/v1/entities', modeltype=None)
+
+
+   .. py:method:: users(self)
+      :property:
+
+
+   .. py:method:: groups(self)
+      :property:
+
+
+   .. py:method:: group(self, id)
+
+
+   .. py:method:: user(self, id)
+
+
+   .. py:method:: entity(self, id)
+
+
+   .. py:method:: members(self, id)
+
+
+   .. py:method:: persons(self)
+      :property:
+
+
+   .. py:method:: options(self)
+      :property:
+
+
+

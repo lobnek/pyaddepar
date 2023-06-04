@@ -1,0 +1,69 @@
+:py:mod:`pyaddepar.flask_addepar`
+=================================
+
+.. py:module:: pyaddepar.flask_addepar
+
+
+Module Contents
+---------------
+
+Classes
+~~~~~~~
+
+.. autoapisummary::
+
+   pyaddepar.flask_addepar.Addepar
+
+
+
+Functions
+~~~~~~~~~
+
+.. autoapisummary::
+
+   pyaddepar.flask_addepar.create_requests
+
+
+
+Attributes
+~~~~~~~~~~
+
+.. autoapisummary::
+
+   pyaddepar.flask_addepar.addepar
+
+
+.. py:exception:: InvalidSettingsError
+
+   Bases: :py:obj:`Exception`
+
+   Common base class for all non-exit exceptions.
+
+
+.. py:class:: Addepar(app=None, config=None)
+
+   Bases: :py:obj:`object`
+
+   Main class used for initialization of Flask-Addepar.
+
+   .. py:method:: init_app(self, app, config=None)
+
+
+   .. py:method:: request(self)
+      :property:
+
+      Return Addepar request associated with this Addepar instance.
+
+
+
+.. py:function:: create_requests(config)
+
+   Given Flask application's config dict, extract relevant config vars
+   out of it and establish MongoEngine connection(s) based on them.
+
+
+.. py:data:: addepar
+   
+
+   
+
