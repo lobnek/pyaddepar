@@ -1,0 +1,38 @@
+name: Release
+
+on:
+  push:
+    tags:
+    - '[0-9]+.[0-9]+.[0-9]'
+
+jobs:
+  release:
+    runs-on: ubuntu-latest
+
+    permissions:
+      # This permission is required for trusted publishing.
+      id-token: write
+      contents: read
+
+    # Steps represent matrix sequence of tasks that will be executed as part of the job
+    steps:
+      # Checks-out your repository under $GITHUB_WORKSPACE, so your job can access it
+      - uses: actions/checkout@v3
+
+      - uses: tschm/.github/actions/setup-environment@main
+        with:
+          os: ${{ runner.os }}
+          python-version: "3.10"
+
+      - name: Change version in pyproject.toml
+        run: |
+            poetry version ${{  github.ref_name }}
+            poetry build
+
+      - name: Mint token
+        id: mint
+        uses: tschm/token-mint-action@v1.0.2
+
+      - name: Publish the package with poetry
+        run: |
+          poetry publish -u __token__ -p '${{ steps.mint.outputs.api-token }}'
