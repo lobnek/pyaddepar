@@ -15,12 +15,7 @@ from pyaddepar.flask_addepar import addepar
 
 
 @pytest.fixture
-def addepar_request():
-    # there's no need to expose the entire client...
-    app = Flask(__name__)
-    # initialize the config of the app object
-    app.config.from_pyfile("config/settings.cfg")
-
+def addepar_request(app):
     # move into the app context and initialize the amberdata project
     with app.app_context():
         addepar.init_app(app)
