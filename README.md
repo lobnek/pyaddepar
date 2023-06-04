@@ -1,8 +1,5 @@
 # [pyaddepar](http://lobnek.github.io/pyaddepar/)
 
-[![Action Status](https://github.com/lobnek/pyaddepar/workflows/CI/badge.svg)](https://github.com/lobnek/pyaddepar/actions/)
-
-
 Some utility code for interacting with addepar. For more information on addepar please check out
 https://addepar.com/.
 
