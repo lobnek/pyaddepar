@@ -9,14 +9,6 @@ from pyaddepar.flask_addepar import addepar
 from pyaddepar.flask_addepar import InvalidSettingsError
 
 
-# @pytest.fixture()
-# def app(resource_dir):
-#    app = Flask(__name__)
-#    # initialize the config of the app object
-#    app.config.from_pyfile(resource_dir / "config" / "settings.cfg")
-#    return app
-
-
 def test_app_false(app):
     # move into the app context and initialize the amberdata project
     with pytest.raises(Exception):
