@@ -38,6 +38,6 @@ jobs:
           os: ${{ runner.os }}
           python-version: "3.11"
           sphinx-folder: "book/sphinx/"
-          source-folder: "cvx"
-          kernel: "covariance"
+          source-folder: "pyaddepar"
+          kernel: "pyaddepar"
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
