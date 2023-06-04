@@ -1,4 +1,9 @@
-from flask import Flask, current_app
+# -*- coding: utf-8 -*-
+from __future__ import annotations
+
+from flask import current_app
+from flask import Flask
+
 from pyaddepar.addeparrequest import AddeparRequest
 
 
@@ -16,19 +21,19 @@ class Addepar(object):
 
     def init_app(self, app, config=None):
         if not app or not isinstance(app, Flask):
-            raise Exception('Invalid Flask application instance')
+            raise Exception("Invalid Flask application instance")
 
         self.app = app
 
-        app.extensions = getattr(app, 'extensions', {})
+        app.extensions = getattr(app, "extensions", {})
 
-        if 'addepar' not in app.extensions:
-            app.extensions['addepar'] = {}
+        if "addepar" not in app.extensions:
+            app.extensions["addepar"] = {}
 
-        if self in app.extensions['addepar']:
+        if self in app.extensions["addepar"]:
             # Raise an exception if extension already initialized as
             # potentially new configuration would not be loaded.
-            raise Exception('Extension already initialized')
+            raise Exception("Extension already initialized")
 
         if not config:
             # If not passed a config then we read the connection settings
@@ -40,15 +45,15 @@ class Addepar(object):
 
         # Store objects in application instance so that multiple apps do not
         # end up accessing the same objects.
-        s = {'app': app, 'request': requests}
-        app.extensions['addepar'][self] = s
+        s = {"app": app, "request": requests}
+        app.extensions["addepar"][self] = s
 
     @property
     def request(self):
         """
         Return Addepar request associated with this Addepar instance.
         """
-        return current_app.extensions['addepar'][self]['request']
+        return current_app.extensions["addepar"][self]["request"]
 
 
 def create_requests(config):
@@ -58,7 +63,7 @@ def create_requests(config):
     """
     # Validate that the config is a dict
     if config is None or not isinstance(config, dict):
-        raise InvalidSettingsError('Invalid application configuration')
+        raise InvalidSettingsError("Invalid application configuration")
 
     # Return a single connection
     return AddeparRequest(**config["ADDEPAR"])

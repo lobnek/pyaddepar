@@ -11,7 +11,7 @@ Install with pip
 pip install pyaddepar
 ```
 
-    
+
 ## AddeparRequest
 AddeparRequest is a class hiding the management of your key(s), the pagination of requests and conversion of your results to standard pandas containers.
 
@@ -34,7 +34,7 @@ if __name__ == '__main__':
             print((expiry-today).days/365.0)
 
 ```
-    
+
 ## Settings.cfg
 We recommend to define a configuration file `(*.cfg)` containing
 
@@ -58,11 +58,10 @@ if __name__ == '__main__':
     app = Flask(__name__)
     app.config.from_pyfile('config/settings.cfg')
     addepar.init_app(app)
-    
+
     with app.app_context():
         for key, entity in addepar.request.entities():
             print(key)
             print(entity)
 
 ```
-

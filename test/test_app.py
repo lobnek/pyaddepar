@@ -1,13 +1,18 @@
+# -*- coding: utf-8 -*-
+from __future__ import annotations
+
 import pytest
 from flask import Flask
 
-from pyaddepar.flask_addepar import addepar, InvalidSettingsError, Addepar
+from pyaddepar.flask_addepar import Addepar
+from pyaddepar.flask_addepar import addepar
+from pyaddepar.flask_addepar import InvalidSettingsError
 
 
 def test_app_false():
     app = Flask(__name__)
     # initialize the config of the app object
-    app.config.from_pyfile('/addepar/test/config/settings.cfg')
+    app.config.from_pyfile("/addepar/test/config/settings.cfg")
 
     # move into the app context and initialize the amberdata project
     with pytest.raises(Exception):
@@ -18,7 +23,7 @@ def test_app_false():
 def test_init_addepar():
     app = Flask(__name__)
     # initialize the config of the app object
-    app.config.from_pyfile('/addepar/test/config/settings.cfg')
+    app.config.from_pyfile("/addepar/test/config/settings.cfg")
 
     a = Addepar(app=app)
     assert a
@@ -36,7 +41,7 @@ def test_incorrect_config():
 def test_initapp_double():
     app = Flask(__name__)
     # initialize the config of the app object
-    app.config.from_pyfile('config/settings.cfg')
+    app.config.from_pyfile("config/settings.cfg")
 
     a = Addepar(app=app)
 
