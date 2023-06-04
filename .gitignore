@@ -13,3 +13,5 @@ sandbox
 
 dist
 *.egg-info
+
+.coverage
