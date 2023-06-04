@@ -14,6 +14,8 @@ parse:
     - substitution
     - linkify
     - dollarmath
+  myst_substitutions:
+    book_url: http://www.lobnek.org/pyaddepar
 
 # Information about where the book exists on the web
 repository:
@@ -26,5 +28,4 @@ repository:
 html:
   use_issues_button: true
   use_repository_button: true
-  #use_edit_page_button: true
   extra_navbar: Powered by <a href="https://jupyterbook.org">Jupyter Book</a>  # Will be displayed underneath the left navbar.
