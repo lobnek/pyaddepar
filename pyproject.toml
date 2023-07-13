@@ -3,7 +3,7 @@ name = "pyaddepar"
 version = "0.0.0"
 description = "..."
 authors = ["Lobnek Wealth Management"]
-readme = "README.md"
+readme = "readme.md"
 repository = "https://github.com/lobnek/pyaddepar"
 packages = [{include = "pyaddepar"}]
 
