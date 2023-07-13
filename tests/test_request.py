@@ -6,7 +6,6 @@ from unittest.mock import patch
 import pandas as pd
 import pandas.testing as pt
 import pytest
-from flask import Flask
 
 from pyaddepar.addeparrequest import AddeparRequest
 from pyaddepar.addeparrequest import AttrDict

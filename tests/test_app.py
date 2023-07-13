@@ -25,4 +25,4 @@ def test_incorrect_config():
     app = Flask(__name__)
 
     with pytest.raises(InvalidSettingsError):
-        a = addepar.init_app(app=app, config=[5.0])
+        addepar.init_app(app=app, config=[5.0])
