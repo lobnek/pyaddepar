@@ -124,7 +124,7 @@ def test_groups(addepar_request):
         mock.assert_called_once_with(link="/v1/groups")
 
 
-def test_users(addepar_request):
+def test_users_again(addepar_request):
     with patch.object(AddeparRequest, "entities") as mock:
         addepar_request.users
         mock.assert_called_once_with(link="/v1/users")
