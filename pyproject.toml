@@ -19,8 +19,6 @@ pytest-cov = "*"
 httpretty = "*"
 requests-mock = "*"
 ruff = "0.0.277"
-pre-commit = "*"
-black = "23.3.0"
 
 [build-system]
 requires = ["poetry>=1.0.2"]
