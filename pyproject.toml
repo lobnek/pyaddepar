@@ -18,7 +18,7 @@ pytest = "7.4.0"
 pytest-cov = "*"
 httpretty = "*"
 requests-mock = "*"
-ruff = "0.0.277"
+ruff = "0.0.284"
 
 [build-system]
 requires = ["poetry>=1.0.2"]
