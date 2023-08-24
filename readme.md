@@ -1,4 +1,4 @@
-# [pyaddepar](http://lobnek.github.io/pyaddepar/)
+# [pyaddepar](http://lobnek.github.io/pyaddepar/book)
 
 Some utility code for interacting with addepar. For more information on addepar please check out
 https://addepar.com/.
