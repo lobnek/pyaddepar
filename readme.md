@@ -1,19 +1,23 @@
 # [pyaddepar](http://lobnek.github.io/pyaddepar/book)
 
-Some utility code for interacting with addepar. For more information on addepar please check out
-https://addepar.com/.
+Some utility code for interacting with addepar.
+For more information on addepar please check out
+<https://addepar.com/>.
 
 ## Installing pyaddepar
+
 Install with pip
-```
+
+```bash
 pip install pyaddepar
 ```
 
-
 ## AddeparRequest
-AddeparRequest is a class hiding the management of your key(s), the pagination of requests and conversion of your results to standard pandas containers.
 
-```
+AddeparRequest is a class hiding the management of your key(s),
+the pagination of requests and conversion of your results to standard pandas containers.
+
+```python
 import pandas as pd
 from pyaddepar.addeparrequest import AddeparRequest
 
@@ -34,6 +38,7 @@ if __name__ == '__main__':
 ```
 
 ## Settings.cfg
+
 We recommend to define a configuration file `(*.cfg)` containing
 
 ADDEPAR = {"key":"A",
@@ -43,11 +48,15 @@ ADDEPAR = {"key":"A",
           }
 
 ## Flask-Addepar
-A Flask extension that provides integration with Addepar. In particular this flask extension provides
-management of the your AddeparRequests. You can use configuration files such as settings.cfg to follow standard flask practices.
+
+A Flask extension that provides integration with Addepar.
+In particular this flask extension provides
+management of your AddeparRequests.
+You can use configuration files such as settings.cfg to
+follow standard flask practices.
 The configuration is easy, just fetch the extension:
 
-```
+```python
 from flask import Flask
 
 from pyaddepar.flask_addepar import addepar
@@ -61,5 +70,4 @@ if __name__ == '__main__':
         for key, entity in addepar.request.entities():
             print(key)
             print(entity)
-
 ```
