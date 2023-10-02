@@ -35,6 +35,7 @@ Attributes
 
 .. py:exception:: InvalidSettingsError
 
+
    Bases: :py:obj:`Exception`
 
    Common base class for all non-exit exceptions.
@@ -42,17 +43,16 @@ Attributes
 
 .. py:class:: Addepar(app=None, config=None)
 
+
    Bases: :py:obj:`object`
 
    Main class used for initialization of Flask-Addepar.
 
-   .. py:method:: init_app(self, app, config=None)
-
-
-   .. py:method:: request(self)
-      :property:
+   .. py:property:: request
 
       Return Addepar request associated with this Addepar instance.
+
+   .. py:method:: init_app(app, config=None)
 
 
 
@@ -63,7 +63,6 @@ Attributes
 
 
 .. py:data:: addepar
-   
 
    
 
