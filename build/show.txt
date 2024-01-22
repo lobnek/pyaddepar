@@ -9,14 +9,14 @@ flask 3.0.1 A simple framework for building complex web applications.
 │   └── markupsafe >=2.0 
 └── werkzeug >=3.0.0
     └── markupsafe >=2.1.1 
-pandas 2.1.4 Powerful data structures for data analysis, time series, and statistics
+pandas 2.2.0 Powerful data structures for data analysis, time series, and statistics
 ├── numpy >=1.22.4,<2
 ├── numpy >=1.23.2,<2
 ├── numpy >=1.26.0,<2
 ├── python-dateutil >=2.8.2
 │   └── six >=1.5 
 ├── pytz >=2020.1
-└── tzdata >=2022.1
+└── tzdata >=2022.7
 requests 2.31.0 Python HTTP for Humans.
 ├── certifi >=2017.4.17
 ├── charset-normalizer >=2,<4
