@@ -1,16 +1,16 @@
-:py:mod:`pyaddepar`
-===================
+pyaddepar
+=========
 
 .. py:module:: pyaddepar
 
 
 Submodules
 ----------
+
 .. toctree::
-   :titlesonly:
    :maxdepth: 1
 
-   addeparrequest/index.rst
-   flask_addepar/index.rst
+   /autoapi/pyaddepar/addeparrequest/index
+   /autoapi/pyaddepar/flask_addepar/index
 
 

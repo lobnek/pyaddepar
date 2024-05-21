@@ -1,14 +1,11 @@
-:py:mod:`pyaddepar.addeparrequest`
-==================================
+pyaddepar.addeparrequest
+========================
 
 .. py:module:: pyaddepar.addeparrequest
 
 
-Module Contents
----------------
-
 Classes
-~~~~~~~
+-------
 
 .. autoapisummary::
 
@@ -18,67 +15,68 @@ Classes
    pyaddepar.addeparrequest.AddeparRequest
 
 
-
+Module Contents
+---------------
 
 .. py:class:: OutputType
 
-
    Bases: :py:obj:`enum.Enum`
+
 
    Generic enumeration.
 
    Derive from this class to define new enumerations.
+
 
    .. py:attribute:: CSV
       :value: 'csv'
 
-      
+
 
    .. py:attribute:: JSON
       :value: 'json'
 
-      
+
 
    .. py:attribute:: TSV
       :value: 'tsv'
 
-      
+
 
    .. py:attribute:: XLSX
       :value: 'xlsx'
 
-      
 
 
 .. py:class:: PortfolioType
 
-
    Bases: :py:obj:`enum.Enum`
+
 
    Generic enumeration.
 
    Derive from this class to define new enumerations.
 
+
    .. py:attribute:: GROUP
       :value: 'group'
 
-      
+
 
    .. py:attribute:: FIRM
       :value: 'firm'
 
-      
+
 
    .. py:attribute:: ENTITY
       :value: 'entity'
 
-      
 
 
 .. py:class:: AttrDict(*args, **kwargs)
 
-
    Bases: :py:obj:`dict`
+
 
    dict() -> new empty dictionary
    dict(mapping) -> new dictionary initialized from a mapping object's
@@ -93,8 +91,8 @@ Classes
 
 .. py:class:: AddeparRequest(key=None, secret=None, id=None, company=None, logger=None)
 
-
    Bases: :py:obj:`object`
+
 
    .. py:property:: auth
 
@@ -102,23 +100,9 @@ Classes
    .. py:property:: headers
 
 
-   .. py:property:: version
-
-
-   .. py:property:: users
-
-
-   .. py:property:: groups
-
-
-   .. py:property:: persons
-
-
-   .. py:property:: options
-
-
    .. py:method:: dicturl(d)
       :staticmethod:
+
 
 
    .. py:method:: get(request)
@@ -130,6 +114,9 @@ Classes
    .. py:method:: delete(entity)
 
 
+   .. py:property:: version
+
+
    .. py:method:: view_csv(view_id, portfolio_id, portfolio_type, start_date=pd.Timestamp('today'), end_date=pd.Timestamp('today'))
 
 
@@ -137,6 +124,12 @@ Classes
 
 
    .. py:method:: entities(link='/v1/entities', modeltype=None)
+
+
+   .. py:property:: users
+
+
+   .. py:property:: groups
 
 
    .. py:method:: group(id)
@@ -150,5 +143,10 @@ Classes
 
    .. py:method:: members(id)
 
+
+   .. py:property:: persons
+
+
+   .. py:property:: options
 
 
