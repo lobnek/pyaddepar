@@ -95,10 +95,10 @@
 <table class="autosummary longtable docutils align-default">
 <tbody>
 <tr class="row-odd"><td><p><a class="reference internal" href="#pyaddepar.addeparrequest.OutputType" title="pyaddepar.addeparrequest.OutputType"><code class="xref py py-obj docutils literal notranslate"><span class="pre">OutputType</span></code></a></p></td>
-<td><p>Generic enumeration.</p></td>
+<td><p>Create a collection of name/value pairs.</p></td>
 </tr>
 <tr class="row-even"><td><p><a class="reference internal" href="#pyaddepar.addeparrequest.PortfolioType" title="pyaddepar.addeparrequest.PortfolioType"><code class="xref py py-obj docutils literal notranslate"><span class="pre">PortfolioType</span></code></a></p></td>
-<td><p>Generic enumeration.</p></td>
+<td><p>Create a collection of name/value pairs.</p></td>
 </tr>
 <tr class="row-odd"><td><p><a class="reference internal" href="#pyaddepar.addeparrequest.AttrDict" title="pyaddepar.addeparrequest.AttrDict"><code class="xref py py-obj docutils literal notranslate"><span class="pre">AttrDict</span></code></a></p></td>
 <td><p>dict() -&gt; new empty dictionary</p></td>
@@ -113,10 +113,49 @@
 <h2>Module Contents<a class="headerlink" href="#module-contents" title="Link to this heading"></a></h2>
 <dl class="py class">
 <dt class="sig sig-object py" id="pyaddepar.addeparrequest.OutputType">
-<em class="property"><span class="pre">class</span><span class="w"> </span></em><span class="sig-prename descclassname"><span class="pre">pyaddepar.addeparrequest.</span></span><span class="sig-name descname"><span class="pre">OutputType</span></span><a class="reference internal" href="../../../_modules/pyaddepar/addeparrequest.html#OutputType"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#pyaddepar.addeparrequest.OutputType" title="Link to this definition"></a></dt>
+<em class="property"><span class="pre">class</span><span class="w"> </span></em><span class="sig-prename descclassname"><span class="pre">pyaddepar.addeparrequest.</span></span><span class="sig-name descname"><span class="pre">OutputType</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="o"><span class="pre">*</span></span><span class="n"><span class="pre">args</span></span></em>, <em class="sig-param"><span class="o"><span class="pre">**</span></span><span class="n"><span class="pre">kwds</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="../../../_modules/pyaddepar/addeparrequest.html#OutputType"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#pyaddepar.addeparrequest.OutputType" title="Link to this definition"></a></dt>
 <dd><p>Bases: <code class="xref py py-obj docutils literal notranslate"><span class="pre">enum.Enum</span></code></p>
-<p>Generic enumeration.</p>
-<p>Derive from this class to define new enumerations.</p>
+<p>Create a collection of name/value pairs.</p>
+<p>Example enumeration:</p>
+<div class="doctest highlight-default notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="k">class</span> <span class="nc">Color</span><span class="p">(</span><span class="n">Enum</span><span class="p">):</span>
+<span class="gp">... </span>    <span class="n">RED</span> <span class="o">=</span> <span class="mi">1</span>
+<span class="gp">... </span>    <span class="n">BLUE</span> <span class="o">=</span> <span class="mi">2</span>
+<span class="gp">... </span>    <span class="n">GREEN</span> <span class="o">=</span> <span class="mi">3</span>
+</pre></div>
+</div>
+<p>Access them by:</p>
+<ul class="simple">
+<li><p>attribute access:</p></li>
+</ul>
+<div class="doctest highlight-default notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="n">Color</span><span class="o">.</span><span class="n">RED</span>
+<span class="go">&lt;Color.RED: 1&gt;</span>
+</pre></div>
+</div>
+<ul class="simple">
+<li><p>value lookup:</p></li>
+</ul>
+<div class="doctest highlight-default notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="n">Color</span><span class="p">(</span><span class="mi">1</span><span class="p">)</span>
+<span class="go">&lt;Color.RED: 1&gt;</span>
+</pre></div>
+</div>
+<ul class="simple">
+<li><p>name lookup:</p></li>
+</ul>
+<div class="doctest highlight-default notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="n">Color</span><span class="p">[</span><span class="s1">&#39;RED&#39;</span><span class="p">]</span>
+<span class="go">&lt;Color.RED: 1&gt;</span>
+</pre></div>
+</div>
+<p>Enumerations can be iterated over, and know how many members they have:</p>
+<div class="doctest highlight-default notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="nb">len</span><span class="p">(</span><span class="n">Color</span><span class="p">)</span>
+<span class="go">3</span>
+</pre></div>
+</div>
+<div class="doctest highlight-default notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="nb">list</span><span class="p">(</span><span class="n">Color</span><span class="p">)</span>
+<span class="go">[&lt;Color.RED: 1&gt;, &lt;Color.BLUE: 2&gt;, &lt;Color.GREEN: 3&gt;]</span>
+</pre></div>
+</div>
+<p>Methods can be added to enumerations, and members can have their own
+attributes – see the documentation for details.</p>
 <dl class="py attribute">
 <dt class="sig sig-object py" id="pyaddepar.addeparrequest.OutputType.CSV">
 <span class="sig-name descname"><span class="pre">CSV</span></span><em class="property"><span class="w"> </span><span class="p"><span class="pre">=</span></span><span class="w"> </span><span class="pre">'csv'</span></em><a class="reference internal" href="../../../_modules/pyaddepar/addeparrequest.html#OutputType.CSV"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#pyaddepar.addeparrequest.OutputType.CSV" title="Link to this definition"></a></dt>
@@ -141,10 +180,49 @@
 
 <dl class="py class">
 <dt class="sig sig-object py" id="pyaddepar.addeparrequest.PortfolioType">
-<em class="property"><span class="pre">class</span><span class="w"> </span></em><span class="sig-prename descclassname"><span class="pre">pyaddepar.addeparrequest.</span></span><span class="sig-name descname"><span class="pre">PortfolioType</span></span><a class="reference internal" href="../../../_modules/pyaddepar/addeparrequest.html#PortfolioType"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#pyaddepar.addeparrequest.PortfolioType" title="Link to this definition"></a></dt>
+<em class="property"><span class="pre">class</span><span class="w"> </span></em><span class="sig-prename descclassname"><span class="pre">pyaddepar.addeparrequest.</span></span><span class="sig-name descname"><span class="pre">PortfolioType</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="o"><span class="pre">*</span></span><span class="n"><span class="pre">args</span></span></em>, <em class="sig-param"><span class="o"><span class="pre">**</span></span><span class="n"><span class="pre">kwds</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="../../../_modules/pyaddepar/addeparrequest.html#PortfolioType"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#pyaddepar.addeparrequest.PortfolioType" title="Link to this definition"></a></dt>
 <dd><p>Bases: <code class="xref py py-obj docutils literal notranslate"><span class="pre">enum.Enum</span></code></p>
-<p>Generic enumeration.</p>
-<p>Derive from this class to define new enumerations.</p>
+<p>Create a collection of name/value pairs.</p>
+<p>Example enumeration:</p>
+<div class="doctest highlight-default notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="k">class</span> <span class="nc">Color</span><span class="p">(</span><span class="n">Enum</span><span class="p">):</span>
+<span class="gp">... </span>    <span class="n">RED</span> <span class="o">=</span> <span class="mi">1</span>
+<span class="gp">... </span>    <span class="n">BLUE</span> <span class="o">=</span> <span class="mi">2</span>
+<span class="gp">... </span>    <span class="n">GREEN</span> <span class="o">=</span> <span class="mi">3</span>
+</pre></div>
+</div>
+<p>Access them by:</p>
+<ul class="simple">
+<li><p>attribute access:</p></li>
+</ul>
+<div class="doctest highlight-default notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="n">Color</span><span class="o">.</span><span class="n">RED</span>
+<span class="go">&lt;Color.RED: 1&gt;</span>
+</pre></div>
+</div>
+<ul class="simple">
+<li><p>value lookup:</p></li>
+</ul>
+<div class="doctest highlight-default notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="n">Color</span><span class="p">(</span><span class="mi">1</span><span class="p">)</span>
+<span class="go">&lt;Color.RED: 1&gt;</span>
+</pre></div>
+</div>
+<ul class="simple">
+<li><p>name lookup:</p></li>
+</ul>
+<div class="doctest highlight-default notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="n">Color</span><span class="p">[</span><span class="s1">&#39;RED&#39;</span><span class="p">]</span>
+<span class="go">&lt;Color.RED: 1&gt;</span>
+</pre></div>
+</div>
+<p>Enumerations can be iterated over, and know how many members they have:</p>
+<div class="doctest highlight-default notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="nb">len</span><span class="p">(</span><span class="n">Color</span><span class="p">)</span>
+<span class="go">3</span>
+</pre></div>
+</div>
+<div class="doctest highlight-default notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="nb">list</span><span class="p">(</span><span class="n">Color</span><span class="p">)</span>
+<span class="go">[&lt;Color.RED: 1&gt;, &lt;Color.BLUE: 2&gt;, &lt;Color.GREEN: 3&gt;]</span>
+</pre></div>
+</div>
+<p>Methods can be added to enumerations, and members can have their own
+attributes – see the documentation for details.</p>
 <dl class="py attribute">
 <dt class="sig sig-object py" id="pyaddepar.addeparrequest.PortfolioType.GROUP">
 <span class="sig-name descname"><span class="pre">GROUP</span></span><em class="property"><span class="w"> </span><span class="p"><span class="pre">=</span></span><span class="w"> </span><span class="pre">'group'</span></em><a class="reference internal" href="../../../_modules/pyaddepar/addeparrequest.html#PortfolioType.GROUP"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#pyaddepar.addeparrequest.PortfolioType.GROUP" title="Link to this definition"></a></dt>
