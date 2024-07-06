@@ -25,7 +25,6 @@ Classes
 
 .. autoapisummary::
 
-   pyaddepar.flask_addepar.AddeparRequest
    pyaddepar.flask_addepar.Addepar
 
 
@@ -39,67 +38,6 @@ Functions
 
 Module Contents
 ---------------
-
-.. py:class:: AddeparRequest(key=None, secret=None, id=None, company=None, logger=None)
-
-   Bases: :py:obj:`object`
-
-
-   .. py:property:: auth
-
-
-   .. py:property:: headers
-
-
-   .. py:method:: dicturl(d)
-      :staticmethod:
-
-
-
-   .. py:method:: get(request)
-
-
-   .. py:method:: post(data, request='entities')
-
-
-   .. py:method:: delete(entity)
-
-
-   .. py:property:: version
-
-
-   .. py:method:: view_csv(view_id, portfolio_id, portfolio_type, start_date=pd.Timestamp('today'), end_date=pd.Timestamp('today'))
-
-
-   .. py:method:: transaction_csv(view_id, portfolio_id, portfolio_type, start_date=pd.Timestamp('today'), end_date=pd.Timestamp('today'))
-
-
-   .. py:method:: entities(link='/v1/entities', modeltype=None)
-
-
-   .. py:property:: users
-
-
-   .. py:property:: groups
-
-
-   .. py:method:: group(id)
-
-
-   .. py:method:: user(id)
-
-
-   .. py:method:: entity(id)
-
-
-   .. py:method:: members(id)
-
-
-   .. py:property:: persons
-
-
-   .. py:property:: options
-
 
 .. py:exception:: InvalidSettingsError
 

@@ -113,10 +113,7 @@
 <h2>Classes<a class="headerlink" href="#classes" title="Link to this heading"></a></h2>
 <table class="autosummary longtable docutils align-default">
 <tbody>
-<tr class="row-odd"><td><p><a class="reference internal" href="#pyaddepar.flask_addepar.AddeparRequest" title="pyaddepar.flask_addepar.AddeparRequest"><code class="xref py py-obj docutils literal notranslate"><span class="pre">AddeparRequest</span></code></a></p></td>
-<td><p></p></td>
-</tr>
-<tr class="row-even"><td><p><a class="reference internal" href="#pyaddepar.flask_addepar.Addepar" title="pyaddepar.flask_addepar.Addepar"><code class="xref py py-obj docutils literal notranslate"><span class="pre">Addepar</span></code></a></p></td>
+<tr class="row-odd"><td><p><a class="reference internal" href="#pyaddepar.flask_addepar.Addepar" title="pyaddepar.flask_addepar.Addepar"><code class="xref py py-obj docutils literal notranslate"><span class="pre">Addepar</span></code></a></p></td>
 <td><p>Main class used for initialization of Flask-Addepar.</p></td>
 </tr>
 </tbody>
@@ -134,102 +131,6 @@
 </section>
 <section id="module-contents">
 <h2>Module Contents<a class="headerlink" href="#module-contents" title="Link to this heading"></a></h2>
-<dl class="py class">
-<dt class="sig sig-object py" id="pyaddepar.flask_addepar.AddeparRequest">
-<em class="property"><span class="pre">class</span><span class="w"> </span></em><span class="sig-prename descclassname"><span class="pre">pyaddepar.flask_addepar.</span></span><span class="sig-name descname"><span class="pre">AddeparRequest</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">key</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">secret</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">id</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">company</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">logger</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="../../../_modules/pyaddepar/addeparrequest.html#AddeparRequest"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#pyaddepar.flask_addepar.AddeparRequest" title="Link to this definition"></a></dt>
-<dd><p>Bases: <code class="xref py py-obj docutils literal notranslate"><span class="pre">object</span></code></p>
-<dl class="py property">
-<dt class="sig sig-object py" id="pyaddepar.flask_addepar.AddeparRequest.auth">
-<em class="property"><span class="pre">property</span><span class="w"> </span></em><span class="sig-name descname"><span class="pre">auth</span></span><a class="headerlink" href="#pyaddepar.flask_addepar.AddeparRequest.auth" title="Link to this definition"></a></dt>
-<dd></dd></dl>
-
-<dl class="py property">
-<dt class="sig sig-object py" id="pyaddepar.flask_addepar.AddeparRequest.headers">
-<em class="property"><span class="pre">property</span><span class="w"> </span></em><span class="sig-name descname"><span class="pre">headers</span></span><a class="headerlink" href="#pyaddepar.flask_addepar.AddeparRequest.headers" title="Link to this definition"></a></dt>
-<dd></dd></dl>
-
-<dl class="py method">
-<dt class="sig sig-object py" id="pyaddepar.flask_addepar.AddeparRequest.dicturl">
-<em class="property"><span class="pre">static</span><span class="w"> </span></em><span class="sig-name descname"><span class="pre">dicturl</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">d</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="../../../_modules/pyaddepar/addeparrequest.html#AddeparRequest.dicturl"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#pyaddepar.flask_addepar.AddeparRequest.dicturl" title="Link to this definition"></a></dt>
-<dd></dd></dl>
-
-<dl class="py method">
-<dt class="sig sig-object py" id="pyaddepar.flask_addepar.AddeparRequest.get">
-<span class="sig-name descname"><span class="pre">get</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">request</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="../../../_modules/pyaddepar/addeparrequest.html#AddeparRequest.get"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#pyaddepar.flask_addepar.AddeparRequest.get" title="Link to this definition"></a></dt>
-<dd></dd></dl>
-
-<dl class="py method">
-<dt class="sig sig-object py" id="pyaddepar.flask_addepar.AddeparRequest.post">
-<span class="sig-name descname"><span class="pre">post</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">data</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">request</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">'entities'</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="../../../_modules/pyaddepar/addeparrequest.html#AddeparRequest.post"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#pyaddepar.flask_addepar.AddeparRequest.post" title="Link to this definition"></a></dt>
-<dd></dd></dl>
-
-<dl class="py method">
-<dt class="sig sig-object py" id="pyaddepar.flask_addepar.AddeparRequest.delete">
-<span class="sig-name descname"><span class="pre">delete</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">entity</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="../../../_modules/pyaddepar/addeparrequest.html#AddeparRequest.delete"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#pyaddepar.flask_addepar.AddeparRequest.delete" title="Link to this definition"></a></dt>
-<dd></dd></dl>
-
-<dl class="py property">
-<dt class="sig sig-object py" id="pyaddepar.flask_addepar.AddeparRequest.version">
-<em class="property"><span class="pre">property</span><span class="w"> </span></em><span class="sig-name descname"><span class="pre">version</span></span><a class="headerlink" href="#pyaddepar.flask_addepar.AddeparRequest.version" title="Link to this definition"></a></dt>
-<dd></dd></dl>
-
-<dl class="py method">
-<dt class="sig sig-object py" id="pyaddepar.flask_addepar.AddeparRequest.view_csv">
-<span class="sig-name descname"><span class="pre">view_csv</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">view_id</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">portfolio_id</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">portfolio_type</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">start_date</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">pd.Timestamp('today')</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">end_date</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">pd.Timestamp('today')</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="../../../_modules/pyaddepar/addeparrequest.html#AddeparRequest.view_csv"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#pyaddepar.flask_addepar.AddeparRequest.view_csv" title="Link to this definition"></a></dt>
-<dd></dd></dl>
-
-<dl class="py method">
-<dt class="sig sig-object py" id="pyaddepar.flask_addepar.AddeparRequest.transaction_csv">
-<span class="sig-name descname"><span class="pre">transaction_csv</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">view_id</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">portfolio_id</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">portfolio_type</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">start_date</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">pd.Timestamp('today')</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">end_date</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">pd.Timestamp('today')</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="../../../_modules/pyaddepar/addeparrequest.html#AddeparRequest.transaction_csv"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#pyaddepar.flask_addepar.AddeparRequest.transaction_csv" title="Link to this definition"></a></dt>
-<dd></dd></dl>
-
-<dl class="py method">
-<dt class="sig sig-object py" id="pyaddepar.flask_addepar.AddeparRequest.entities">
-<span class="sig-name descname"><span class="pre">entities</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">link</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">'/v1/entities'</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">modeltype</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="../../../_modules/pyaddepar/addeparrequest.html#AddeparRequest.entities"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#pyaddepar.flask_addepar.AddeparRequest.entities" title="Link to this definition"></a></dt>
-<dd></dd></dl>
-
-<dl class="py property">
-<dt class="sig sig-object py" id="pyaddepar.flask_addepar.AddeparRequest.users">
-<em class="property"><span class="pre">property</span><span class="w"> </span></em><span class="sig-name descname"><span class="pre">users</span></span><a class="headerlink" href="#pyaddepar.flask_addepar.AddeparRequest.users" title="Link to this definition"></a></dt>
-<dd></dd></dl>
-
-<dl class="py property">
-<dt class="sig sig-object py" id="pyaddepar.flask_addepar.AddeparRequest.groups">
-<em class="property"><span class="pre">property</span><span class="w"> </span></em><span class="sig-name descname"><span class="pre">groups</span></span><a class="headerlink" href="#pyaddepar.flask_addepar.AddeparRequest.groups" title="Link to this definition"></a></dt>
-<dd></dd></dl>
-
-<dl class="py method">
-<dt class="sig sig-object py" id="pyaddepar.flask_addepar.AddeparRequest.group">
-<span class="sig-name descname"><span class="pre">group</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">id</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="../../../_modules/pyaddepar/addeparrequest.html#AddeparRequest.group"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#pyaddepar.flask_addepar.AddeparRequest.group" title="Link to this definition"></a></dt>
-<dd></dd></dl>
-
-<dl class="py method">
-<dt class="sig sig-object py" id="pyaddepar.flask_addepar.AddeparRequest.user">
-<span class="sig-name descname"><span class="pre">user</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">id</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="../../../_modules/pyaddepar/addeparrequest.html#AddeparRequest.user"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#pyaddepar.flask_addepar.AddeparRequest.user" title="Link to this definition"></a></dt>
-<dd></dd></dl>
-
-<dl class="py method">
-<dt class="sig sig-object py" id="pyaddepar.flask_addepar.AddeparRequest.entity">
-<span class="sig-name descname"><span class="pre">entity</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">id</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="../../../_modules/pyaddepar/addeparrequest.html#AddeparRequest.entity"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#pyaddepar.flask_addepar.AddeparRequest.entity" title="Link to this definition"></a></dt>
-<dd></dd></dl>
-
-<dl class="py method">
-<dt class="sig sig-object py" id="pyaddepar.flask_addepar.AddeparRequest.members">
-<span class="sig-name descname"><span class="pre">members</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">id</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="../../../_modules/pyaddepar/addeparrequest.html#AddeparRequest.members"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#pyaddepar.flask_addepar.AddeparRequest.members" title="Link to this definition"></a></dt>
-<dd></dd></dl>
-
-<dl class="py property">
-<dt class="sig sig-object py" id="pyaddepar.flask_addepar.AddeparRequest.persons">
-<em class="property"><span class="pre">property</span><span class="w"> </span></em><span class="sig-name descname"><span class="pre">persons</span></span><a class="headerlink" href="#pyaddepar.flask_addepar.AddeparRequest.persons" title="Link to this definition"></a></dt>
-<dd></dd></dl>
-
-<dl class="py property">
-<dt class="sig sig-object py" id="pyaddepar.flask_addepar.AddeparRequest.options">
-<em class="property"><span class="pre">property</span><span class="w"> </span></em><span class="sig-name descname"><span class="pre">options</span></span><a class="headerlink" href="#pyaddepar.flask_addepar.AddeparRequest.options" title="Link to this definition"></a></dt>
-<dd></dd></dl>
-
-</dd></dl>
-
 <dl class="py exception">
 <dt class="sig sig-object py" id="pyaddepar.flask_addepar.InvalidSettingsError">
 <em class="property"><span class="pre">exception</span><span class="w"> </span></em><span class="sig-prename descclassname"><span class="pre">pyaddepar.flask_addepar.</span></span><span class="sig-name descname"><span class="pre">InvalidSettingsError</span></span><a class="reference internal" href="../../../_modules/pyaddepar/flask_addepar.html#InvalidSettingsError"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#pyaddepar.flask_addepar.InvalidSettingsError" title="Link to this definition"></a></dt>

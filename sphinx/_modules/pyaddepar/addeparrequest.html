@@ -137,7 +137,7 @@
 
 
 <div class="viewcode-block" id="AddeparRequest">
-<a class="viewcode-back" href="../../autoapi/pyaddepar/flask_addepar/index.html#pyaddepar.addeparrequest.AddeparRequest">[docs]</a>
+<a class="viewcode-back" href="../../autoapi/pyaddepar/addeparrequest/index.html#pyaddepar.addeparrequest.AddeparRequest">[docs]</a>
 <span class="k">class</span> <span class="nc">AddeparRequest</span><span class="p">(</span><span class="nb">object</span><span class="p">):</span>
     <span class="k">def</span> <span class="fm">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">key</span><span class="o">=</span><span class="kc">None</span><span class="p">,</span> <span class="n">secret</span><span class="o">=</span><span class="kc">None</span><span class="p">,</span> <span class="nb">id</span><span class="o">=</span><span class="kc">None</span><span class="p">,</span> <span class="n">company</span><span class="o">=</span><span class="kc">None</span><span class="p">,</span> <span class="n">logger</span><span class="o">=</span><span class="kc">None</span><span class="p">):</span>
         <span class="bp">self</span><span class="o">.</span><span class="n">logger</span> <span class="o">=</span> <span class="n">logger</span> <span class="ow">or</span> <span class="n">logging</span><span class="o">.</span><span class="n">getLogger</span><span class="p">(</span><span class="vm">__name__</span><span class="p">)</span>
@@ -166,7 +166,7 @@
 
     <span class="nd">@staticmethod</span>
 <div class="viewcode-block" id="AddeparRequest.dicturl">
-<a class="viewcode-back" href="../../autoapi/pyaddepar/flask_addepar/index.html#pyaddepar.addeparrequest.AddeparRequest.dicturl">[docs]</a>
+<a class="viewcode-back" href="../../autoapi/pyaddepar/addeparrequest/index.html#pyaddepar.addeparrequest.AddeparRequest.dicturl">[docs]</a>
     <span class="k">def</span> <span class="nf">dicturl</span><span class="p">(</span><span class="n">d</span><span class="p">):</span>
         <span class="k">return</span> <span class="s2">&quot;&amp;&quot;</span><span class="o">.</span><span class="n">join</span><span class="p">(</span>
             <span class="p">[</span><span class="s2">&quot;</span><span class="si">{key}</span><span class="s2">=</span><span class="si">{value}</span><span class="s2">&quot;</span><span class="o">.</span><span class="n">format</span><span class="p">(</span><span class="n">key</span><span class="o">=</span><span class="n">key</span><span class="p">,</span> <span class="n">value</span><span class="o">=</span><span class="n">value</span><span class="p">)</span> <span class="k">for</span> <span class="n">key</span><span class="p">,</span> <span class="n">value</span> <span class="ow">in</span> <span class="n">d</span><span class="o">.</span><span class="n">items</span><span class="p">()]</span>
@@ -174,7 +174,7 @@
 
 
 <div class="viewcode-block" id="AddeparRequest.get">
-<a class="viewcode-back" href="../../autoapi/pyaddepar/flask_addepar/index.html#pyaddepar.addeparrequest.AddeparRequest.get">[docs]</a>
+<a class="viewcode-back" href="../../autoapi/pyaddepar/addeparrequest/index.html#pyaddepar.addeparrequest.AddeparRequest.get">[docs]</a>
     <span class="k">def</span> <span class="nf">get</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">request</span><span class="p">):</span>
         <span class="n">request</span> <span class="o">=</span> <span class="s2">&quot;https://</span><span class="si">{company}</span><span class="s2">.addepar.com/api</span><span class="si">{request}</span><span class="s2">&quot;</span><span class="o">.</span><span class="n">format</span><span class="p">(</span>
             <span class="n">request</span><span class="o">=</span><span class="n">request</span><span class="p">,</span> <span class="n">company</span><span class="o">=</span><span class="bp">self</span><span class="o">.</span><span class="n">company</span>
@@ -193,7 +193,7 @@
 
 
 <div class="viewcode-block" id="AddeparRequest.post">
-<a class="viewcode-back" href="../../autoapi/pyaddepar/flask_addepar/index.html#pyaddepar.addeparrequest.AddeparRequest.post">[docs]</a>
+<a class="viewcode-back" href="../../autoapi/pyaddepar/addeparrequest/index.html#pyaddepar.addeparrequest.AddeparRequest.post">[docs]</a>
     <span class="k">def</span> <span class="nf">post</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">data</span><span class="p">,</span> <span class="n">request</span><span class="o">=</span><span class="s2">&quot;entities&quot;</span><span class="p">):</span>
         <span class="n">r</span> <span class="o">=</span> <span class="s2">&quot;https://</span><span class="si">{company}</span><span class="s2">.addepar.com/api/v1/</span><span class="si">{request}</span><span class="s2">&quot;</span><span class="o">.</span><span class="n">format</span><span class="p">(</span>
             <span class="n">request</span><span class="o">=</span><span class="n">request</span><span class="p">,</span> <span class="n">company</span><span class="o">=</span><span class="bp">self</span><span class="o">.</span><span class="n">company</span>
@@ -211,7 +211,7 @@
 
 
 <div class="viewcode-block" id="AddeparRequest.delete">
-<a class="viewcode-back" href="../../autoapi/pyaddepar/flask_addepar/index.html#pyaddepar.addeparrequest.AddeparRequest.delete">[docs]</a>
+<a class="viewcode-back" href="../../autoapi/pyaddepar/addeparrequest/index.html#pyaddepar.addeparrequest.AddeparRequest.delete">[docs]</a>
     <span class="k">def</span> <span class="nf">delete</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">entity</span><span class="p">):</span>
         <span class="k">assert</span> <span class="n">entity</span>
         <span class="n">r</span> <span class="o">=</span> <span class="s2">&quot;https://</span><span class="si">{company}</span><span class="s2">.addepar.com/api/v1/entities/</span><span class="si">{entity}</span><span class="s2">&quot;</span><span class="o">.</span><span class="n">format</span><span class="p">(</span>
@@ -228,7 +228,7 @@
 
 
 <div class="viewcode-block" id="AddeparRequest.view_csv">
-<a class="viewcode-back" href="../../autoapi/pyaddepar/flask_addepar/index.html#pyaddepar.addeparrequest.AddeparRequest.view_csv">[docs]</a>
+<a class="viewcode-back" href="../../autoapi/pyaddepar/addeparrequest/index.html#pyaddepar.addeparrequest.AddeparRequest.view_csv">[docs]</a>
     <span class="k">def</span> <span class="nf">view_csv</span><span class="p">(</span>
         <span class="bp">self</span><span class="p">,</span>
         <span class="n">view_id</span><span class="p">,</span>
@@ -259,7 +259,7 @@
 
 
 <div class="viewcode-block" id="AddeparRequest.transaction_csv">
-<a class="viewcode-back" href="../../autoapi/pyaddepar/flask_addepar/index.html#pyaddepar.addeparrequest.AddeparRequest.transaction_csv">[docs]</a>
+<a class="viewcode-back" href="../../autoapi/pyaddepar/addeparrequest/index.html#pyaddepar.addeparrequest.AddeparRequest.transaction_csv">[docs]</a>
     <span class="k">def</span> <span class="nf">transaction_csv</span><span class="p">(</span>
         <span class="bp">self</span><span class="p">,</span>
         <span class="n">view_id</span><span class="p">,</span>
@@ -290,7 +290,7 @@
 
 
 <div class="viewcode-block" id="AddeparRequest.entities">
-<a class="viewcode-back" href="../../autoapi/pyaddepar/flask_addepar/index.html#pyaddepar.addeparrequest.AddeparRequest.entities">[docs]</a>
+<a class="viewcode-back" href="../../autoapi/pyaddepar/addeparrequest/index.html#pyaddepar.addeparrequest.AddeparRequest.entities">[docs]</a>
     <span class="k">def</span> <span class="nf">entities</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">link</span><span class="o">=</span><span class="s2">&quot;/v1/entities&quot;</span><span class="p">,</span> <span class="n">modeltype</span><span class="o">=</span><span class="kc">None</span><span class="p">):</span>
         <span class="k">while</span> <span class="n">link</span><span class="p">:</span>
             <span class="n">a</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="n">link</span><span class="p">)</span><span class="o">.</span><span class="n">json</span><span class="p">()</span>
@@ -318,7 +318,7 @@
 
 
 <div class="viewcode-block" id="AddeparRequest.group">
-<a class="viewcode-back" href="../../autoapi/pyaddepar/flask_addepar/index.html#pyaddepar.addeparrequest.AddeparRequest.group">[docs]</a>
+<a class="viewcode-back" href="../../autoapi/pyaddepar/addeparrequest/index.html#pyaddepar.addeparrequest.AddeparRequest.group">[docs]</a>
     <span class="k">def</span> <span class="nf">group</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="nb">id</span><span class="p">):</span>
         <span class="k">return</span> <span class="n">AttrDict</span><span class="p">(</span>
             <span class="bp">self</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="s2">&quot;/v1/groups/</span><span class="si">{id}</span><span class="s2">&quot;</span><span class="o">.</span><span class="n">format</span><span class="p">(</span><span class="nb">id</span><span class="o">=</span><span class="nb">id</span><span class="p">))</span><span class="o">.</span><span class="n">json</span><span class="p">()[</span><span class="s2">&quot;data&quot;</span><span class="p">][</span><span class="s2">&quot;attributes&quot;</span><span class="p">]</span>
@@ -326,7 +326,7 @@
 
 
 <div class="viewcode-block" id="AddeparRequest.user">
-<a class="viewcode-back" href="../../autoapi/pyaddepar/flask_addepar/index.html#pyaddepar.addeparrequest.AddeparRequest.user">[docs]</a>
+<a class="viewcode-back" href="../../autoapi/pyaddepar/addeparrequest/index.html#pyaddepar.addeparrequest.AddeparRequest.user">[docs]</a>
     <span class="k">def</span> <span class="nf">user</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="nb">id</span><span class="p">):</span>
         <span class="k">return</span> <span class="n">AttrDict</span><span class="p">(</span>
             <span class="bp">self</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="s2">&quot;/v1/users/</span><span class="si">{id}</span><span class="s2">&quot;</span><span class="o">.</span><span class="n">format</span><span class="p">(</span><span class="nb">id</span><span class="o">=</span><span class="nb">id</span><span class="p">))</span><span class="o">.</span><span class="n">json</span><span class="p">()[</span><span class="s2">&quot;data&quot;</span><span class="p">][</span><span class="s2">&quot;attributes&quot;</span><span class="p">]</span>
@@ -334,7 +334,7 @@
 
 
 <div class="viewcode-block" id="AddeparRequest.entity">
-<a class="viewcode-back" href="../../autoapi/pyaddepar/flask_addepar/index.html#pyaddepar.addeparrequest.AddeparRequest.entity">[docs]</a>
+<a class="viewcode-back" href="../../autoapi/pyaddepar/addeparrequest/index.html#pyaddepar.addeparrequest.AddeparRequest.entity">[docs]</a>
     <span class="k">def</span> <span class="nf">entity</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="nb">id</span><span class="p">):</span>
         <span class="k">return</span> <span class="n">AttrDict</span><span class="p">(</span>
             <span class="bp">self</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="s2">&quot;/v1/entities/</span><span class="si">{id}</span><span class="s2">&quot;</span><span class="o">.</span><span class="n">format</span><span class="p">(</span><span class="nb">id</span><span class="o">=</span><span class="nb">id</span><span class="p">))</span><span class="o">.</span><span class="n">json</span><span class="p">()[</span><span class="s2">&quot;data&quot;</span><span class="p">][</span><span class="s2">&quot;attributes&quot;</span><span class="p">]</span>
@@ -342,7 +342,7 @@
 
 
 <div class="viewcode-block" id="AddeparRequest.members">
-<a class="viewcode-back" href="../../autoapi/pyaddepar/flask_addepar/index.html#pyaddepar.addeparrequest.AddeparRequest.members">[docs]</a>
+<a class="viewcode-back" href="../../autoapi/pyaddepar/addeparrequest/index.html#pyaddepar.addeparrequest.AddeparRequest.members">[docs]</a>
     <span class="k">def</span> <span class="nf">members</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="nb">id</span><span class="p">):</span>
         <span class="k">for</span> <span class="n">row</span> <span class="ow">in</span> <span class="bp">self</span><span class="o">.</span><span class="n">get</span><span class="p">(</span>
             <span class="s2">&quot;/v1/groups/</span><span class="si">{id}</span><span class="s2">/relationships/members&quot;</span><span class="o">.</span><span class="n">format</span><span class="p">(</span><span class="nb">id</span><span class="o">=</span><span class="nb">id</span><span class="p">)</span>
