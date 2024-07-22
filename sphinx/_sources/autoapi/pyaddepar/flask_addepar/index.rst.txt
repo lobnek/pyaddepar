@@ -55,6 +55,11 @@ Module Contents
    Main class used for initialization of Flask-Addepar.
 
 
+   .. py:attribute:: app
+      :value: None
+
+
+
    .. py:method:: init_app(app, config=None)
 
 

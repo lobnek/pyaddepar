@@ -155,9 +155,27 @@ Module Contents
        in the keyword argument list.  For example:  dict(one=1, two=2)
 
 
+   .. py:attribute:: __dict__
+
+
 .. py:class:: AddeparRequest(key=None, secret=None, id=None, company=None, logger=None)
 
    Bases: :py:obj:`object`
+
+
+   .. py:attribute:: logger
+
+
+   .. py:attribute:: key
+
+
+   .. py:attribute:: secret
+
+
+   .. py:attribute:: id
+
+
+   .. py:attribute:: company
 
 
    .. py:property:: auth
