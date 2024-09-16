@@ -14,7 +14,7 @@ requests = "*"
 pandas = "*"
 
 [tool.poetry.dev-dependencies]
-pytest = "8.3.2"
+pytest = "8.3.3"
 pytest-cov = "*"
 httpretty = "*"
 requests-mock = "*"
