@@ -64,6 +64,7 @@ Module Contents
 
 
    .. py:property:: request
+
       Return Addepar request associated with this Addepar instance.
 
 
