@@ -7,9 +7,7 @@ import pandas as pd
 import pandas.testing as pt
 import pytest
 
-from pyaddepar.addeparrequest import AddeparRequest
-from pyaddepar.addeparrequest import AttrDict
-from pyaddepar.addeparrequest import PortfolioType
+from pyaddepar.addeparrequest import AddeparRequest, AttrDict, PortfolioType
 from pyaddepar.flask_addepar import addepar
 
 

@@ -4,9 +4,7 @@ from __future__ import annotations
 import pytest
 from flask import Flask
 
-from pyaddepar.flask_addepar import Addepar
-from pyaddepar.flask_addepar import addepar
-from pyaddepar.flask_addepar import InvalidSettingsError
+from pyaddepar.flask_addepar import Addepar, InvalidSettingsError, addepar
 
 
 def test_app_false(app):

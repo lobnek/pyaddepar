@@ -1,8 +1,7 @@
 # -*- coding: utf-8 -*-
 from __future__ import annotations
 
-from flask import current_app
-from flask import Flask
+from flask import Flask, current_app
 
 from pyaddepar.addeparrequest import AddeparRequest
 
