@@ -66,10 +66,16 @@ class AddeparRequest(object):
             )
         )
 
-        r = requests.get(request, auth=(self.key, self.secret), headers=self.headers)
-        assert r.ok, "Invalid response. Statuscode {code}. Query: {x}".format(
-            code=r.status_code, x=request
+        r = requests.get(
+            request, auth=(self.key, self.secret), headers=self.headers, timeout=10
         )
+        if not r.ok:
+            raise RuntimeError(
+                "Invalid response. Statuscode {code}. Query: {x}".format(
+                    code=r.status_code, x=request
+                )
+            )
+
         return r
 
     def post(self, data, request="entities"):
@@ -82,17 +88,29 @@ class AddeparRequest(object):
             )
         )
         r = requests.post(
-            r, auth=(self.key, self.secret), headers=self.headers, data=json.dumps(data)
+            r,
+            auth=(self.key, self.secret),
+            headers=self.headers,
+            data=json.dumps(data),
+            timeout=10,
         )
-        assert r.ok, "Invalid response. Statuscode {}".format(r.status_code)
+        if not r.ok:
+            raise RuntimeError(
+                "Invalid response. Statuscode {code}. Query: {x}".format(
+                    code=r.status_code, x=request
+                )
+            )
+
         return r
 
     def delete(self, entity):
-        assert entity
+        # assert entity
         r = "https://{company}.addepar.com/api/v1/entities/{entity}".format(
             company=self.company, entity=entity
         )
-        return requests.delete(r, auth=(self.key, self.secret), headers=self.headers)
+        return requests.delete(
+            r, auth=(self.key, self.secret), headers=self.headers, timeout=10
+        )
 
     @property
     def version(self):
@@ -106,7 +124,7 @@ class AddeparRequest(object):
         start_date=pd.Timestamp("today"),
         end_date=pd.Timestamp("today"),
     ):
-        assert isinstance(portfolio_type, PortfolioType)
+        # assert isinstance(portfolio_type, PortfolioType)
 
         param = AddeparRequest.dicturl(
             {
@@ -134,7 +152,7 @@ class AddeparRequest(object):
         start_date=pd.Timestamp("today"),
         end_date=pd.Timestamp("today"),
     ):
-        assert isinstance(portfolio_type, PortfolioType)
+        # assert isinstance(portfolio_type, PortfolioType)
 
         param = AddeparRequest.dicturl(
             {
