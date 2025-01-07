@@ -10,6 +10,8 @@ jobs:
     runs-on: "ubuntu-latest"
     steps:
       - uses: cvxgrp/.github/actions/pdoc@v1.4.0
+        with:
+          source-folder: 'pyaddepar'
 
   test:
     runs-on: "ubuntu-latest"
