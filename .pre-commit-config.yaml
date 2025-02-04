@@ -7,12 +7,12 @@ repos:
       - id: trailing-whitespace
 
   - repo: https://github.com/psf/black
-    rev: 24.10.0
+    rev: 25.1.0
     hooks:
       - id: black
 
   - repo: https://github.com/astral-sh/ruff-pre-commit
-    rev: 'v0.9.3'
+    rev: 'v0.9.4'
     hooks:
       - id: ruff
         args: [ --fix, --exit-non-zero-on-fix ]
@@ -23,7 +23,7 @@ repos:
       - id: markdownlint
 
   - repo: https://github.com/python-jsonschema/check-jsonschema
-    rev: 0.31.0
+    rev: 0.31.1
     hooks:
       - id: check-dependabot
         args: [ "--verbose" ]
@@ -37,7 +37,7 @@ repos:
       - id: validate-pyproject
 
   - repo: https://github.com/crate-ci/typos
-    rev: dictgen-v0.3.1
+    rev: typos-dict-v0.12.4
     hooks:
       - id: typos
 
