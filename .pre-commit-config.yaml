@@ -37,12 +37,12 @@ repos:
       - id: validate-pyproject
 
   - repo: https://github.com/crate-ci/typos
-    rev: typos-dict-v0.12.4
+    rev: typos-dict-v0.12.5
     hooks:
       - id: typos
 
   - repo: https://github.com/PyCQA/bandit
-    rev: 1.8.2
+    rev: 1.8.3
     hooks:
     - id: bandit
       exclude: ^tests/
