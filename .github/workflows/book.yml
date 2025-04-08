@@ -56,4 +56,3 @@ jobs:
         uses: actions/checkout@v4
 
       - uses: tschm/cradle/actions/book@v0.1.59
-
