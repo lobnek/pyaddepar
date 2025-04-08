@@ -22,7 +22,7 @@ jobs:
 
       - uses: tschm/cradle/actions/pdoc@v0.1.59
         with:
-          source-folder: src/antarctic
+          source-folder: src/pyaddepar
 
   test:
     runs-on: "ubuntu-latest"
