@@ -46,4 +46,4 @@ packages = ["src/pyaddepar"]
 pep621_dev_dependency_groups = ["dev"]
 
 [tool.bandit]
-exclude_dirs = ["src/tests"]
+exclude_dirs = ["tests"]
