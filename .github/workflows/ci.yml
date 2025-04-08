@@ -6,20 +6,20 @@ on:
 jobs:
   test:
     # The type of runner that the job will run on
-    runs-on: ${{ matrix.os }}
+    runs-on: ubuntu-latest
 
     strategy:
       matrix:
-        os: [ ubuntu-latest, macos-latest ]
+        # mongo container action only supported on Linux
         python-version: [ '3.10', '3.11', '3.12', '3.13' ]
 
     # Steps represent a sequence of tasks that will be executed as part of the job
     steps:
       - name: "Build the virtual environment for ${{ github.repository }}"
-        uses: cvxgrp/.github/actions/uv/environment@v2.1.1
+        uses: tschm/cradle/actions/environment@v0.1.59
         with:
           python-version: ${{ matrix.python-version }}
 
-      - uses: cvxgrp/.github/actions/test@v2.1.1
+      - uses: tschm/cradle/actions/test@v0.1.59
         with:
-          tests-folder: 'tests'
+          tests-folder: src/tests
