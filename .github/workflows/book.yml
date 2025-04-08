@@ -7,39 +7,42 @@ jobs:
   marimo:
     runs-on: "ubuntu-latest"
     steps:
-      - name: "Build the virtual environment for ${{ github.repository }}"
-        uses: cvxgrp/.github/actions/uv/environment@v2.1.1
+      - name: "Build the virtual environment"
+        uses: tschm/cradle/actions/environment@v0.1.59
 
-      - uses: cvxgrp/.github/actions/marimo@v2.1.1
+      - uses: tschm/cradle/actions/marimo@v0.1.59
+        with:
+          source_folder: book/marimo
 
   pdoc:
     runs-on: "ubuntu-latest"
     steps:
       - name: "Build the virtual environment for ${{ github.repository }}"
-        uses: cvxgrp/.github/actions/uv/environment@v2.1.1
+        uses: tschm/cradle/actions/environment@v0.1.59
 
-      - uses: cvxgrp/.github/actions/pdoc@v2.1.1
+      - uses: tschm/cradle/actions/pdoc@v0.1.59
         with:
-          source-folder: 'pyaddepar'
+          source-folder: src/pyaddepar
 
   test:
     runs-on: "ubuntu-latest"
     steps:
-      - name: "Build the virtual environment for ${{ github.repository }}"
-        uses: cvxgrp/.github/actions/uv/environment@v2.1.1
+      - name: "Build the virtual environment"
+        uses: tschm/cradle/actions/environment@v0.1.59
 
-      - uses: cvxgrp/.github/actions/coverage@v2.1.1
+      - uses: tschm/cradle/actions/coverage@v0.1.59
         with:
-          source-folder: 'pyaddepar'
-          tests-folder: 'tests'
+          tests-folder: src/tests
+          source-folder: src/pyaddepar
+          coveralls: 'false'
 
   jupyter:
     runs-on: "ubuntu-latest"
     steps:
       - name: "Build the virtual environment for ${{ github.repository }}"
-        uses: cvxgrp/.github/actions/uv/environment@v2.1.1
+        uses: tschm/cradle/actions/environment@v0.1.59
 
-      - uses: cvxgrp/.github/actions/jupyter@v2.1.1
+      - uses: tschm/cradle/actions/jupyter@v0.1.59
 
   book:
     runs-on: "ubuntu-latest"
@@ -49,4 +52,7 @@ jobs:
       contents: write
 
     steps:
-      - uses: cvxgrp/.github/actions/book@v2.1.1
+      - name: Checkout [${{ github.repository }}]
+        uses: actions/checkout@v4
+
+      - uses: tschm/cradle/actions/book@v0.1.59
