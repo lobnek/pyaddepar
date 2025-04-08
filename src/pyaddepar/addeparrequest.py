@@ -30,7 +30,7 @@ class AttrDict(dict):
         self.__dict__ = self
 
 
-class AddeparRequest(object):
+class AddeparRequest:
     def __init__(self, key=None, secret=None, id=None, company=None, logger=None):
         self.logger = logger or logging.getLogger(__name__)
         self.key = key or os.environ["AKEY"]
@@ -104,7 +104,6 @@ class AddeparRequest(object):
         return r
 
     def delete(self, entity):
-        # assert entity
         r = "https://{company}.addepar.com/api/v1/entities/{entity}".format(
             company=self.company, entity=entity
         )
@@ -124,8 +123,6 @@ class AddeparRequest(object):
         start_date=pd.Timestamp("today"),
         end_date=pd.Timestamp("today"),
     ):
-        # assert isinstance(portfolio_type, PortfolioType)
-
         param = AddeparRequest.dicturl(
             {
                 "portfolio_id": portfolio_id,
@@ -152,8 +149,6 @@ class AddeparRequest(object):
         start_date=pd.Timestamp("today"),
         end_date=pd.Timestamp("today"),
     ):
-        # assert isinstance(portfolio_type, PortfolioType)
-
         param = AddeparRequest.dicturl(
             {
                 "portfolio_id": portfolio_id,
