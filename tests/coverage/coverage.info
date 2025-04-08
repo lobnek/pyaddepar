@@ -1,6 +1,6 @@
-SF:pyaddepar/__init__.py
+SF:src/pyaddepar/__init__.py
 end_of_record
-SF:pyaddepar/addeparrequest.py
+SF:src/pyaddepar/addeparrequest.py
 DA:2,1
 DA:4,1
 DA:5,1
@@ -143,7 +143,7 @@ FNDA:1,AddeparRequest.options
 FNF:20
 FNH:18
 end_of_record
-SF:pyaddepar/flask_addepar.py
+SF:src/pyaddepar/flask_addepar.py
 DA:2,1
 DA:4,1
 DA:6,1
