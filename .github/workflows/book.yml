@@ -8,9 +8,9 @@ jobs:
     runs-on: "ubuntu-latest"
     steps:
       - name: "Build the virtual environment"
-        uses: tschm/cradle/actions/environment@v0.1.59
+        uses: tschm/cradle/actions/environment@v0.1.66
 
-      - uses: tschm/cradle/actions/marimo@v0.1.59
+      - uses: tschm/cradle/actions/marimo@v0.1.66
         with:
           source_folder: book/marimo
 
@@ -18,9 +18,9 @@ jobs:
     runs-on: "ubuntu-latest"
     steps:
       - name: "Build the virtual environment for ${{ github.repository }}"
-        uses: tschm/cradle/actions/environment@v0.1.59
+        uses: tschm/cradle/actions/environment@v0.1.66
 
-      - uses: tschm/cradle/actions/pdoc@v0.1.59
+      - uses: tschm/cradle/actions/pdoc@v0.1.66
         with:
           source-folder: src/pyaddepar
 
@@ -28,9 +28,9 @@ jobs:
     runs-on: "ubuntu-latest"
     steps:
       - name: "Build the virtual environment"
-        uses: tschm/cradle/actions/environment@v0.1.59
+        uses: tschm/cradle/actions/environment@v0.1.66
 
-      - uses: tschm/cradle/actions/coverage@v0.1.59
+      - uses: tschm/cradle/actions/coverage@v0.1.66
         with:
           tests-folder: src/tests
           source-folder: src/pyaddepar
@@ -40,9 +40,9 @@ jobs:
     runs-on: "ubuntu-latest"
     steps:
       - name: "Build the virtual environment for ${{ github.repository }}"
-        uses: tschm/cradle/actions/environment@v0.1.59
+        uses: tschm/cradle/actions/environment@v0.1.66
 
-      - uses: tschm/cradle/actions/jupyter@v0.1.59
+      - uses: tschm/cradle/actions/jupyter@v0.1.66
 
   book:
     runs-on: "ubuntu-latest"
@@ -55,4 +55,4 @@ jobs:
       - name: Checkout [${{ github.repository }}]
         uses: actions/checkout@v4
 
-      - uses: tschm/cradle/actions/book@v0.1.59
+      - uses: tschm/cradle/actions/book@v0.1.66
